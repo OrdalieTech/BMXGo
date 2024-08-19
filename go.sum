@@ -1,0 +1,6 @@
+github.com/kljensen/snowball v0.10.0 h1:8qgaBLraSuUVHtGH5tJ+VdGpqgfcaE2WkswL/C3nVhY=
+github.com/kljensen/snowball v0.10.0/go.mod h1:bJcxtur1W5Qw4fVj9tk5W88zyRcGQQjqahFErdcDTHk=
+github.com/rainycape/unidecode v0.0.0-20150907023854-cb7f23ec59be h1:ta7tUOvsPHVHGom5hKW5VXNc2xZIkfCKP8iaqOyYtUQ=
+github.com/rainycape/unidecode v0.0.0-20150907023854-cb7f23ec59be/go.mod h1:MIDFMn7db1kT65GmV94GzpX9Qdi7N/pQlwb+AN8wh+Q=
+github.com/reiver/go-porterstemmer v1.0.1 h1:WyERBkASXgoXrTwq/IQ6wyNj/YG7j/ZURvTuMCoud5w=
+github.com/reiver/go-porterstemmer v1.0.1/go.mod h1:Z8uL/f/7UEwaeAJNwx1sO8kbqXiEuQieNuD735hLrSU=
