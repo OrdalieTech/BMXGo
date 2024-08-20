@@ -16,7 +16,16 @@ import (
 const SUMMARIZE_WITH_CONTEXT_PROMPT = "Your prompt template here"
 
 func GenerateAugmentedQueries(query string, num_augmented_queries int) ([]string, error) {
-	prompt := fmt.Sprintf(`Étant donné la requête suivante, générez une liste de %d requêtes augmentées qui incluent des synonymes et des termes pertinents pour améliorer une recherche lexicale. Chaque requête augmentée doit être sur une nouvelle ligne.
+	prompt := fmt.Sprintf(`Étant donné la requête suivante, générez une liste de %d requêtes augmentées qui incluent des synonymes et des termes pertinents pour améliorer une recherche lexicale. Chaque requête augmentée doit être sur une nouvelle ligne. N'inclus pas la requête originale dans la liste des requêtes augmentées.
+
+Exemple :
+Requête originale : "congé de maternité"
+
+Requêtes augmentées :
+congés parentaux
+congés de grossesse
+congés pour naissance
+
 
 Requête originale : %s
 
@@ -104,15 +113,24 @@ func BuildBMX(query string, folderPath string, num_augmented_queries int) (*mode
 	bmx.Params.Alpha = max(min(1.5, bmx.Params.Avgdl/100), 0.5)
 	bmx.Params.Beta = 1 / math.Log(1+float64(bmx.Params.N))
 
-	augmentedQueries, err := GenerateAugmentedQueries(query, num_augmented_queries)
-	if err != nil {
-		return nil, err
-	}
+	if num_augmented_queries > 0 {
+		augmentedQueries, err := GenerateAugmentedQueries(query, num_augmented_queries)
+		if err != nil {
+			return nil, err
+		}
 
-	for _, augmentedQuery := range augmentedQueries {
-		q := model.Query{Text: augmentedQuery}
-		q.Tokens = tokenizer(q.Text)
-		bmx.AugmentedQueries = append(bmx.AugmentedQueries, q)
+		for _, augmentedQuery := range augmentedQueries {
+			if query != augmentedQuery {
+				q := model.Query{Text: augmentedQuery}
+				q.Tokens = tokenizer(q.Text)
+				bmx.AugmentedQueries = append(bmx.AugmentedQueries, q)
+			}
+		}
+
+		bmx.AugmentedWeights = []float64{}
+		for i := 0; i < num_augmented_queries; i++ {
+			bmx.AugmentedWeights = append(bmx.AugmentedWeights, 1.0/float64(num_augmented_queries+1))
+		}
 	}
 
 	// Initialize BMX
