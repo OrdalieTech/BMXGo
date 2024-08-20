@@ -34,13 +34,13 @@ type Parameters struct {
 }
 
 type BMX struct {
-	query                Query
-	augmentedQueries     []Query
-	augmentedWeights     []float64
-	docs                 []Document
-	params               Parameters
-	augmentedScoreTable  []float64
-	normalizedScoreTable []float64
+	Query                Query
+	AugmentedQueries     []Query
+	AugmentedWeights     []float64
+	Docs                 []Document
+	Params               Parameters
+	AugmentedScoreTable  []float64
+	NormalizedScoreTable []float64
 }
 
 // Function to calculate IDF
@@ -57,7 +57,7 @@ func IDF(qi string, docs []Document) float64 {
 func (bmx *BMX) IDF_table_fill(query Query) {
 	query.IDF_table = []float64{}
 	for _, qi := range query.Tokens {
-		query.IDF_table = append(query.IDF_table, IDF(qi, bmx.docs))
+		query.IDF_table = append(query.IDF_table, IDF(qi, bmx.Docs))
 	}
 }
 
@@ -76,7 +76,7 @@ func (bmx *BMX) F_table_fill(query Query) {
 	query.F_table = [][]float64{}
 	for _, qi := range query.Tokens {
 		query.F_table = append(query.F_table, []float64{})
-		for _, doc := range bmx.docs {
+		for _, doc := range bmx.Docs {
 			query.F_table[len(query.F_table)-1] = append(query.F_table[len(query.F_table)-1], F(qi, doc))
 		}
 	}
@@ -95,7 +95,7 @@ func E_tilde(qi string, docs []Document) float64 {
 func (bmx *BMX) E_tilde_table_fill(query Query) {
 	query.E_tilde_table = []float64{}
 	for _, qi := range query.Tokens {
-		query.E_tilde_table = append(query.E_tilde_table, E_tilde(qi, bmx.docs))
+		query.E_tilde_table = append(query.E_tilde_table, E_tilde(qi, bmx.Docs))
 	}
 	if query.max_E_tilde < query.E_tilde_table[len(query.E_tilde_table)-1] {
 		query.max_E_tilde = query.E_tilde_table[len(query.E_tilde_table)-1]
@@ -121,7 +121,7 @@ func (bmx *BMX) avgEntropy(query Query) {
 func (bmx *BMX) S_table_fill(query Query) {
 	query.S_table = []float64{}
 	for i := range query.Tokens {
-		for j := range bmx.docs {
+		for j := range bmx.Docs {
 			if query.F_table[i][j] > 0 {
 				query.S_table = append(query.S_table, 1)
 			} else {
@@ -134,14 +134,14 @@ func (bmx *BMX) S_table_fill(query Query) {
 // Function to calculate the score
 func (bmx *BMX) Score_table_fill(query Query) {
 	query.Score_table = []float64{}
-	for j, doc := range bmx.docs {
+	for j, doc := range bmx.Docs {
 		var score float64
 		for i := range query.Tokens {
 			idf := query.IDF_table[i]
 			f := query.F_table[i][j]
 			e := query.E_table[i] / query.avgEntropy
 			s := query.S_table[j]
-			score += idf*(f*(bmx.params.Alpha+1.0)/(f+bmx.params.Alpha*(float64(len(doc.Tokens))/bmx.params.Avgdl)+bmx.params.Alpha*query.avgEntropy)) + bmx.params.Beta*e*s
+			score += idf*(f*(bmx.Params.Alpha+1.0)/(f+bmx.Params.Alpha*(float64(len(doc.Tokens))/bmx.Params.Avgdl)+bmx.Params.Alpha*query.avgEntropy)) + bmx.Params.Beta*e*s
 		}
 		query.Score_table = append(query.Score_table, score)
 	}
@@ -149,15 +149,15 @@ func (bmx *BMX) Score_table_fill(query Query) {
 
 func (bmx *BMX) NormalizedScore_table_fill(query Query) {
 	query.normalizedScore_table = []float64{}
-	maxScore := float64(len(query.Tokens)) * (math.Log(1+float64(float64(bmx.params.N)-0.5)/1.5) + 1.0)
-	for j, doc := range bmx.docs {
+	maxScore := float64(len(query.Tokens)) * (math.Log(1+float64(float64(bmx.Params.N)-0.5)/1.5) + 1.0)
+	for j, doc := range bmx.Docs {
 		var score float64
 		for i := range query.Tokens {
 			idf := query.IDF_table[i]
 			f := query.F_table[i][j]
 			e := query.E_table[i] / query.avgEntropy
 			s := query.S_table[j]
-			score += idf*(f*(bmx.params.Alpha+1.0)/(f+bmx.params.Alpha*(float64(len(doc.Tokens))/bmx.params.Avgdl)+bmx.params.Alpha*query.avgEntropy)) + bmx.params.Beta*e*s
+			score += idf*(f*(bmx.Params.Alpha+1.0)/(f+bmx.Params.Alpha*(float64(len(doc.Tokens))/bmx.Params.Avgdl)+bmx.Params.Alpha*query.avgEntropy)) + bmx.Params.Beta*e*s
 		}
 		query.normalizedScore_table = append(query.normalizedScore_table, score/maxScore)
 	}
@@ -165,41 +165,41 @@ func (bmx *BMX) NormalizedScore_table_fill(query Query) {
 
 // Function to calculate the weighted query augmentation score
 func (bmx *BMX) AugmentedScore() {
-	bmx.augmentedScoreTable = []float64{}
-	for j := range bmx.docs {
-		score := bmx.query.Score_table[j]
-		for i, Q_A := range bmx.augmentedQueries {
-			score += bmx.augmentedWeights[i] * Q_A.Score_table[j]
+	bmx.AugmentedScoreTable = []float64{}
+	for j := range bmx.Docs {
+		score := bmx.Query.Score_table[j]
+		for i, Q_A := range bmx.AugmentedQueries {
+			score += bmx.AugmentedWeights[i] * Q_A.Score_table[j]
 		}
-		bmx.augmentedScoreTable = append(bmx.augmentedScoreTable, score)
+		bmx.AugmentedScoreTable = append(bmx.AugmentedScoreTable, score)
 	}
 }
 
 func (bmx *BMX) NormalizedAugmentedScore() {
-	bmx.normalizedScoreTable = []float64{}
-	for j := range bmx.docs {
-		score := bmx.query.normalizedScore_table[j]
-		for i, Q_A := range bmx.augmentedQueries {
-			score += bmx.augmentedWeights[i] * Q_A.normalizedScore_table[j]
+	bmx.NormalizedScoreTable = []float64{}
+	for j := range bmx.Docs {
+		score := bmx.Query.normalizedScore_table[j]
+		for i, Q_A := range bmx.AugmentedQueries {
+			score += bmx.AugmentedWeights[i] * Q_A.normalizedScore_table[j]
 		}
-		bmx.normalizedScoreTable = append(bmx.normalizedScoreTable, score)
+		bmx.NormalizedScoreTable = append(bmx.NormalizedScoreTable, score)
 	}
 }
 
 func (bmx *BMX) InitializeQuery(query Query) {
-	bmx.IDF_table_fill(bmx.query)
-	bmx.F_table_fill(bmx.query)
-	bmx.E_tilde_table_fill(bmx.query)
-	bmx.E_table_fill(bmx.query)
-	bmx.avgEntropy(bmx.query)
-	bmx.S_table_fill(bmx.query)
-	bmx.Score_table_fill(bmx.query)
-	bmx.NormalizedScore_table_fill(bmx.query)
+	bmx.IDF_table_fill(query)
+	bmx.F_table_fill(query)
+	bmx.E_tilde_table_fill(query)
+	bmx.E_table_fill(query)
+	bmx.avgEntropy(query)
+	bmx.S_table_fill(query)
+	bmx.Score_table_fill(query)
+	bmx.NormalizedScore_table_fill(query)
 }
 
 func (bmx *BMX) Initialize() {
-	bmx.InitializeQuery(bmx.query)
-	for _, q := range bmx.augmentedQueries {
+	bmx.InitializeQuery(bmx.Query)
+	for _, q := range bmx.AugmentedQueries {
 		bmx.InitializeQuery(q)
 	}
 	bmx.AugmentedScore()
@@ -208,14 +208,14 @@ func (bmx *BMX) Initialize() {
 
 func (bmx *BMX) Rank() []int {
 	// Create a slice of indices
-	indices := make([]int, len(bmx.normalizedScoreTable))
+	indices := make([]int, len(bmx.NormalizedScoreTable))
 	for i := range indices {
 		indices[i] = i
 	}
 
 	// Sort the indices based on the normalizedScoreTable in descending order
 	sort.Slice(indices, func(i, j int) bool {
-		return bmx.normalizedScoreTable[indices[i]] > bmx.normalizedScoreTable[indices[j]]
+		return bmx.NormalizedScoreTable[indices[i]] > bmx.NormalizedScoreTable[indices[j]]
 	})
 
 	return indices
