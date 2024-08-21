@@ -1,4 +1,4 @@
-package model
+package BMXGo
 
 import (
 	"math"

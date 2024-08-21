@@ -1,4 +1,4 @@
-package text_preprocessor
+package BMXGo
 
 import (
 	"errors"

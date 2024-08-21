@@ -1,7 +1,6 @@
-package model
+package BMXGo
 
 import (
-	"BMXGo/search/text_preprocessor"
 	"context"
 	"fmt"
 	"log"
@@ -67,7 +66,7 @@ func Build(indexName string) BMXAdapter {
 }
 
 func (adapter *BMXAdapter) AddMany(ids []string, docs []string) {
-	tokenize, err := text_preprocessor.GetTokenizer("word")
+	tokenize, err := GetTokenizer("word")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -77,7 +76,7 @@ func (adapter *BMXAdapter) AddMany(ids []string, docs []string) {
 }
 
 func (adapter *BMXAdapter) Search(query string, topK int) SearchResults {
-	tokenize, err := text_preprocessor.GetTokenizer("word")
+	tokenize, err := GetTokenizer("word")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -114,7 +113,7 @@ func (adapter *BMXAdapter) SearchMany(queries []string, topK int) []SearchResult
 }
 
 func (adapter *BMXAdapter) SearchAugmented(query string, topK int, num_augmented_queries int) SearchResults {
-	tokenize, err := text_preprocessor.GetTokenizer("word")
+	tokenize, err := GetTokenizer("word")
 	if err != nil {
 		log.Fatal(err)
 	}
