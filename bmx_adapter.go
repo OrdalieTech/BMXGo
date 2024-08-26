@@ -2,27 +2,22 @@ package BMXGo
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"log"
 	"sort"
 	"strings"
+	"sync"
+	"time"
 )
 
 func GenerateAugmentedQueries(query string, num_augmented_queries int) ([]string, error) {
-	prompt := fmt.Sprintf(`Étant donné la requête suivante, générez une liste de %d requêtes augmentées qui incluent des synonymes et des termes pertinents pour améliorer une recherche lexicale. Chaque requête augmentée doit être sur une nouvelle ligne. N'inclus pas la requête originale dans la liste des requêtes augmentées.
-
-Exemple :
-Requête originale : "congé de maternité"
-
-Requêtes augmentées :
-congés parentaux
-congés de grossesse
-congés pour naissance
-
-
-Requête originale : %s
-
-Requêtes augmentées :`, num_augmented_queries, query)
+	prompt := fmt.Sprintf(`You are an intelligent query augmentation tool. Your task is to augment each
+query with {%d} similar queries and output JSONL format, like {”query”:
+”original query”, ”augmented queries”: [”augmented query 1”, ”augmented
+query 2”, ...]}
+Input query: {%s}
+Output:`, num_augmented_queries, query)
 
 	client := NewLLMClient(ClientConfig{
 		Provider:       "openai",
@@ -43,11 +38,44 @@ Requêtes augmentées :`, num_augmented_queries, query)
 	select {
 	case responseTxt := <-respChan:
 		log.Println("AUGMENTED QUERIES GENERATED")
-		augmentedQueries := strings.Split(strings.TrimSpace(responseTxt), "\n")
-		augmentedQueries = append([]string{query}, augmentedQueries...)
+		// Clean up the response
+		cleanResponse := strings.TrimSpace(responseTxt)
+		cleanResponse = strings.TrimPrefix(cleanResponse, "```jsonl")
+		cleanResponse = strings.TrimSuffix(cleanResponse, "```")
+
+		// Parse the JSON response
+		var result struct {
+			Query            string   `json:"query"`
+			AugmentedQueries []string `json:"augmented queries"`
+		}
+
+		err := json.Unmarshal([]byte(cleanResponse), &result)
+		if err != nil {
+			// If JSON parsing fails, try to extract queries using a simple string split
+			queries := strings.Split(cleanResponse, "\",")
+			if len(queries) > 1 {
+				augmentedQueries := make([]string, 0, num_augmented_queries)
+				for i, q := range queries[1:] { // Skip the first element (original query)
+					if i >= num_augmented_queries {
+						break
+					}
+					q = strings.Trim(q, "[] \"\n")
+					if q != "" {
+						augmentedQueries = append(augmentedQueries, q)
+					}
+				}
+				return augmentedQueries, nil
+			}
+			return nil, fmt.Errorf("error parsing LLM response: %v", err)
+		}
+
+		// Combine original query with augmented queries
+		augmentedQueries := append([]string{}, result.AugmentedQueries...)
 		return augmentedQueries, nil
 	case err := <-errChan:
-		return nil, fmt.Errorf("error in generate_augmented_queries: %v", err)
+		log.Printf("Error in generate_augmented_queries: %v", err)
+		// Fallback: return the original query and some simple variations
+		return GenerateAugmentedQueries(query, num_augmented_queries)
 	}
 }
 
@@ -57,111 +85,170 @@ type BMXAdapter struct {
 }
 
 type SearchResults struct {
-	keys   []string
-	scores []float64
+	Keys   []string
+	Scores []float64
 }
 
-func Build(indexName string) BMXAdapter {
-	return BMXAdapter{indexName: indexName, bmx: &BMX{}}
-}
-
-func (adapter *BMXAdapter) AddMany(ids []string, docs []string) {
-	tokenize, err := GetTokenizer("word")
-	if err != nil {
-		log.Fatal(err)
+func Build(indexName string, config Config) BMXAdapter {
+	bmx := BMX{
+		Docs:   map[string]Document{},
+		Params: Parameters{},
 	}
+	bmx.InitializeTextPreprocessor(&config)
+
+	return BMXAdapter{
+		indexName: indexName,
+		bmx:       &bmx,
+	}
+}
+
+func (adapter *BMXAdapter) AddMany(ids []string, docs []string) error {
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Println("Recovered in AddMany", r)
+			// You might want to log the ids and docs that caused the panic
+			fmt.Println("Problematic document id:", ids[len(ids)-1])
+		}
+	}()
+
+	tokenize := adapter.bmx.TextPreprocessor.Process
+
 	for i, doc := range docs {
 		adapter.bmx.Docs[ids[i]] = Document{Text: doc, Tokens: tokenize(doc)}
 	}
+	fmt.Println("Setting params")
+	start := time.Now()
+	adapter.bmx.SetParams()
+	fmt.Println("Parameters set, total time:", time.Since(start))
+	start = time.Now()
+	fmt.Println("Filling F table")
+	adapter.bmx.F_table_fill()
+	fmt.Println("F table filled, total time:", time.Since(start))
+	start = time.Now()
+	fmt.Println("Calculating number of appearances")
+	adapter.bmx.NumAppearancesCalc()
+	fmt.Println("Number of appearances calculated, total time:", time.Since(start))
+	start = time.Now()
+	fmt.Println("Filling IDF table")
+	adapter.bmx.IDF_table_fill()
+	fmt.Println("IDF table filled, total time:", time.Since(start))
+	start = time.Now()
+	fmt.Println("Filling E_tilde table")
+	adapter.bmx.E_tilde_table_fill()
+	fmt.Println("E_tilde table filled, total time:", time.Since(start))
+	return nil
 }
 
 func (adapter *BMXAdapter) Search(query string, topK int) SearchResults {
-	tokenize, err := GetTokenizer("word")
-	if err != nil {
-		log.Fatal(err)
-	}
-	adapter.bmx.Query = Query{Text: query, Tokens: tokenize(query)}
-	adapter.bmx.AugmentedQueries = []Query{}
-	adapter.bmx.AugmentedWeights = []float64{}
-	adapter.bmx.Initialize()
+	q := Query{Text: query}
+	q.Initialize(adapter.bmx)
 
 	Keys := []string{}
-	for key := range adapter.bmx.Query.Score_table {
+	for key := range q.ScoreTable {
 		Keys = append(Keys, key)
 	}
 
 	// Sort the indices based on the normalizedScoreTable in descending order
 	sort.Slice(Keys, func(i, j int) bool {
-		return adapter.bmx.Query.Score_table[Keys[i]] > adapter.bmx.Query.Score_table[Keys[j]]
+		return q.ScoreTable[Keys[i]] > q.ScoreTable[Keys[j]]
 	})
 
 	topKeys := Keys[:topK]
 
 	topScores := []float64{}
 	for _, key := range topKeys {
-		topScores = append(topScores, adapter.bmx.Query.NormalizedScore_table[key])
+		topScores = append(topScores, q.NormalizedScoreTable[key])
 	}
-	return SearchResults{keys: topKeys, scores: topScores}
+
+	// fmt.Println("IDF:", q.IDF_table)
+	// fmt.Println("TF:", q.F_table)
+	// fmt.Println("E:", q.E_table)
+	// fmt.Println("E_tilde:", q.E_tilde_table)
+	// fmt.Println("S_table:", q.S_table)
+	// fmt.Println("Scores:", q.ScoreTable)
+
+	return SearchResults{Keys: topKeys, Scores: topScores}
 }
 
-func (adapter *BMXAdapter) SearchMany(queries []string, topK int) []SearchResults {
-	results := []SearchResults{}
-	for _, query := range queries {
-		results = append(results, adapter.Search(query, topK))
+func (adapter *BMXAdapter) SearchMany(queries []string, topK int, maxConcurrent int) []SearchResults {
+	results := make([]SearchResults, len(queries))
+	var wg sync.WaitGroup
+	semaphore := make(chan struct{}, maxConcurrent)
+
+	for i, query := range queries {
+		wg.Add(1)
+		semaphore <- struct{}{} // Acquire semaphore
+		go func(i int, query string) {
+			defer wg.Done()
+			defer func() { <-semaphore }() // Release semaphore
+			results[i] = adapter.Search(query, topK)
+			if i%100 == 0 {
+				fmt.Printf("Query number %d out of %d\n", i+1, len(queries))
+			}
+		}(i, query)
 	}
+
+	wg.Wait()
+	close(semaphore)
 	return results
 }
 
-func (adapter *BMXAdapter) SearchAugmented(query string, topK int, num_augmented_queries int) SearchResults {
-	tokenize, err := GetTokenizer("word")
-	if err != nil {
-		log.Fatal(err)
-	}
-	adapter.bmx.Query = Query{Text: query, Tokens: tokenize(query)}
-
+func (adapter *BMXAdapter) SearchAugmented(query string, topK int, num_augmented_queries int, weight float64) SearchResults {
 	augmentedQueries, err := GenerateAugmentedQueries(query, num_augmented_queries)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	for _, augmentedQuery := range augmentedQueries {
-		if query != augmentedQuery {
-			q := Query{Text: augmentedQuery}
-			q.Tokens = tokenize(q.Text)
-			adapter.bmx.AugmentedQueries = append(adapter.bmx.AugmentedQueries, q)
-		}
-	}
+	q := Query{Text: query, AugmentedQueries: augmentedQueries}
 
-	adapter.bmx.AugmentedWeights = []float64{}
+	q.AugmentedWeights = []float64{}
 	for range augmentedQueries {
-		adapter.bmx.AugmentedWeights = append(adapter.bmx.AugmentedWeights, 1.0/float64(len(augmentedQueries)+1))
+		q.AugmentedWeights = append(q.AugmentedWeights, weight)
 	}
 
-	adapter.bmx.Initialize()
+	q.Initialize(adapter.bmx)
 
 	Keys := []string{}
-	for key := range adapter.bmx.AugmentedScoreTable {
+	for key := range q.ScoreTable {
 		Keys = append(Keys, key)
 	}
 
 	// Sort the indices based on the normalizedScoreTable in descending order
 	sort.Slice(Keys, func(i, j int) bool {
-		return adapter.bmx.AugmentedScoreTable[Keys[i]] > adapter.bmx.AugmentedScoreTable[Keys[j]]
+		return q.ScoreTable[Keys[i]] > q.ScoreTable[Keys[j]]
 	})
 
 	topKeys := Keys[:topK]
 
 	topScores := []float64{}
 	for _, key := range topKeys {
-		topScores = append(topScores, adapter.bmx.NormalizedScoreTable[key])
+		topScores = append(topScores, q.NormalizedScoreTable[key])
 	}
-	return SearchResults{keys: topKeys, scores: topScores}
+	return SearchResults{Keys: topKeys, Scores: topScores}
 }
 
-func (adapter *BMXAdapter) SearchAugmentedMany(queries []string, topK int, num_augmented_queries int) []SearchResults {
-	results := []SearchResults{}
-	for _, query := range queries {
-		results = append(results, adapter.SearchAugmented(query, topK, num_augmented_queries))
+func (adapter *BMXAdapter) SearchAugmentedMany(queries []string, topK int, num_augmented_queries int, weight float64, maxConcurrent int) []SearchResults {
+	results := make([]SearchResults, len(queries))
+	var wg sync.WaitGroup
+	semaphore := make(chan struct{}, maxConcurrent)
+
+	for i, query := range queries {
+		wg.Add(1)
+		semaphore <- struct{}{} // Acquire semaphore
+		go func(i int, query string) {
+			defer wg.Done()
+			defer func() { <-semaphore }() // Release semaphore
+			results[i] = adapter.SearchAugmented(query, topK, num_augmented_queries, weight)
+			fmt.Printf("Query number %d out of %d\n", i+1, len(queries))
+		}(i, query)
 	}
+
+	wg.Wait()
+	close(semaphore)
 	return results
+}
+
+func (adapter *BMXAdapter) GetTokens(text string) {
+	list := adapter.bmx.TextPreprocessor.Process(text)
+	fmt.Println(list)
 }

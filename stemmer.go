@@ -2,6 +2,8 @@ package BMXGo
 
 import (
 	"errors"
+	"fmt"
+	"log"
 	"strings"
 
 	"github.com/kljensen/snowball"
@@ -26,7 +28,25 @@ var stemmersDict = map[string]StemmerFunc{
 
 // Porter stemmer implementation
 func porterStemmer(word string) string {
-	return porterstemmer.StemString(word)
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Println("Recovered in porterStemmer", r)
+			fmt.Println("Problematic word:", word)
+		}
+	}()
+	if word == "" {
+		return ""
+	}
+	if len(word) < 6 {
+		// Skip very short words or add them unchanged
+		return word
+	}
+	stemmed := porterstemmer.StemString(word)
+	if stemmed == "" {
+		log.Printf("Warning: Porter stemmer returned empty string for input: %q", word)
+		return word // Return the original word if stemming fails
+	}
+	return stemmed
 }
 
 // Snowball stemmer implementation

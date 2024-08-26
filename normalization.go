@@ -34,7 +34,7 @@ func NormalizeSpecialChars(text string) string {
 }
 
 func NormalizeAcronyms(text string) string {
-	re := regexp.MustCompile(`\.(?!(\S[^. ])|\d)`)
+	re := regexp.MustCompile(`\.(?:[ \t\n\r\f\v]|$)`)
 	return re.ReplaceAllString(text, "")
 }
 

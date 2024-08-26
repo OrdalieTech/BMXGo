@@ -1,0 +1,9 @@
+setup.py
+py_BMXGo/BMXGo.py
+py_BMXGo/__init__.py
+py_BMXGo/build.py
+py_BMXGo/go.py
+py_BMXGo.egg-info/PKG-INFO
+py_BMXGo.egg-info/SOURCES.txt
+py_BMXGo.egg-info/dependency_links.txt
+py_BMXGo.egg-info/top_level.txt

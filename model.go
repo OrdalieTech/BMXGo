@@ -1,28 +1,30 @@
 package BMXGo
 
 import (
+	"fmt"
 	"math"
 	"sort"
+	"time"
 )
 
 // Define the parameters and types
 type Document struct {
-	Text   string
-	Tokens []string
+	Text    string
+	Tokens  []string
+	F_table map[string]int
 }
 
 type Query struct {
-	Text                  string
-	Tokens                []string
-	F_table               []map[string]float64
-	IDF_table             []float64
-	E_tilde_table         []float64
-	max_E_tilde           float64
-	E_table               []float64
-	avgEntropy            float64
-	S_table               map[string]float64
-	Score_table           map[string]float64
-	NormalizedScore_table map[string]float64
+	Text                 string
+	Tokens               map[string]float64
+	TotalWeight          float64
+	max_E_tilde          float64
+	avgEntropy           float64
+	S_table              map[string]float64
+	ScoreTable           map[string]float64
+	NormalizedScoreTable map[string]float64
+	AugmentedQueries     []string
+	AugmentedWeights     []float64
 }
 
 type Parameters struct {
@@ -33,13 +35,18 @@ type Parameters struct {
 }
 
 type BMX struct {
-	Query                Query
-	AugmentedQueries     []Query
-	AugmentedWeights     []float64
-	Docs                 map[string]Document
-	Params               Parameters
-	AugmentedScoreTable  map[string]float64
-	NormalizedScoreTable map[string]float64
+	Docs             map[string]Document
+	Params           Parameters
+	TextPreprocessor *TextPreprocessor
+	NumAppearances   map[string][]string
+	IDF_table        map[string]float64
+	E_tilde_table    map[string]float64
+}
+
+func (bmx *BMX) InitializeTextPreprocessor(config *Config) error {
+	tp := NewTextPreprocessor(config)
+	bmx.TextPreprocessor = tp
+	return nil
 }
 
 func (bmx *BMX) SetParams() {
@@ -60,191 +67,157 @@ func (bmx *BMX) SetParams() {
 	}
 }
 
-// Function to calculate IDF
-func IDF(qi string, docs map[string]Document) float64 {
-	l := 0
-	for _, doc := range docs {
+func (bmx *BMX) F_table_fill() {
+	for doc_key := range bmx.Docs {
+		doc := bmx.Docs[doc_key]
+		doc.F_table = make(map[string]int)
 		for _, token := range doc.Tokens {
-			if token == qi {
-				l++
-				break
+			if _, ok := doc.F_table[token]; !ok {
+				doc.F_table[token] = 1
+			} else {
+				doc.F_table[token]++
+			}
+		}
+		bmx.Docs[doc_key] = doc
+	}
+}
+
+func (bmx *BMX) NumAppearancesCalc() {
+	bmx.NumAppearances = make(map[string][]string)
+	for doc_key, doc := range bmx.Docs {
+		for token := range doc.F_table {
+			if _, ok := bmx.NumAppearances[token]; !ok {
+				bmx.NumAppearances[token] = []string{doc_key}
+			} else {
+				bmx.NumAppearances[token] = append(bmx.NumAppearances[token], doc_key)
 			}
 		}
 	}
-	return math.Log((float64(len(docs)-l)+0.5)/(float64(l)+0.5) + 1.0)
 }
 
-func (bmx *BMX) IDF_table_fill(query *Query) {
-	query.IDF_table = []float64{}
-	for _, qi := range query.Tokens {
-		query.IDF_table = append(query.IDF_table, IDF(qi, bmx.Docs))
+func (bmx *BMX) IDF_table_fill() {
+	bmx.IDF_table = make(map[string]float64)
+	for token := range bmx.NumAppearances {
+		bmx.IDF_table[token] = math.Log((float64(bmx.Params.N-len(bmx.NumAppearances[token]))+0.5)/(float64(len(bmx.NumAppearances[token]))+0.5) + 1.0)
 	}
 }
 
-// Function to calculate F(qi, D)
-func F(qi string, doc *Document) float64 {
-	count := 0
-	for _, token := range doc.Tokens {
-		if token == qi {
-			count++
-		}
-	}
-	return float64(count)
-}
-
-func (bmx *BMX) F_table_fill(query *Query) {
-	query.F_table = []map[string]float64{}
-	for _, qi := range query.Tokens {
-		query.F_table = append(query.F_table, map[string]float64{})
-		for key, doc := range bmx.Docs {
-			query.F_table[len(query.F_table)-1][key] = F(qi, &doc)
+func (bmx *BMX) E_tilde_table_fill() {
+	bmx.E_tilde_table = make(map[string]float64)
+	for _, doc := range bmx.Docs {
+		for _, qi := range doc.Tokens {
+			pj := 1 / (1 + math.Exp(float64(-doc.F_table[qi])))
+			if _, ok := bmx.E_tilde_table[qi]; !ok {
+				bmx.E_tilde_table[qi] = -pj * math.Log(pj)
+			} else {
+				bmx.E_tilde_table[qi] += -pj * math.Log(pj)
+			}
 		}
 	}
 }
 
-// Function to calculate E(qi)
-func E_tilde(qi string, docs map[string]Document) float64 {
-	var entropy float64
-	for _, doc := range docs {
-		v := -F(qi, &doc)
-		if v != 0 {
-			pj := 1 / (1 + math.Exp(v))
-			entropy += pj * math.Log(pj)
-		}
-	}
-	return -entropy
-}
-
-func (bmx *BMX) E_tilde_table_fill(query *Query) {
-	query.E_tilde_table = []float64{}
-	for _, qi := range query.Tokens {
-		query.E_tilde_table = append(query.E_tilde_table, E_tilde(qi, bmx.Docs))
-		if query.max_E_tilde < query.E_tilde_table[len(query.E_tilde_table)-1] {
-			query.max_E_tilde = query.E_tilde_table[len(query.E_tilde_table)-1]
-		}
-	}
-}
-
-func (bmx *BMX) E_table_fill(query *Query) {
-	query.E_table = []float64{}
-	for i := range query.Tokens {
-		query.E_table = append(query.E_table, query.E_tilde_table[i]/query.max_E_tilde)
-	}
-}
-
-func (bmx *BMX) avgEntropy(query *Query) {
+func (query *Query) SetEntropy(bmx *BMX) {
+	query.max_E_tilde = 0.0
 	query.avgEntropy = 0.0
-	for i := range query.Tokens {
-		query.avgEntropy += query.E_table[i]
+	for qi := range query.Tokens {
+		if bmx.E_tilde_table[qi] > query.max_E_tilde {
+			query.max_E_tilde = bmx.E_tilde_table[qi]
+		}
+		query.avgEntropy += bmx.E_tilde_table[qi] * query.Tokens[qi]
 	}
-	query.avgEntropy /= float64(len(query.Tokens))
+	query.avgEntropy /= query.TotalWeight
+	query.avgEntropy /= query.max_E_tilde
 }
 
 // Function to calculate S(Q, D)
-func (bmx *BMX) S_table_fill(query *Query) {
-	query.S_table = map[string]float64{}
-	for key := range bmx.Docs {
-		query.S_table[key] = 0
-		for i := range query.Tokens {
-			if query.F_table[i][key] > 0 {
-				query.S_table[key] += 1
-			}
+func (query *Query) S_table_fill(bmx *BMX) {
+	query.S_table = make(map[string]float64, len(bmx.Docs))
+	invTotalWeight := 1.0 / query.TotalWeight
+
+	for qi, weight := range query.Tokens {
+		for _, doc_key := range bmx.NumAppearances[qi] {
+			query.S_table[doc_key] += weight
 		}
+	}
+	for doc_key := range bmx.Docs {
+		query.S_table[doc_key] *= invTotalWeight
 	}
 }
 
 // Function to calculate the score
-func (bmx *BMX) Score_table_fill(query *Query) {
-	query.Score_table = map[string]float64{}
-	for key, doc := range bmx.Docs {
-		var score float64
-		for i := range query.Tokens {
-			idf := query.IDF_table[i]
-			f := query.F_table[i][key]
-			e := query.E_table[i]
-			s := query.S_table[key]
-			score += idf*(f*(bmx.Params.Alpha+1.0)/(f+bmx.Params.Alpha*(float64(len(doc.Tokens))/bmx.Params.Avgdl)+bmx.Params.Alpha*query.avgEntropy)) + bmx.Params.Beta*e*s
+func (query *Query) Score_table_fill(bmx *BMX) {
+	query.ScoreTable = make(map[string]float64, len(bmx.Docs))
+	invE_tilde := 1.0 / query.max_E_tilde
+	invAvgdl := 1.0 / bmx.Params.Avgdl
+	for qi := range query.Tokens {
+		idf := bmx.IDF_table[qi]
+		e := bmx.E_tilde_table[qi] * invE_tilde
+		alphaAverageEntropy := bmx.Params.Alpha * query.avgEntropy
+		betaE := bmx.Params.Beta * e
+		for _, doc_key := range bmx.NumAppearances[qi] {
+			f := bmx.Docs[doc_key].F_table[qi]
+			s := query.S_table[doc_key]
+			query.ScoreTable[doc_key] += query.Tokens[qi] * (idf*(float64(f)*(bmx.Params.Alpha+1.0)/(float64(f)+bmx.Params.Alpha*(float64(len(bmx.Docs[doc_key].Tokens))*invAvgdl)+alphaAverageEntropy)) + betaE*s)
 		}
-		query.Score_table[key] = score
 	}
 }
 
-func (bmx *BMX) NormalizedScore_table_fill(query *Query) {
-	query.NormalizedScore_table = map[string]float64{}
-	maxScore := float64(len(query.Tokens)) * (math.Log(1+float64(float64(bmx.Params.N)-0.5)/1.5) + 1.0)
+func (query *Query) NormalizedScore_table_fill(bmx *BMX) {
+	query.NormalizedScoreTable = map[string]float64{}
+	maxScore := query.TotalWeight * (math.Log(1+float64(float64(bmx.Params.N)-0.5)/1.5) + 1.0)
 	for key := range bmx.Docs {
-		query.NormalizedScore_table[key] = query.Score_table[key] / maxScore
+		query.NormalizedScoreTable[key] = query.ScoreTable[key] / maxScore
 	}
 }
 
-// Function to calculate the weighted query augmentation score
-func (bmx *BMX) AugmentedScore() {
-	bmx.AugmentedScoreTable = map[string]float64{}
-	for key := range bmx.Docs {
-		score := bmx.Query.Score_table[key]
-		for i, Q_A := range bmx.AugmentedQueries {
-			score += bmx.AugmentedWeights[i] * Q_A.Score_table[key]
+func (query *Query) Initialize(bmx *BMX) {
+	tokens := bmx.TextPreprocessor.Process(query.Text)
+	query.Tokens = make(map[string]float64)
+	for _, token := range tokens {
+		if _, ok := query.Tokens[token]; !ok {
+			query.Tokens[token] = 1.0
+		} else {
+			query.Tokens[token] += 1.0
 		}
-		bmx.AugmentedScoreTable[key] = score
+		query.TotalWeight += 1.0
 	}
-}
-
-func (bmx *BMX) NormalizedAugmentedScore() {
-	bmx.NormalizedScoreTable = map[string]float64{}
-	for key := range bmx.Docs {
-		score := bmx.Query.NormalizedScore_table[key]
-		for i, Q_A := range bmx.AugmentedQueries {
-			score += bmx.AugmentedWeights[i] * Q_A.NormalizedScore_table[key]
+	for i := range query.AugmentedQueries {
+		tokens := bmx.TextPreprocessor.Process(query.AugmentedQueries[i])
+		for _, token := range tokens {
+			if _, ok := query.Tokens[token]; !ok {
+				query.Tokens[token] = query.AugmentedWeights[i]
+			} else {
+				query.Tokens[token] += query.AugmentedWeights[i]
+			}
+			query.TotalWeight += query.AugmentedWeights[i]
 		}
-		bmx.NormalizedScoreTable[key] = score
 	}
+	fmt.Println("Setting entropy")
+	start := time.Now()
+	query.SetEntropy(bmx)
+	fmt.Println("Entropy set, total time:", time.Since(start))
+	start = time.Now()
+	fmt.Println("Setting S table")
+	query.S_table_fill(bmx)
+	fmt.Println("S table set, total time:", time.Since(start))
+	start = time.Now()
+	query.Score_table_fill(bmx)
+	fmt.Println("Score table filled, total time:", time.Since(start))
+	start = time.Now()
+	query.NormalizedScore_table_fill(bmx)
+	fmt.Println("Normalized score table filled, total time:", time.Since(start))
 }
 
-func (bmx *BMX) InitializeQuery(query *Query) {
-	bmx.IDF_table_fill(query)
-	bmx.F_table_fill(query)
-	bmx.E_tilde_table_fill(query)
-	bmx.E_table_fill(query)
-	bmx.avgEntropy(query)
-	bmx.S_table_fill(query)
-	bmx.Score_table_fill(query)
-	bmx.NormalizedScore_table_fill(query)
-}
-
-func (bmx *BMX) Initialize() {
-	bmx.SetParams()
-	bmx.InitializeQuery(&bmx.Query)
-	for i := range bmx.AugmentedQueries {
-		bmx.InitializeQuery(&bmx.AugmentedQueries[i])
-	}
-	bmx.AugmentedScore()
-	bmx.NormalizedAugmentedScore()
-}
-
-func (bmx *BMX) Rank(topK int) []string {
+func (query *Query) Rank(topK int) []string {
 	// Create a slice of indices
-	topKeys := make([]string, len(bmx.Query.Score_table))
-	for key := range bmx.Query.Score_table {
+	topKeys := make([]string, len(query.ScoreTable))
+	for key := range query.ScoreTable {
 		topKeys = append(topKeys, key)
 	}
 
 	// Sort the indices based on the normalizedScoreTable in descending order
 	sort.Slice(topKeys, func(i, j int) bool {
-		return bmx.Query.Score_table[topKeys[i]] > bmx.Query.Score_table[topKeys[j]]
-	})
-	return topKeys[:topK]
-}
-
-func (bmx *BMX) RankAugmented(topK int) []string {
-	// Create a slice of indices
-	topKeys := make([]string, len(bmx.AugmentedScoreTable))
-	for key := range bmx.AugmentedScoreTable {
-		topKeys = append(topKeys, key)
-	}
-
-	// Sort the indices based on the normalizedScoreTable in descending order
-	sort.Slice(topKeys, func(i, j int) bool {
-		return bmx.AugmentedScoreTable[topKeys[i]] > bmx.AugmentedScoreTable[topKeys[j]]
+		return query.ScoreTable[topKeys[i]] > query.ScoreTable[topKeys[j]]
 	})
 	return topKeys[:topK]
 }
