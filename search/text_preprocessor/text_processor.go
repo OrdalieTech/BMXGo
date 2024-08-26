@@ -1,9 +1,9 @@
 package text_preprocessor
 
 import (
+	"fmt"
 	"strings"
 	"sync"
-	"unicode"
 )
 
 // Config holds the configuration for text preprocessing.
@@ -18,17 +18,39 @@ type Config struct {
 	DoPunctuationRemoval        bool
 }
 
-// NewConfig creates a new Config with default values.
-func NewConfig() *Config {
-	return &Config{
-		Tokenizer:                   strings.Fields,
+// NewConfig creates a new Config with the specified tokenizer, stemmer, and stopwords.
+func NewConfig(tokenizer string, stemmer string, lang string) (*Config, error) {
+	tokenizerFunc, err := GetTokenizer(tokenizer)
+	if err != nil {
+		return nil, fmt.Errorf("error getting tokenizer: %w", err)
+	}
+
+	stemmerFunc, err := GetStemmer(stemmer)
+	if err != nil {
+		return nil, fmt.Errorf("error getting stemmer: %w", err)
+	}
+
+	config := &Config{
+		Tokenizer:                   tokenizerFunc,
+		Stemmer:                     stemmerFunc,
 		Stopwords:                   make(map[string]struct{}),
 		DoLowercasing:               true,
 		DoAmpersandNormalization:    true,
 		DoSpecialCharsNormalization: true,
-		DoAcronymsNormalization:     true,
+		DoAcronymsNormalization:     false,
 		DoPunctuationRemoval:        true,
 	}
+
+	stopwords, err := GetStopwords(lang)
+	if err != nil {
+		return nil, fmt.Errorf("error getting stopwords: %w", err)
+	}
+
+	for _, word := range stopwords {
+		config.Stopwords[word] = struct{}{}
+	}
+
+	return config, nil
 }
 
 // TextPreprocessor holds the preprocessing steps and configuration.
@@ -47,20 +69,22 @@ func NewTextPreprocessor(config *Config) *TextPreprocessor {
 // createPreprocessingSteps creates the preprocessing steps based on the configuration.
 func (tp *TextPreprocessor) createPreprocessingSteps() {
 	if tp.config.DoLowercasing {
-		tp.steps = append(tp.steps, strings.ToLower)
+		tp.steps = append(tp.steps, Lowercasing)
 	}
 	if tp.config.DoAmpersandNormalization {
-		tp.steps = append(tp.steps, normalizeAmpersand)
+		tp.steps = append(tp.steps, NormalizeAmpersand)
 	}
 	if tp.config.DoSpecialCharsNormalization {
-		tp.steps = append(tp.steps, normalizeSpecialChars)
+		tp.steps = append(tp.steps, NormalizeSpecialChars)
 	}
 	if tp.config.DoAcronymsNormalization {
-		tp.steps = append(tp.steps, normalizeAcronyms)
+		tp.steps = append(tp.steps, NormalizeAcronyms)
 	}
 	if tp.config.DoPunctuationRemoval {
-		tp.steps = append(tp.steps, removePunctuation)
+		tp.steps = append(tp.steps, RemovePunctuation)
 	}
+	tp.steps = append(tp.steps, NormalizeDiacritics)
+	tp.steps = append(tp.steps, StripWhitespaces)
 	// Remove tokenizer from tp.steps
 	if len(tp.config.Stopwords) > 0 {
 		tp.steps = append(tp.steps, tp.removeStopwords)
@@ -68,7 +92,6 @@ func (tp *TextPreprocessor) createPreprocessingSteps() {
 	if tp.config.Stemmer != nil {
 		tp.steps = append(tp.steps, tp.applyStemmer)
 	}
-	tp.steps = append(tp.steps, removeEmpty)
 }
 
 // Process processes a single text item through all preprocessing steps.
@@ -77,7 +100,9 @@ func (tp *TextPreprocessor) Process(item string) []string {
 		item = step(item)
 	}
 	// Apply tokenizer separately
-	return tp.config.Tokenizer(item)
+	tokens := tp.config.Tokenizer(item)
+	finalTokens := RemoveEmptyTokens(tokens)
+	return finalTokens
 }
 
 // ProcessMany processes multiple text items concurrently.
@@ -111,49 +136,43 @@ func (tp *TextPreprocessor) ProcessMany(items []string, nWorkers int) [][]string
 	return out
 }
 
-// Helper functions for preprocessing steps
-func normalizeAmpersand(s string) string {
-	return strings.ReplaceAll(s, "&", "and")
-}
+// Helper functions for preprocessing steps can be removed as they are now in normalization.go
 
-func normalizeSpecialChars(s string) string {
-	// Add your normalization logic here
-	return s
-}
-
-func normalizeAcronyms(s string) string {
-	// Add your normalization logic here
-	return s
-}
-
-func removePunctuation(s string) string {
-	return strings.Map(func(r rune) rune {
-		if unicode.IsPunct(r) {
-			return -1
-		}
-		return r
-	}, s)
-}
-
-func removeEmpty(s string) string {
-	return strings.TrimSpace(s)
-}
-
+// Update removeStopwords to use the RemoveStopwords function from stopwords.go
 func (tp *TextPreprocessor) removeStopwords(s string) string {
-	words := strings.Fields(s)
-	var filtered []string
-	for _, word := range words {
-		if _, found := tp.config.Stopwords[word]; !found {
-			filtered = append(filtered, word)
-		}
-	}
-	return strings.Join(filtered, " ")
+	tokens := strings.Fields(s)
+	filteredTokens := RemoveStopwords(tokens, tp.config.Stopwords)
+	return strings.Join(filteredTokens, " ")
 }
 
+// Update applyStemmer to use the ApplyStemmer function from stemmer.go
 func (tp *TextPreprocessor) applyStemmer(s string) string {
-	words := strings.Fields(s)
-	for i, word := range words {
-		words[i] = tp.config.Stemmer(word)
+	tokens := strings.Fields(s)
+	stemmedTokens := ApplyStemmer(tokens, tp.config.Stemmer)
+	return strings.Join(stemmedTokens, " ")
+}
+
+// Add a method to set the stemmer
+func (tp *TextPreprocessor) SetStemmer(stemmerName string) error {
+	stemmer, err := GetStemmer(stemmerName)
+	if err != nil {
+		return err
 	}
-	return strings.Join(words, " ")
+	tp.config.Stemmer = stemmer
+	tp.createPreprocessingSteps() // Recreate steps to include the stemmer
+	return nil
+}
+
+// Add a method to set stopwords
+func (tp *TextPreprocessor) SetStopwords(stopwords interface{}) error {
+	stopwordsList, err := GetStopwords(stopwords)
+	if err != nil {
+		return err
+	}
+	tp.config.Stopwords = make(map[string]struct{})
+	for _, word := range stopwordsList {
+		tp.config.Stopwords[word] = struct{}{}
+	}
+	tp.createPreprocessingSteps() // Recreate steps to include stopwords removal
+	return nil
 }

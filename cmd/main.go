@@ -1,4 +1,5 @@
-package main
+package BMXGo
 
 func main() {
+
 }

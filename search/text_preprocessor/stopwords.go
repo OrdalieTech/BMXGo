@@ -3,6 +3,13 @@ package text_preprocessor
 import (
 	"errors"
 	"strings"
+
+	"bufio"
+	"os"
+	"path/filepath"
+
+	"golang.org/x/text/cases"
+	"golang.org/x/text/language"
 )
 
 var supportedLanguages = map[string]struct{}{
@@ -40,11 +47,27 @@ var supportedLanguages = map[string]struct{}{
 func getStopwords(lang string) ([]string, error) {
 	lang = strings.ToLower(lang)
 	if _, ok := supportedLanguages[lang]; !ok {
-		return nil, errors.New("stop-words for " + strings.Title(lang) + " are not available")
+		return nil, errors.New("stop-words for " + cases.Title(language.Und).String(lang) + " are not available")
 	}
-	// Placeholder for actual stopwords fetching logic
-	// In a real implementation, you would fetch the stopwords from a file or database
-	return []string{"example", "stopword"}, nil
+
+	filename := filepath.Join("stopwords", lang+".txt")
+	file, err := os.Open(filename)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+
+	var stopwords []string
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		stopwords = append(stopwords, scanner.Text())
+	}
+
+	if err := scanner.Err(); err != nil {
+		return nil, err
+	}
+
+	return stopwords, nil
 }
 
 func GetStopwords(swList interface{}) ([]string, error) {

@@ -7,6 +7,7 @@ require (
 	github.com/kljensen/snowball v0.10.0
 	github.com/rainycape/unidecode v0.0.0-20150907023854-cb7f23ec59be
 	github.com/reiver/go-porterstemmer v1.0.1
+	golang.org/x/text v0.14.0
 )
 
 require (
