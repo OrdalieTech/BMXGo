@@ -79,7 +79,7 @@ s_time = time.time()
 pred_results = {}
 # Convert Python list of queries to Go slice
 queries_slice = go.Slice_string(queries)
-results = searcher.SearchAugmentedMany(queries_slice, topk, 5, 0.5, 50)
+results = searcher.SearchAugmentedMany(queries_slice, topk, 3, 0.6, 50)
 for query_id, res in zip(query_ids, results):
     pred_results[query_id] = {
         doc_id: float(score) for doc_id, score in zip(res.Keys, res.Scores)

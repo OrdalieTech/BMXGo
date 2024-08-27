@@ -4145,6 +4145,49 @@ func Map_string_int_keys(handle CGoHandle) CGoHandle {
 
 // ---- Structs ---
 
+// --- wrapping struct: BMXGo.Document ---
+//
+//export BMXGo_Document_CTor
+func BMXGo_Document_CTor() CGoHandle {
+	return CGoHandle(handleFromPtr_BMXGo_Document(&BMXGo.Document{}))
+}
+
+//export BMXGo_Document_Text_Get
+func BMXGo_Document_Text_Get(handle CGoHandle) *C.char {
+	op := ptrFromHandle_BMXGo_Document(handle)
+	return C.CString(op.Text)
+}
+
+//export BMXGo_Document_Text_Set
+func BMXGo_Document_Text_Set(handle CGoHandle, val *C.char) {
+	op := ptrFromHandle_BMXGo_Document(handle)
+	op.Text = C.GoString(val)
+}
+
+//export BMXGo_Document_Tokens_Get
+func BMXGo_Document_Tokens_Get(handle CGoHandle) CGoHandle {
+	op := ptrFromHandle_BMXGo_Document(handle)
+	return handleFromPtr_Slice_string(&op.Tokens)
+}
+
+//export BMXGo_Document_Tokens_Set
+func BMXGo_Document_Tokens_Set(handle CGoHandle, val CGoHandle) {
+	op := ptrFromHandle_BMXGo_Document(handle)
+	op.Tokens = deptrFromHandle_Slice_string(val)
+}
+
+//export BMXGo_Document_F_table_Get
+func BMXGo_Document_F_table_Get(handle CGoHandle) CGoHandle {
+	op := ptrFromHandle_BMXGo_Document(handle)
+	return handleFromPtr_Map_string_int(&op.F_table)
+}
+
+//export BMXGo_Document_F_table_Set
+func BMXGo_Document_F_table_Set(handle CGoHandle, val CGoHandle) {
+	op := ptrFromHandle_BMXGo_Document(handle)
+	op.F_table = deptrFromHandle_Map_string_int(val)
+}
+
 // --- wrapping struct: BMXGo.Parameters ---
 //
 //export BMXGo_Parameters_CTor
@@ -4391,37 +4434,6 @@ func BMXGo_Query_Rank(_handle CGoHandle, topK C.longlong) CGoHandle {
 	return handleFromPtr_Slice_string(&cret)
 }
 
-// --- wrapping struct: BMXGo.SearchResults ---
-//
-//export BMXGo_SearchResults_CTor
-func BMXGo_SearchResults_CTor() CGoHandle {
-	return CGoHandle(handleFromPtr_BMXGo_SearchResults(&BMXGo.SearchResults{}))
-}
-
-//export BMXGo_SearchResults_Keys_Get
-func BMXGo_SearchResults_Keys_Get(handle CGoHandle) CGoHandle {
-	op := ptrFromHandle_BMXGo_SearchResults(handle)
-	return handleFromPtr_Slice_string(&op.Keys)
-}
-
-//export BMXGo_SearchResults_Keys_Set
-func BMXGo_SearchResults_Keys_Set(handle CGoHandle, val CGoHandle) {
-	op := ptrFromHandle_BMXGo_SearchResults(handle)
-	op.Keys = deptrFromHandle_Slice_string(val)
-}
-
-//export BMXGo_SearchResults_Scores_Get
-func BMXGo_SearchResults_Scores_Get(handle CGoHandle) CGoHandle {
-	op := ptrFromHandle_BMXGo_SearchResults(handle)
-	return handleFromPtr_Slice_float64(&op.Scores)
-}
-
-//export BMXGo_SearchResults_Scores_Set
-func BMXGo_SearchResults_Scores_Set(handle CGoHandle, val CGoHandle) {
-	op := ptrFromHandle_BMXGo_SearchResults(handle)
-	op.Scores = deptrFromHandle_Slice_float64(val)
-}
-
 // --- wrapping struct: BMXGo.BMX ---
 //
 //export BMXGo_BMX_CTor
@@ -4594,247 +4606,6 @@ func BMXGo_BMX_E_tilde_table_fill(_handle CGoHandle, goRun C.char) {
 	}
 }
 
-// --- wrapping struct: BMXGo.Config ---
-//
-//export BMXGo_Config_CTor
-func BMXGo_Config_CTor() CGoHandle {
-	return CGoHandle(handleFromPtr_BMXGo_Config(&BMXGo.Config{}))
-}
-
-//export BMXGo_Config_DoLowercasing_Get
-func BMXGo_Config_DoLowercasing_Get(handle CGoHandle) C.char {
-	op := ptrFromHandle_BMXGo_Config(handle)
-	return boolGoToPy(op.DoLowercasing)
-}
-
-//export BMXGo_Config_DoLowercasing_Set
-func BMXGo_Config_DoLowercasing_Set(handle CGoHandle, val C.char) {
-	op := ptrFromHandle_BMXGo_Config(handle)
-	op.DoLowercasing = boolPyToGo(val)
-}
-
-//export BMXGo_Config_DoAmpersandNormalization_Get
-func BMXGo_Config_DoAmpersandNormalization_Get(handle CGoHandle) C.char {
-	op := ptrFromHandle_BMXGo_Config(handle)
-	return boolGoToPy(op.DoAmpersandNormalization)
-}
-
-//export BMXGo_Config_DoAmpersandNormalization_Set
-func BMXGo_Config_DoAmpersandNormalization_Set(handle CGoHandle, val C.char) {
-	op := ptrFromHandle_BMXGo_Config(handle)
-	op.DoAmpersandNormalization = boolPyToGo(val)
-}
-
-//export BMXGo_Config_DoSpecialCharsNormalization_Get
-func BMXGo_Config_DoSpecialCharsNormalization_Get(handle CGoHandle) C.char {
-	op := ptrFromHandle_BMXGo_Config(handle)
-	return boolGoToPy(op.DoSpecialCharsNormalization)
-}
-
-//export BMXGo_Config_DoSpecialCharsNormalization_Set
-func BMXGo_Config_DoSpecialCharsNormalization_Set(handle CGoHandle, val C.char) {
-	op := ptrFromHandle_BMXGo_Config(handle)
-	op.DoSpecialCharsNormalization = boolPyToGo(val)
-}
-
-//export BMXGo_Config_DoAcronymsNormalization_Get
-func BMXGo_Config_DoAcronymsNormalization_Get(handle CGoHandle) C.char {
-	op := ptrFromHandle_BMXGo_Config(handle)
-	return boolGoToPy(op.DoAcronymsNormalization)
-}
-
-//export BMXGo_Config_DoAcronymsNormalization_Set
-func BMXGo_Config_DoAcronymsNormalization_Set(handle CGoHandle, val C.char) {
-	op := ptrFromHandle_BMXGo_Config(handle)
-	op.DoAcronymsNormalization = boolPyToGo(val)
-}
-
-//export BMXGo_Config_DoPunctuationRemoval_Get
-func BMXGo_Config_DoPunctuationRemoval_Get(handle CGoHandle) C.char {
-	op := ptrFromHandle_BMXGo_Config(handle)
-	return boolGoToPy(op.DoPunctuationRemoval)
-}
-
-//export BMXGo_Config_DoPunctuationRemoval_Set
-func BMXGo_Config_DoPunctuationRemoval_Set(handle CGoHandle, val C.char) {
-	op := ptrFromHandle_BMXGo_Config(handle)
-	op.DoPunctuationRemoval = boolPyToGo(val)
-}
-
-// --- wrapping struct: BMXGo.ConvMessage ---
-//
-//export BMXGo_ConvMessage_CTor
-func BMXGo_ConvMessage_CTor() CGoHandle {
-	return CGoHandle(handleFromPtr_BMXGo_ConvMessage(&BMXGo.ConvMessage{}))
-}
-
-//export BMXGo_ConvMessage_Role_Get
-func BMXGo_ConvMessage_Role_Get(handle CGoHandle) *C.char {
-	op := ptrFromHandle_BMXGo_ConvMessage(handle)
-	return C.CString(op.Role)
-}
-
-//export BMXGo_ConvMessage_Role_Set
-func BMXGo_ConvMessage_Role_Set(handle CGoHandle, val *C.char) {
-	op := ptrFromHandle_BMXGo_ConvMessage(handle)
-	op.Role = C.GoString(val)
-}
-
-//export BMXGo_ConvMessage_Content_Get
-func BMXGo_ConvMessage_Content_Get(handle CGoHandle) *C.char {
-	op := ptrFromHandle_BMXGo_ConvMessage(handle)
-	return C.CString(op.Content)
-}
-
-//export BMXGo_ConvMessage_Content_Set
-func BMXGo_ConvMessage_Content_Set(handle CGoHandle, val *C.char) {
-	op := ptrFromHandle_BMXGo_ConvMessage(handle)
-	op.Content = C.GoString(val)
-}
-
-//export BMXGo_ConvMessage_Date_Get
-func BMXGo_ConvMessage_Date_Get(handle CGoHandle) CGoHandle {
-	op := ptrFromHandle_BMXGo_ConvMessage(handle)
-	return handleFromPtr_time_Time(&op.Date)
-}
-
-//export BMXGo_ConvMessage_Date_Set
-func BMXGo_ConvMessage_Date_Set(handle CGoHandle, val CGoHandle) {
-	op := ptrFromHandle_BMXGo_ConvMessage(handle)
-	op.Date = *ptrFromHandle_time_Time(val)
-}
-
-//export BMXGo_ConvMessage_Intent_Get
-func BMXGo_ConvMessage_Intent_Get(handle CGoHandle) *C.char {
-	op := ptrFromHandle_BMXGo_ConvMessage(handle)
-	return C.CString(op.Intent)
-}
-
-//export BMXGo_ConvMessage_Intent_Set
-func BMXGo_ConvMessage_Intent_Set(handle CGoHandle, val *C.char) {
-	op := ptrFromHandle_BMXGo_ConvMessage(handle)
-	op.Intent = C.GoString(val)
-}
-
-//export BMXGo_ConvMessage_LinkedContent_Get
-func BMXGo_ConvMessage_LinkedContent_Get(handle CGoHandle) CGoHandle {
-	op := ptrFromHandle_BMXGo_ConvMessage(handle)
-	return handleFromPtr_Slice_BMXGo_LinkedContent(&op.LinkedContent)
-}
-
-//export BMXGo_ConvMessage_LinkedContent_Set
-func BMXGo_ConvMessage_LinkedContent_Set(handle CGoHandle, val CGoHandle) {
-	op := ptrFromHandle_BMXGo_ConvMessage(handle)
-	op.LinkedContent = deptrFromHandle_Slice_BMXGo_LinkedContent(val)
-}
-
-// --- wrapping struct: BMXGo.LLMClient ---
-//
-//export BMXGo_LLMClient_CTor
-func BMXGo_LLMClient_CTor() CGoHandle {
-	return CGoHandle(handleFromPtr_BMXGo_LLMClient(&BMXGo.LLMClient{}))
-}
-
-// --- wrapping struct: BMXGo.LinkedContent ---
-//
-//export BMXGo_LinkedContent_CTor
-func BMXGo_LinkedContent_CTor() CGoHandle {
-	return CGoHandle(handleFromPtr_BMXGo_LinkedContent(&BMXGo.LinkedContent{}))
-}
-
-//export BMXGo_LinkedContent_ID_Get
-func BMXGo_LinkedContent_ID_Get(handle CGoHandle) *C.char {
-	op := ptrFromHandle_BMXGo_LinkedContent(handle)
-	return C.CString(op.ID)
-}
-
-//export BMXGo_LinkedContent_ID_Set
-func BMXGo_LinkedContent_ID_Set(handle CGoHandle, val *C.char) {
-	op := ptrFromHandle_BMXGo_LinkedContent(handle)
-	op.ID = C.GoString(val)
-}
-
-//export BMXGo_LinkedContent_Type_Get
-func BMXGo_LinkedContent_Type_Get(handle CGoHandle) *C.char {
-	op := ptrFromHandle_BMXGo_LinkedContent(handle)
-	return C.CString(op.Type)
-}
-
-//export BMXGo_LinkedContent_Type_Set
-func BMXGo_LinkedContent_Type_Set(handle CGoHandle, val *C.char) {
-	op := ptrFromHandle_BMXGo_LinkedContent(handle)
-	op.Type = C.GoString(val)
-}
-
-// --- wrapping struct: BMXGo.TextPreprocessor ---
-//
-//export BMXGo_TextPreprocessor_CTor
-func BMXGo_TextPreprocessor_CTor() CGoHandle {
-	return CGoHandle(handleFromPtr_BMXGo_TextPreprocessor(&BMXGo.TextPreprocessor{}))
-}
-
-//export BMXGo_TextPreprocessor_Process
-func BMXGo_TextPreprocessor_Process(_handle CGoHandle, item *C.char) CGoHandle {
-	_saved_thread := C.PyEval_SaveThread()
-	defer C.PyEval_RestoreThread(_saved_thread)
-	vifc, __err := gopyh.VarFromHandleTry((gopyh.CGoHandle)(_handle), "*BMXGo.TextPreprocessor")
-	if __err != nil {
-		return handleFromPtr_Slice_string(nil)
-	}
-	cret := gopyh.Embed(vifc, reflect.TypeOf(BMXGo.TextPreprocessor{})).(*BMXGo.TextPreprocessor).Process(C.GoString(item))
-
-	return handleFromPtr_Slice_string(&cret)
-}
-
-//export BMXGo_TextPreprocessor_ProcessMany
-func BMXGo_TextPreprocessor_ProcessMany(_handle CGoHandle, items CGoHandle, nWorkers C.longlong) CGoHandle {
-	_saved_thread := C.PyEval_SaveThread()
-	defer C.PyEval_RestoreThread(_saved_thread)
-	vifc, __err := gopyh.VarFromHandleTry((gopyh.CGoHandle)(_handle), "*BMXGo.TextPreprocessor")
-	if __err != nil {
-		return handleFromPtr_Slice_Slice_string(nil)
-	}
-	cret := gopyh.Embed(vifc, reflect.TypeOf(BMXGo.TextPreprocessor{})).(*BMXGo.TextPreprocessor).ProcessMany(deptrFromHandle_Slice_string(items), int(nWorkers))
-
-	return handleFromPtr_Slice_Slice_string(&cret)
-}
-
-//export BMXGo_TextPreprocessor_SetStemmer
-func BMXGo_TextPreprocessor_SetStemmer(_handle CGoHandle, stemmerName *C.char) *C.char {
-	_saved_thread := C.PyEval_SaveThread()
-	vifc, __err := gopyh.VarFromHandleTry((gopyh.CGoHandle)(_handle), "*BMXGo.TextPreprocessor")
-	if __err != nil {
-		return errorGoToPy(nil)
-	}
-	__err = gopyh.Embed(vifc, reflect.TypeOf(BMXGo.TextPreprocessor{})).(*BMXGo.TextPreprocessor).SetStemmer(C.GoString(stemmerName))
-
-	C.PyEval_RestoreThread(_saved_thread)
-	if __err != nil {
-		estr := C.CString(__err.Error())
-		C.PyErr_SetString(C.PyExc_RuntimeError, estr)
-		return estr
-	}
-	return C.CString("")
-}
-
-//export BMXGo_TextPreprocessor_SetStopwords
-func BMXGo_TextPreprocessor_SetStopwords(_handle CGoHandle, stopwords *C.char) *C.char {
-	_saved_thread := C.PyEval_SaveThread()
-	vifc, __err := gopyh.VarFromHandleTry((gopyh.CGoHandle)(_handle), "*BMXGo.TextPreprocessor")
-	if __err != nil {
-		return errorGoToPy(nil)
-	}
-	__err = gopyh.Embed(vifc, reflect.TypeOf(BMXGo.TextPreprocessor{})).(*BMXGo.TextPreprocessor).SetStopwords(C.GoString(stopwords))
-
-	C.PyEval_RestoreThread(_saved_thread)
-	if __err != nil {
-		estr := C.CString(__err.Error())
-		C.PyErr_SetString(C.PyExc_RuntimeError, estr)
-		return estr
-	}
-	return C.CString("")
-}
-
 // --- wrapping struct: BMXGo.BMXAdapter ---
 //
 //export BMXGo_BMXAdapter_CTor
@@ -4908,6 +4679,19 @@ func BMXGo_BMXAdapter_SearchAugmentedMany(_handle CGoHandle, queries CGoHandle, 
 		return handleFromPtr_Slice_BMXGo_SearchResults(nil)
 	}
 	cret := gopyh.Embed(vifc, reflect.TypeOf(BMXGo.BMXAdapter{})).(*BMXGo.BMXAdapter).SearchAugmentedMany(deptrFromHandle_Slice_string(queries), int(topK), int(num_augmented_queries), float64(weight), int(maxConcurrent))
+
+	return handleFromPtr_Slice_BMXGo_SearchResults(&cret)
+}
+
+//export BMXGo_BMXAdapter_SearchAugmentedMany2
+func BMXGo_BMXAdapter_SearchAugmentedMany2(_handle CGoHandle, queries CGoHandle, topK C.longlong, num_augmented_queries C.longlong, weight C.double, maxConcurrent C.longlong) CGoHandle {
+	_saved_thread := C.PyEval_SaveThread()
+	defer C.PyEval_RestoreThread(_saved_thread)
+	vifc, __err := gopyh.VarFromHandleTry((gopyh.CGoHandle)(_handle), "*BMXGo.BMXAdapter")
+	if __err != nil {
+		return handleFromPtr_Slice_BMXGo_SearchResults(nil)
+	}
+	cret := gopyh.Embed(vifc, reflect.TypeOf(BMXGo.BMXAdapter{})).(*BMXGo.BMXAdapter).SearchAugmentedMany2(deptrFromHandle_Slice_string(queries), int(topK), int(num_augmented_queries), float64(weight), int(maxConcurrent))
 
 	return handleFromPtr_Slice_BMXGo_SearchResults(&cret)
 }
@@ -5097,47 +4881,276 @@ func BMXGo_ClientConfig_DeploymentName_Set(handle CGoHandle, val *C.char) {
 	op.DeploymentName = C.GoString(val)
 }
 
-// --- wrapping struct: BMXGo.Document ---
+// --- wrapping struct: BMXGo.SearchResults ---
 //
-//export BMXGo_Document_CTor
-func BMXGo_Document_CTor() CGoHandle {
-	return CGoHandle(handleFromPtr_BMXGo_Document(&BMXGo.Document{}))
+//export BMXGo_SearchResults_CTor
+func BMXGo_SearchResults_CTor() CGoHandle {
+	return CGoHandle(handleFromPtr_BMXGo_SearchResults(&BMXGo.SearchResults{}))
 }
 
-//export BMXGo_Document_Text_Get
-func BMXGo_Document_Text_Get(handle CGoHandle) *C.char {
-	op := ptrFromHandle_BMXGo_Document(handle)
-	return C.CString(op.Text)
+//export BMXGo_SearchResults_Keys_Get
+func BMXGo_SearchResults_Keys_Get(handle CGoHandle) CGoHandle {
+	op := ptrFromHandle_BMXGo_SearchResults(handle)
+	return handleFromPtr_Slice_string(&op.Keys)
 }
 
-//export BMXGo_Document_Text_Set
-func BMXGo_Document_Text_Set(handle CGoHandle, val *C.char) {
-	op := ptrFromHandle_BMXGo_Document(handle)
-	op.Text = C.GoString(val)
+//export BMXGo_SearchResults_Keys_Set
+func BMXGo_SearchResults_Keys_Set(handle CGoHandle, val CGoHandle) {
+	op := ptrFromHandle_BMXGo_SearchResults(handle)
+	op.Keys = deptrFromHandle_Slice_string(val)
 }
 
-//export BMXGo_Document_Tokens_Get
-func BMXGo_Document_Tokens_Get(handle CGoHandle) CGoHandle {
-	op := ptrFromHandle_BMXGo_Document(handle)
-	return handleFromPtr_Slice_string(&op.Tokens)
+//export BMXGo_SearchResults_Scores_Get
+func BMXGo_SearchResults_Scores_Get(handle CGoHandle) CGoHandle {
+	op := ptrFromHandle_BMXGo_SearchResults(handle)
+	return handleFromPtr_Slice_float64(&op.Scores)
 }
 
-//export BMXGo_Document_Tokens_Set
-func BMXGo_Document_Tokens_Set(handle CGoHandle, val CGoHandle) {
-	op := ptrFromHandle_BMXGo_Document(handle)
-	op.Tokens = deptrFromHandle_Slice_string(val)
+//export BMXGo_SearchResults_Scores_Set
+func BMXGo_SearchResults_Scores_Set(handle CGoHandle, val CGoHandle) {
+	op := ptrFromHandle_BMXGo_SearchResults(handle)
+	op.Scores = deptrFromHandle_Slice_float64(val)
 }
 
-//export BMXGo_Document_F_table_Get
-func BMXGo_Document_F_table_Get(handle CGoHandle) CGoHandle {
-	op := ptrFromHandle_BMXGo_Document(handle)
-	return handleFromPtr_Map_string_int(&op.F_table)
+// --- wrapping struct: BMXGo.TextPreprocessor ---
+//
+//export BMXGo_TextPreprocessor_CTor
+func BMXGo_TextPreprocessor_CTor() CGoHandle {
+	return CGoHandle(handleFromPtr_BMXGo_TextPreprocessor(&BMXGo.TextPreprocessor{}))
 }
 
-//export BMXGo_Document_F_table_Set
-func BMXGo_Document_F_table_Set(handle CGoHandle, val CGoHandle) {
-	op := ptrFromHandle_BMXGo_Document(handle)
-	op.F_table = deptrFromHandle_Map_string_int(val)
+//export BMXGo_TextPreprocessor_Process
+func BMXGo_TextPreprocessor_Process(_handle CGoHandle, item *C.char) CGoHandle {
+	_saved_thread := C.PyEval_SaveThread()
+	defer C.PyEval_RestoreThread(_saved_thread)
+	vifc, __err := gopyh.VarFromHandleTry((gopyh.CGoHandle)(_handle), "*BMXGo.TextPreprocessor")
+	if __err != nil {
+		return handleFromPtr_Slice_string(nil)
+	}
+	cret := gopyh.Embed(vifc, reflect.TypeOf(BMXGo.TextPreprocessor{})).(*BMXGo.TextPreprocessor).Process(C.GoString(item))
+
+	return handleFromPtr_Slice_string(&cret)
+}
+
+//export BMXGo_TextPreprocessor_ProcessMany
+func BMXGo_TextPreprocessor_ProcessMany(_handle CGoHandle, items CGoHandle, nWorkers C.longlong) CGoHandle {
+	_saved_thread := C.PyEval_SaveThread()
+	defer C.PyEval_RestoreThread(_saved_thread)
+	vifc, __err := gopyh.VarFromHandleTry((gopyh.CGoHandle)(_handle), "*BMXGo.TextPreprocessor")
+	if __err != nil {
+		return handleFromPtr_Slice_Slice_string(nil)
+	}
+	cret := gopyh.Embed(vifc, reflect.TypeOf(BMXGo.TextPreprocessor{})).(*BMXGo.TextPreprocessor).ProcessMany(deptrFromHandle_Slice_string(items), int(nWorkers))
+
+	return handleFromPtr_Slice_Slice_string(&cret)
+}
+
+//export BMXGo_TextPreprocessor_SetStemmer
+func BMXGo_TextPreprocessor_SetStemmer(_handle CGoHandle, stemmerName *C.char) *C.char {
+	_saved_thread := C.PyEval_SaveThread()
+	vifc, __err := gopyh.VarFromHandleTry((gopyh.CGoHandle)(_handle), "*BMXGo.TextPreprocessor")
+	if __err != nil {
+		return errorGoToPy(nil)
+	}
+	__err = gopyh.Embed(vifc, reflect.TypeOf(BMXGo.TextPreprocessor{})).(*BMXGo.TextPreprocessor).SetStemmer(C.GoString(stemmerName))
+
+	C.PyEval_RestoreThread(_saved_thread)
+	if __err != nil {
+		estr := C.CString(__err.Error())
+		C.PyErr_SetString(C.PyExc_RuntimeError, estr)
+		return estr
+	}
+	return C.CString("")
+}
+
+//export BMXGo_TextPreprocessor_SetStopwords
+func BMXGo_TextPreprocessor_SetStopwords(_handle CGoHandle, stopwords *C.char) *C.char {
+	_saved_thread := C.PyEval_SaveThread()
+	vifc, __err := gopyh.VarFromHandleTry((gopyh.CGoHandle)(_handle), "*BMXGo.TextPreprocessor")
+	if __err != nil {
+		return errorGoToPy(nil)
+	}
+	__err = gopyh.Embed(vifc, reflect.TypeOf(BMXGo.TextPreprocessor{})).(*BMXGo.TextPreprocessor).SetStopwords(C.GoString(stopwords))
+
+	C.PyEval_RestoreThread(_saved_thread)
+	if __err != nil {
+		estr := C.CString(__err.Error())
+		C.PyErr_SetString(C.PyExc_RuntimeError, estr)
+		return estr
+	}
+	return C.CString("")
+}
+
+// --- wrapping struct: BMXGo.Config ---
+//
+//export BMXGo_Config_CTor
+func BMXGo_Config_CTor() CGoHandle {
+	return CGoHandle(handleFromPtr_BMXGo_Config(&BMXGo.Config{}))
+}
+
+//export BMXGo_Config_DoLowercasing_Get
+func BMXGo_Config_DoLowercasing_Get(handle CGoHandle) C.char {
+	op := ptrFromHandle_BMXGo_Config(handle)
+	return boolGoToPy(op.DoLowercasing)
+}
+
+//export BMXGo_Config_DoLowercasing_Set
+func BMXGo_Config_DoLowercasing_Set(handle CGoHandle, val C.char) {
+	op := ptrFromHandle_BMXGo_Config(handle)
+	op.DoLowercasing = boolPyToGo(val)
+}
+
+//export BMXGo_Config_DoAmpersandNormalization_Get
+func BMXGo_Config_DoAmpersandNormalization_Get(handle CGoHandle) C.char {
+	op := ptrFromHandle_BMXGo_Config(handle)
+	return boolGoToPy(op.DoAmpersandNormalization)
+}
+
+//export BMXGo_Config_DoAmpersandNormalization_Set
+func BMXGo_Config_DoAmpersandNormalization_Set(handle CGoHandle, val C.char) {
+	op := ptrFromHandle_BMXGo_Config(handle)
+	op.DoAmpersandNormalization = boolPyToGo(val)
+}
+
+//export BMXGo_Config_DoSpecialCharsNormalization_Get
+func BMXGo_Config_DoSpecialCharsNormalization_Get(handle CGoHandle) C.char {
+	op := ptrFromHandle_BMXGo_Config(handle)
+	return boolGoToPy(op.DoSpecialCharsNormalization)
+}
+
+//export BMXGo_Config_DoSpecialCharsNormalization_Set
+func BMXGo_Config_DoSpecialCharsNormalization_Set(handle CGoHandle, val C.char) {
+	op := ptrFromHandle_BMXGo_Config(handle)
+	op.DoSpecialCharsNormalization = boolPyToGo(val)
+}
+
+//export BMXGo_Config_DoAcronymsNormalization_Get
+func BMXGo_Config_DoAcronymsNormalization_Get(handle CGoHandle) C.char {
+	op := ptrFromHandle_BMXGo_Config(handle)
+	return boolGoToPy(op.DoAcronymsNormalization)
+}
+
+//export BMXGo_Config_DoAcronymsNormalization_Set
+func BMXGo_Config_DoAcronymsNormalization_Set(handle CGoHandle, val C.char) {
+	op := ptrFromHandle_BMXGo_Config(handle)
+	op.DoAcronymsNormalization = boolPyToGo(val)
+}
+
+//export BMXGo_Config_DoPunctuationRemoval_Get
+func BMXGo_Config_DoPunctuationRemoval_Get(handle CGoHandle) C.char {
+	op := ptrFromHandle_BMXGo_Config(handle)
+	return boolGoToPy(op.DoPunctuationRemoval)
+}
+
+//export BMXGo_Config_DoPunctuationRemoval_Set
+func BMXGo_Config_DoPunctuationRemoval_Set(handle CGoHandle, val C.char) {
+	op := ptrFromHandle_BMXGo_Config(handle)
+	op.DoPunctuationRemoval = boolPyToGo(val)
+}
+
+// --- wrapping struct: BMXGo.ConvMessage ---
+//
+//export BMXGo_ConvMessage_CTor
+func BMXGo_ConvMessage_CTor() CGoHandle {
+	return CGoHandle(handleFromPtr_BMXGo_ConvMessage(&BMXGo.ConvMessage{}))
+}
+
+//export BMXGo_ConvMessage_Role_Get
+func BMXGo_ConvMessage_Role_Get(handle CGoHandle) *C.char {
+	op := ptrFromHandle_BMXGo_ConvMessage(handle)
+	return C.CString(op.Role)
+}
+
+//export BMXGo_ConvMessage_Role_Set
+func BMXGo_ConvMessage_Role_Set(handle CGoHandle, val *C.char) {
+	op := ptrFromHandle_BMXGo_ConvMessage(handle)
+	op.Role = C.GoString(val)
+}
+
+//export BMXGo_ConvMessage_Content_Get
+func BMXGo_ConvMessage_Content_Get(handle CGoHandle) *C.char {
+	op := ptrFromHandle_BMXGo_ConvMessage(handle)
+	return C.CString(op.Content)
+}
+
+//export BMXGo_ConvMessage_Content_Set
+func BMXGo_ConvMessage_Content_Set(handle CGoHandle, val *C.char) {
+	op := ptrFromHandle_BMXGo_ConvMessage(handle)
+	op.Content = C.GoString(val)
+}
+
+//export BMXGo_ConvMessage_Date_Get
+func BMXGo_ConvMessage_Date_Get(handle CGoHandle) CGoHandle {
+	op := ptrFromHandle_BMXGo_ConvMessage(handle)
+	return handleFromPtr_time_Time(&op.Date)
+}
+
+//export BMXGo_ConvMessage_Date_Set
+func BMXGo_ConvMessage_Date_Set(handle CGoHandle, val CGoHandle) {
+	op := ptrFromHandle_BMXGo_ConvMessage(handle)
+	op.Date = *ptrFromHandle_time_Time(val)
+}
+
+//export BMXGo_ConvMessage_Intent_Get
+func BMXGo_ConvMessage_Intent_Get(handle CGoHandle) *C.char {
+	op := ptrFromHandle_BMXGo_ConvMessage(handle)
+	return C.CString(op.Intent)
+}
+
+//export BMXGo_ConvMessage_Intent_Set
+func BMXGo_ConvMessage_Intent_Set(handle CGoHandle, val *C.char) {
+	op := ptrFromHandle_BMXGo_ConvMessage(handle)
+	op.Intent = C.GoString(val)
+}
+
+//export BMXGo_ConvMessage_LinkedContent_Get
+func BMXGo_ConvMessage_LinkedContent_Get(handle CGoHandle) CGoHandle {
+	op := ptrFromHandle_BMXGo_ConvMessage(handle)
+	return handleFromPtr_Slice_BMXGo_LinkedContent(&op.LinkedContent)
+}
+
+//export BMXGo_ConvMessage_LinkedContent_Set
+func BMXGo_ConvMessage_LinkedContent_Set(handle CGoHandle, val CGoHandle) {
+	op := ptrFromHandle_BMXGo_ConvMessage(handle)
+	op.LinkedContent = deptrFromHandle_Slice_BMXGo_LinkedContent(val)
+}
+
+// --- wrapping struct: BMXGo.LLMClient ---
+//
+//export BMXGo_LLMClient_CTor
+func BMXGo_LLMClient_CTor() CGoHandle {
+	return CGoHandle(handleFromPtr_BMXGo_LLMClient(&BMXGo.LLMClient{}))
+}
+
+// --- wrapping struct: BMXGo.LinkedContent ---
+//
+//export BMXGo_LinkedContent_CTor
+func BMXGo_LinkedContent_CTor() CGoHandle {
+	return CGoHandle(handleFromPtr_BMXGo_LinkedContent(&BMXGo.LinkedContent{}))
+}
+
+//export BMXGo_LinkedContent_ID_Get
+func BMXGo_LinkedContent_ID_Get(handle CGoHandle) *C.char {
+	op := ptrFromHandle_BMXGo_LinkedContent(handle)
+	return C.CString(op.ID)
+}
+
+//export BMXGo_LinkedContent_ID_Set
+func BMXGo_LinkedContent_ID_Set(handle CGoHandle, val *C.char) {
+	op := ptrFromHandle_BMXGo_LinkedContent(handle)
+	op.ID = C.GoString(val)
+}
+
+//export BMXGo_LinkedContent_Type_Get
+func BMXGo_LinkedContent_Type_Get(handle CGoHandle) *C.char {
+	op := ptrFromHandle_BMXGo_LinkedContent(handle)
+	return C.CString(op.Type)
+}
+
+//export BMXGo_LinkedContent_Type_Set
+func BMXGo_LinkedContent_Type_Set(handle CGoHandle, val *C.char) {
+	op := ptrFromHandle_BMXGo_LinkedContent(handle)
+	op.Type = C.GoString(val)
 }
 
 // ---- Slices ---
@@ -5145,6 +5158,23 @@ func BMXGo_Document_F_table_Set(handle CGoHandle, val CGoHandle) {
 // ---- Maps ---
 
 // ---- Constructors ---
+
+//export BMXGo_Build
+func BMXGo_Build(indexName *C.char, config CGoHandle) CGoHandle {
+	_saved_thread := C.PyEval_SaveThread()
+	defer C.PyEval_RestoreThread(_saved_thread)
+	cret := BMXGo.Build(C.GoString(indexName), *ptrFromHandle_BMXGo_Config(config))
+
+	return handleFromPtr_BMXGo_BMXAdapter(&cret)
+}
+
+//export BMXGo_NewTextPreprocessor
+func BMXGo_NewTextPreprocessor(config CGoHandle) CGoHandle {
+	_saved_thread := C.PyEval_SaveThread()
+	defer C.PyEval_RestoreThread(_saved_thread)
+	return handleFromPtr_Ptr_BMXGo_TextPreprocessor(BMXGo.NewTextPreprocessor(ptrFromHandle_Ptr_BMXGo_Config(config)))
+
+}
 
 //export BMXGo_NewConfig
 func BMXGo_NewConfig(tokenizer *C.char, stemmer *C.char, lang *C.char) CGoHandle {
@@ -5169,86 +5199,7 @@ func BMXGo_NewLLMClient(config CGoHandle) CGoHandle {
 
 }
 
-//export BMXGo_NewTextPreprocessor
-func BMXGo_NewTextPreprocessor(config CGoHandle) CGoHandle {
-	_saved_thread := C.PyEval_SaveThread()
-	defer C.PyEval_RestoreThread(_saved_thread)
-	return handleFromPtr_Ptr_BMXGo_TextPreprocessor(BMXGo.NewTextPreprocessor(ptrFromHandle_Ptr_BMXGo_Config(config)))
-
-}
-
-//export BMXGo_Build
-func BMXGo_Build(indexName *C.char, config CGoHandle) CGoHandle {
-	_saved_thread := C.PyEval_SaveThread()
-	defer C.PyEval_RestoreThread(_saved_thread)
-	cret := BMXGo.Build(C.GoString(indexName), *ptrFromHandle_BMXGo_Config(config))
-
-	return handleFromPtr_BMXGo_BMXAdapter(&cret)
-}
-
 // ---- Functions ---
-
-//export BMXGo_GetStopwords
-func BMXGo_GetStopwords(swList *C.char) CGoHandle {
-	_saved_thread := C.PyEval_SaveThread()
-	cret, __err := BMXGo.GetStopwords(C.GoString(swList))
-
-	C.PyEval_RestoreThread(_saved_thread)
-	if __err != nil {
-		estr := C.CString(__err.Error())
-		C.PyErr_SetString(C.PyExc_RuntimeError, estr)
-		C.free(unsafe.Pointer(estr))
-		return handleFromPtr_Slice_string(nil)
-	}
-	return handleFromPtr_Slice_string(&cret)
-}
-
-//export BMXGo_HtmlToMarkdown
-func BMXGo_HtmlToMarkdown(htmlContent *C.char, addIDs C.char) *C.char {
-	_saved_thread := C.PyEval_SaveThread()
-	defer C.PyEval_RestoreThread(_saved_thread)
-	return C.CString(BMXGo.HtmlToMarkdown(C.GoString(htmlContent), boolPyToGo(addIDs)))
-
-}
-
-//export BMXGo_NormalizeAmpersand
-func BMXGo_NormalizeAmpersand(text *C.char) *C.char {
-	_saved_thread := C.PyEval_SaveThread()
-	defer C.PyEval_RestoreThread(_saved_thread)
-	return C.CString(BMXGo.NormalizeAmpersand(C.GoString(text)))
-
-}
-
-//export BMXGo_NormalizeSpecialChars
-func BMXGo_NormalizeSpecialChars(text *C.char) *C.char {
-	_saved_thread := C.PyEval_SaveThread()
-	defer C.PyEval_RestoreThread(_saved_thread)
-	return C.CString(BMXGo.NormalizeSpecialChars(C.GoString(text)))
-
-}
-
-//export BMXGo_GenerateAugmentedQueries
-func BMXGo_GenerateAugmentedQueries(query *C.char, num_augmented_queries C.longlong) CGoHandle {
-	_saved_thread := C.PyEval_SaveThread()
-	cret, __err := BMXGo.GenerateAugmentedQueries(C.GoString(query), int(num_augmented_queries))
-
-	C.PyEval_RestoreThread(_saved_thread)
-	if __err != nil {
-		estr := C.CString(__err.Error())
-		C.PyErr_SetString(C.PyExc_RuntimeError, estr)
-		C.free(unsafe.Pointer(estr))
-		return handleFromPtr_Slice_string(nil)
-	}
-	return handleFromPtr_Slice_string(&cret)
-}
-
-//export BMXGo_Lowercasing
-func BMXGo_Lowercasing(text *C.char) *C.char {
-	_saved_thread := C.PyEval_SaveThread()
-	defer C.PyEval_RestoreThread(_saved_thread)
-	return C.CString(BMXGo.Lowercasing(C.GoString(text)))
-
-}
 
 //export BMXGo_NormalizeAcronyms
 func BMXGo_NormalizeAcronyms(text *C.char) *C.char {
@@ -5258,11 +5209,20 @@ func BMXGo_NormalizeAcronyms(text *C.char) *C.char {
 
 }
 
-//export BMXGo_StripWhitespaces
-func BMXGo_StripWhitespaces(text *C.char) *C.char {
+//export BMXGo_RemoveEmptyTokens
+func BMXGo_RemoveEmptyTokens(tokens CGoHandle) CGoHandle {
 	_saved_thread := C.PyEval_SaveThread()
 	defer C.PyEval_RestoreThread(_saved_thread)
-	return C.CString(BMXGo.StripWhitespaces(C.GoString(text)))
+	cret := BMXGo.RemoveEmptyTokens(deptrFromHandle_Slice_string(tokens))
+
+	return handleFromPtr_Slice_string(&cret)
+}
+
+//export BMXGo_RemovePunctuation
+func BMXGo_RemovePunctuation(text *C.char) *C.char {
+	_saved_thread := C.PyEval_SaveThread()
+	defer C.PyEval_RestoreThread(_saved_thread)
+	return C.CString(BMXGo.RemovePunctuation(C.GoString(text)))
 
 }
 
@@ -5288,6 +5248,29 @@ func BMXGo_ApplyStemmer(tokens CGoHandle, stemmer *C.PyObject) CGoHandle {
 	return handleFromPtr_Slice_string(&cret)
 }
 
+//export BMXGo_GenerateAugmentedQueries
+func BMXGo_GenerateAugmentedQueries(query *C.char, num_augmented_queries C.longlong) CGoHandle {
+	_saved_thread := C.PyEval_SaveThread()
+	cret, __err := BMXGo.GenerateAugmentedQueries(C.GoString(query), int(num_augmented_queries))
+
+	C.PyEval_RestoreThread(_saved_thread)
+	if __err != nil {
+		estr := C.CString(__err.Error())
+		C.PyErr_SetString(C.PyExc_RuntimeError, estr)
+		C.free(unsafe.Pointer(estr))
+		return handleFromPtr_Slice_string(nil)
+	}
+	return handleFromPtr_Slice_string(&cret)
+}
+
+//export BMXGo_HtmlToMarkdown
+func BMXGo_HtmlToMarkdown(htmlContent *C.char, addIDs C.char) *C.char {
+	_saved_thread := C.PyEval_SaveThread()
+	defer C.PyEval_RestoreThread(_saved_thread)
+	return C.CString(BMXGo.HtmlToMarkdown(C.GoString(htmlContent), boolPyToGo(addIDs)))
+
+}
+
 //export BMXGo_NormalizeDiacritics
 func BMXGo_NormalizeDiacritics(text *C.char) *C.char {
 	_saved_thread := C.PyEval_SaveThread()
@@ -5296,19 +5279,49 @@ func BMXGo_NormalizeDiacritics(text *C.char) *C.char {
 
 }
 
-//export BMXGo_RemoveEmptyTokens
-func BMXGo_RemoveEmptyTokens(tokens CGoHandle) CGoHandle {
+//export BMXGo_StripWhitespaces
+func BMXGo_StripWhitespaces(text *C.char) *C.char {
 	_saved_thread := C.PyEval_SaveThread()
 	defer C.PyEval_RestoreThread(_saved_thread)
-	cret := BMXGo.RemoveEmptyTokens(deptrFromHandle_Slice_string(tokens))
+	return C.CString(BMXGo.StripWhitespaces(C.GoString(text)))
 
+}
+
+//export BMXGo_GetStopwords
+func BMXGo_GetStopwords(swList *C.char) CGoHandle {
+	_saved_thread := C.PyEval_SaveThread()
+	cret, __err := BMXGo.GetStopwords(C.GoString(swList))
+
+	C.PyEval_RestoreThread(_saved_thread)
+	if __err != nil {
+		estr := C.CString(__err.Error())
+		C.PyErr_SetString(C.PyExc_RuntimeError, estr)
+		C.free(unsafe.Pointer(estr))
+		return handleFromPtr_Slice_string(nil)
+	}
 	return handleFromPtr_Slice_string(&cret)
 }
 
-//export BMXGo_RemovePunctuation
-func BMXGo_RemovePunctuation(text *C.char) *C.char {
+//export BMXGo_Lowercasing
+func BMXGo_Lowercasing(text *C.char) *C.char {
 	_saved_thread := C.PyEval_SaveThread()
 	defer C.PyEval_RestoreThread(_saved_thread)
-	return C.CString(BMXGo.RemovePunctuation(C.GoString(text)))
+	return C.CString(BMXGo.Lowercasing(C.GoString(text)))
+
+}
+
+//export BMXGo_NormalizeAmpersand
+func BMXGo_NormalizeAmpersand(text *C.char) *C.char {
+	_saved_thread := C.PyEval_SaveThread()
+	defer C.PyEval_RestoreThread(_saved_thread)
+	return C.CString(BMXGo.NormalizeAmpersand(C.GoString(text)))
+
+}
+
+//export BMXGo_NormalizeSpecialChars
+func BMXGo_NormalizeSpecialChars(text *C.char) *C.char {
+	_saved_thread := C.PyEval_SaveThread()
+	defer C.PyEval_RestoreThread(_saved_thread)
+	return C.CString(BMXGo.NormalizeSpecialChars(C.GoString(text)))
 
 }
