@@ -1,11 +1,10 @@
 package model
 
 import (
-	"BMXGo/search/text_preprocessor"
-	"fmt"
 	"math"
 	"sort"
-	"time"
+
+	"BMXGo/search/text_preprocessor"
 )
 
 // Define the parameters and types
@@ -135,6 +134,10 @@ func (query *Query) S_table_fill(bmx *BMX) {
 	query.S_table = make(map[string]float64, len(bmx.Docs))
 	invTotalWeight := 1.0 / query.TotalWeight
 
+	for doc_key := range bmx.Docs {
+		query.S_table[doc_key] = 0.0
+	}
+
 	for qi, weight := range query.Tokens {
 		for _, doc_key := range bmx.NumAppearances[qi] {
 			query.S_table[doc_key] += weight
@@ -148,8 +151,12 @@ func (query *Query) S_table_fill(bmx *BMX) {
 // Function to calculate the score
 func (query *Query) Score_table_fill(bmx *BMX) {
 	query.ScoreTable = make(map[string]float64, len(bmx.Docs))
+	for doc_key := range bmx.Docs {
+		query.ScoreTable[doc_key] = 0.0
+	}
 	invE_tilde := 1.0 / query.max_E_tilde
 	invAvgdl := 1.0 / bmx.Params.Avgdl
+	alpha1 := bmx.Params.Alpha + 1.0
 	for qi := range query.Tokens {
 		idf := bmx.IDF_table[qi]
 		e := bmx.E_tilde_table[qi] * invE_tilde
@@ -158,16 +165,16 @@ func (query *Query) Score_table_fill(bmx *BMX) {
 		for _, doc_key := range bmx.NumAppearances[qi] {
 			f := bmx.Docs[doc_key].F_table[qi]
 			s := query.S_table[doc_key]
-			query.ScoreTable[doc_key] += query.Tokens[qi] * (idf*(float64(f)*(bmx.Params.Alpha+1.0)/(float64(f)+bmx.Params.Alpha*(float64(len(bmx.Docs[doc_key].Tokens))*invAvgdl)+alphaAverageEntropy)) + betaE*s)
+			query.ScoreTable[doc_key] += query.Tokens[qi] * (idf*(float64(f)*alpha1/(float64(f)+bmx.Params.Alpha*(float64(len(bmx.Docs[doc_key].Tokens))*invAvgdl)+alphaAverageEntropy)) + betaE*s)
 		}
 	}
 }
 
 func (query *Query) NormalizedScore_table_fill(bmx *BMX) {
 	query.NormalizedScoreTable = map[string]float64{}
-	maxScore := query.TotalWeight * (math.Log(1+float64(float64(bmx.Params.N)-0.5)/1.5) + 1.0)
+	invMaxScore := 1 / (query.TotalWeight * (math.Log(1+float64(float64(bmx.Params.N)-0.5)/1.5) + 1.0))
 	for key := range bmx.Docs {
-		query.NormalizedScoreTable[key] = query.ScoreTable[key] / maxScore
+		query.NormalizedScoreTable[key] = query.ScoreTable[key] * invMaxScore
 	}
 }
 
@@ -193,20 +200,22 @@ func (query *Query) Initialize(bmx *BMX) {
 			query.TotalWeight += query.AugmentedWeights[i]
 		}
 	}
-	fmt.Println("Setting entropy")
-	start := time.Now()
+	// fmt.Println("Setting entropy")
+	// start := time.Now()
 	query.SetEntropy(bmx)
-	fmt.Println("Entropy set, total time:", time.Since(start))
-	start = time.Now()
-	fmt.Println("Setting S table")
+	// fmt.Println("Entropy set, total time:", time.Since(start))
+	// fmt.Println("Setting S table")
+	// start = time.Now()
 	query.S_table_fill(bmx)
-	fmt.Println("S table set, total time:", time.Since(start))
-	start = time.Now()
+	// fmt.Println("S table set, total time:", time.Since(start))
+	// fmt.Println("Setting Score table")
+	// start = time.Now()
 	query.Score_table_fill(bmx)
-	fmt.Println("Score table filled, total time:", time.Since(start))
-	start = time.Now()
+	// fmt.Println("Score table filled, total time:", time.Since(start))
+	// fmt.Println("Setting Normalized Score table")
+	// start = time.Now()
 	query.NormalizedScore_table_fill(bmx)
-	fmt.Println("Normalized score table filled, total time:", time.Since(start))
+	// fmt.Println("Normalized score table filled, total time:", time.Since(start))
 }
 
 func (query *Query) Rank(topK int) []string {

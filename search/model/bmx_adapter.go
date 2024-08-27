@@ -8,9 +8,8 @@ import (
 	"sort"
 	"strings"
 	"sync"
-	"time"
 
-	BMXGo "BMXGo/search/text_preprocessor"
+	"BMXGo/search/text_preprocessor"
 )
 
 func GenerateAugmentedQueries(query string, num_augmented_queries int) ([]string, error) {
@@ -39,7 +38,7 @@ Output:`, num_augmented_queries, query)
 
 	select {
 	case responseTxt := <-respChan:
-		log.Println("AUGMENTED QUERIES GENERATED")
+		// log.Println("AUGMENTED QUERIES GENERATED")
 		// Clean up the response
 		cleanResponse := strings.TrimSpace(responseTxt)
 		cleanResponse = strings.TrimPrefix(cleanResponse, "```jsonl")
@@ -91,7 +90,7 @@ type SearchResults struct {
 	Scores []float64
 }
 
-func Build(indexName string, config BMXGo.Config) BMXAdapter {
+func Build(indexName string, config text_preprocessor.Config) BMXAdapter {
 	bmx := BMX{
 		Docs:   map[string]Document{},
 		Params: Parameters{},
@@ -118,26 +117,26 @@ func (adapter *BMXAdapter) AddMany(ids []string, docs []string) error {
 	for i, doc := range docs {
 		adapter.bmx.Docs[ids[i]] = Document{Text: doc, Tokens: tokenize(doc)}
 	}
-	fmt.Println("Setting params")
-	start := time.Now()
+	// fmt.Println("Setting params")
+	// start := time.Now()
 	adapter.bmx.SetParams()
-	fmt.Println("Parameters set, total time:", time.Since(start))
-	start = time.Now()
-	fmt.Println("Filling F table")
+	// fmt.Println("Parameters set, total time:", time.Since(start))
+	// start = time.Now()
+	// fmt.Println("Filling F table")
 	adapter.bmx.F_table_fill()
-	fmt.Println("F table filled, total time:", time.Since(start))
-	start = time.Now()
-	fmt.Println("Calculating number of appearances")
+	// fmt.Println("F table filled, total time:", time.Since(start))
+	// start = time.Now()
+	// fmt.Println("Calculating number of appearances")
 	adapter.bmx.NumAppearancesCalc()
-	fmt.Println("Number of appearances calculated, total time:", time.Since(start))
-	start = time.Now()
-	fmt.Println("Filling IDF table")
+	// fmt.Println("Number of appearances calculated, total time:", time.Since(start))
+	// start = time.Now()
+	// fmt.Println("Filling IDF table")
 	adapter.bmx.IDF_table_fill()
-	fmt.Println("IDF table filled, total time:", time.Since(start))
-	start = time.Now()
-	fmt.Println("Filling E_tilde table")
+	// fmt.Println("IDF table filled, total time:", time.Since(start))
+	// start = time.Now()
+	// fmt.Println("Filling E_tilde table")
 	adapter.bmx.E_tilde_table_fill()
-	fmt.Println("E_tilde table filled, total time:", time.Since(start))
+	// fmt.Println("E_tilde table filled, total time:", time.Since(start))
 	return nil
 }
 
@@ -184,9 +183,9 @@ func (adapter *BMXAdapter) SearchMany(queries []string, topK int, maxConcurrent 
 			defer wg.Done()
 			defer func() { <-semaphore }() // Release semaphore
 			results[i] = adapter.Search(query, topK)
-			if i%100 == 0 {
-				fmt.Printf("Query number %d out of %d\n", i+1, len(queries))
-			}
+			// if i%100 == 0 {
+			// 	fmt.Printf("Query number %d out of %d\n", i+1, len(queries))
+			// }
 		}(i, query)
 	}
 
@@ -196,11 +195,13 @@ func (adapter *BMXAdapter) SearchMany(queries []string, topK int, maxConcurrent 
 }
 
 func (adapter *BMXAdapter) SearchAugmented(query string, topK int, num_augmented_queries int, weight float64) SearchResults {
+	// fmt.Println("Generating augmented queries")
+	// start := time.Now()
 	augmentedQueries, err := GenerateAugmentedQueries(query, num_augmented_queries)
 	if err != nil {
 		log.Fatal(err)
 	}
-
+	// fmt.Println("Augmented queries generated, total time:", time.Since(start))
 	q := Query{Text: query, AugmentedQueries: augmentedQueries}
 
 	q.AugmentedWeights = []float64{}
@@ -208,8 +209,13 @@ func (adapter *BMXAdapter) SearchAugmented(query string, topK int, num_augmented
 		q.AugmentedWeights = append(q.AugmentedWeights, weight)
 	}
 
+	// fmt.Println("Initializing query")
+	// start = time.Now()
 	q.Initialize(adapter.bmx)
+	// fmt.Println("Query initialized, total time:", time.Since(start))
 
+	// fmt.Println("Sorting keys")
+	// start = time.Now()
 	Keys := []string{}
 	for key := range q.ScoreTable {
 		Keys = append(Keys, key)
@@ -219,13 +225,17 @@ func (adapter *BMXAdapter) SearchAugmented(query string, topK int, num_augmented
 	sort.Slice(Keys, func(i, j int) bool {
 		return q.ScoreTable[Keys[i]] > q.ScoreTable[Keys[j]]
 	})
+	// fmt.Println("Keys sorted, total time:", time.Since(start))
 
+	// fmt.Println("Selecting top keys")
+	// start = time.Now()
 	topKeys := Keys[:topK]
 
 	topScores := []float64{}
 	for _, key := range topKeys {
 		topScores = append(topScores, q.NormalizedScoreTable[key])
 	}
+	// fmt.Println("Top keys selected, total time:", time.Since(start))
 	return SearchResults{Keys: topKeys, Scores: topScores}
 }
 
@@ -241,7 +251,9 @@ func (adapter *BMXAdapter) SearchAugmentedMany(queries []string, topK int, num_a
 			defer wg.Done()
 			defer func() { <-semaphore }() // Release semaphore
 			results[i] = adapter.SearchAugmented(query, topK, num_augmented_queries, weight)
-			fmt.Printf("Query number %d out of %d\n", i+1, len(queries))
+			// if i%100 == 99 {
+			// 	fmt.Printf("Query number %d out of %d\n", i+1, len(queries))
+			// }
 		}(i, query)
 	}
 
