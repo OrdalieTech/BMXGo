@@ -5814,747 +5814,6 @@ PyObject * _wrap__BMXGo_Map_string_int_keys(PyObject * PYBINDGEN_UNUSED(dummy), 
 
 
 PyObject *
-_wrap__BMXGo_BMXGo_Document_CTor(PyObject *PYBINDGEN_UNUSED(_args), PyObject *PYBINDGEN_UNUSED(_kwargs))
-{
-    PyObject *py_retval;
-    int64_t retval;
-
-    retval = BMXGo_Document_CTor();
-    py_retval = Py_BuildValue((char *) "L", retval);
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Document_CTor(PyObject *PYBINDGEN_UNUSED(_args), PyObject *PYBINDGEN_UNUSED(_kwargs));
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Document_Text_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    char *retval;
-    int64_t handle;
-    const char *keywords[] = {"handle", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
-        return NULL;
-    }
-    retval = BMXGo_Document_Text_Get(handle);
-    py_retval = Py_BuildValue((char *) "s", retval);
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Document_Text_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Document_Text_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t handle;
-    char *val;
-    const char *keywords[] = {"handle", "val", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "Ls", (char **) keywords, &handle, &val)) {
-        return NULL;
-    }
-    BMXGo_Document_Text_Set(handle, val);
-    Py_INCREF(Py_None);
-    py_retval = Py_None;
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Document_Text_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Document_Tokens_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t retval;
-    int64_t handle;
-    const char *keywords[] = {"handle", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
-        return NULL;
-    }
-    retval = BMXGo_Document_Tokens_Get(handle);
-    py_retval = Py_BuildValue((char *) "L", retval);
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Document_Tokens_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Document_Tokens_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t handle;
-    int64_t val;
-    const char *keywords[] = {"handle", "val", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LL", (char **) keywords, &handle, &val)) {
-        return NULL;
-    }
-    BMXGo_Document_Tokens_Set(handle, val);
-    Py_INCREF(Py_None);
-    py_retval = Py_None;
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Document_Tokens_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Document_F_table_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t retval;
-    int64_t handle;
-    const char *keywords[] = {"handle", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
-        return NULL;
-    }
-    retval = BMXGo_Document_F_table_Get(handle);
-    py_retval = Py_BuildValue((char *) "L", retval);
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Document_F_table_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Document_F_table_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t handle;
-    int64_t val;
-    const char *keywords[] = {"handle", "val", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LL", (char **) keywords, &handle, &val)) {
-        return NULL;
-    }
-    BMXGo_Document_F_table_Set(handle, val);
-    Py_INCREF(Py_None);
-    py_retval = Py_None;
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Document_F_table_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Parameters_CTor(PyObject *PYBINDGEN_UNUSED(_args), PyObject *PYBINDGEN_UNUSED(_kwargs))
-{
-    PyObject *py_retval;
-    int64_t retval;
-
-    retval = BMXGo_Parameters_CTor();
-    py_retval = Py_BuildValue((char *) "L", retval);
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Parameters_CTor(PyObject *PYBINDGEN_UNUSED(_args), PyObject *PYBINDGEN_UNUSED(_kwargs));
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Parameters_Alpha_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    double retval;
-    int64_t handle;
-    const char *keywords[] = {"handle", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
-        return NULL;
-    }
-    retval = BMXGo_Parameters_Alpha_Get(handle);
-    py_retval = Py_BuildValue((char *) "d", retval);
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Parameters_Alpha_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Parameters_Alpha_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t handle;
-    double val;
-    const char *keywords[] = {"handle", "val", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "Ld", (char **) keywords, &handle, &val)) {
-        return NULL;
-    }
-    BMXGo_Parameters_Alpha_Set(handle, val);
-    Py_INCREF(Py_None);
-    py_retval = Py_None;
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Parameters_Alpha_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Parameters_Beta_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    double retval;
-    int64_t handle;
-    const char *keywords[] = {"handle", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
-        return NULL;
-    }
-    retval = BMXGo_Parameters_Beta_Get(handle);
-    py_retval = Py_BuildValue((char *) "d", retval);
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Parameters_Beta_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Parameters_Beta_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t handle;
-    double val;
-    const char *keywords[] = {"handle", "val", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "Ld", (char **) keywords, &handle, &val)) {
-        return NULL;
-    }
-    BMXGo_Parameters_Beta_Set(handle, val);
-    Py_INCREF(Py_None);
-    py_retval = Py_None;
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Parameters_Beta_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Parameters_Avgdl_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    double retval;
-    int64_t handle;
-    const char *keywords[] = {"handle", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
-        return NULL;
-    }
-    retval = BMXGo_Parameters_Avgdl_Get(handle);
-    py_retval = Py_BuildValue((char *) "d", retval);
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Parameters_Avgdl_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Parameters_Avgdl_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t handle;
-    double val;
-    const char *keywords[] = {"handle", "val", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "Ld", (char **) keywords, &handle, &val)) {
-        return NULL;
-    }
-    BMXGo_Parameters_Avgdl_Set(handle, val);
-    Py_INCREF(Py_None);
-    py_retval = Py_None;
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Parameters_Avgdl_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Parameters_N_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t retval;
-    int64_t handle;
-    const char *keywords[] = {"handle", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
-        return NULL;
-    }
-    retval = BMXGo_Parameters_N_Get(handle);
-    py_retval = Py_BuildValue((char *) "L", retval);
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Parameters_N_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Parameters_N_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t handle;
-    int64_t val;
-    const char *keywords[] = {"handle", "val", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LL", (char **) keywords, &handle, &val)) {
-        return NULL;
-    }
-    BMXGo_Parameters_N_Set(handle, val);
-    Py_INCREF(Py_None);
-    py_retval = Py_None;
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Parameters_N_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Query_CTor(PyObject *PYBINDGEN_UNUSED(_args), PyObject *PYBINDGEN_UNUSED(_kwargs))
-{
-    PyObject *py_retval;
-    int64_t retval;
-
-    retval = BMXGo_Query_CTor();
-    py_retval = Py_BuildValue((char *) "L", retval);
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Query_CTor(PyObject *PYBINDGEN_UNUSED(_args), PyObject *PYBINDGEN_UNUSED(_kwargs));
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Query_Text_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    char *retval;
-    int64_t handle;
-    const char *keywords[] = {"handle", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
-        return NULL;
-    }
-    retval = BMXGo_Query_Text_Get(handle);
-    py_retval = Py_BuildValue((char *) "s", retval);
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Query_Text_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Query_Text_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t handle;
-    char *val;
-    const char *keywords[] = {"handle", "val", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "Ls", (char **) keywords, &handle, &val)) {
-        return NULL;
-    }
-    BMXGo_Query_Text_Set(handle, val);
-    Py_INCREF(Py_None);
-    py_retval = Py_None;
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Query_Text_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Query_Tokens_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t retval;
-    int64_t handle;
-    const char *keywords[] = {"handle", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
-        return NULL;
-    }
-    retval = BMXGo_Query_Tokens_Get(handle);
-    py_retval = Py_BuildValue((char *) "L", retval);
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Query_Tokens_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Query_Tokens_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t handle;
-    int64_t val;
-    const char *keywords[] = {"handle", "val", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LL", (char **) keywords, &handle, &val)) {
-        return NULL;
-    }
-    BMXGo_Query_Tokens_Set(handle, val);
-    Py_INCREF(Py_None);
-    py_retval = Py_None;
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Query_Tokens_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Query_TotalWeight_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    double retval;
-    int64_t handle;
-    const char *keywords[] = {"handle", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
-        return NULL;
-    }
-    retval = BMXGo_Query_TotalWeight_Get(handle);
-    py_retval = Py_BuildValue((char *) "d", retval);
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Query_TotalWeight_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Query_TotalWeight_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t handle;
-    double val;
-    const char *keywords[] = {"handle", "val", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "Ld", (char **) keywords, &handle, &val)) {
-        return NULL;
-    }
-    BMXGo_Query_TotalWeight_Set(handle, val);
-    Py_INCREF(Py_None);
-    py_retval = Py_None;
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Query_TotalWeight_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Query_S_table_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t retval;
-    int64_t handle;
-    const char *keywords[] = {"handle", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
-        return NULL;
-    }
-    retval = BMXGo_Query_S_table_Get(handle);
-    py_retval = Py_BuildValue((char *) "L", retval);
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Query_S_table_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Query_S_table_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t handle;
-    int64_t val;
-    const char *keywords[] = {"handle", "val", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LL", (char **) keywords, &handle, &val)) {
-        return NULL;
-    }
-    BMXGo_Query_S_table_Set(handle, val);
-    Py_INCREF(Py_None);
-    py_retval = Py_None;
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Query_S_table_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Query_ScoreTable_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t retval;
-    int64_t handle;
-    const char *keywords[] = {"handle", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
-        return NULL;
-    }
-    retval = BMXGo_Query_ScoreTable_Get(handle);
-    py_retval = Py_BuildValue((char *) "L", retval);
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Query_ScoreTable_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Query_ScoreTable_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t handle;
-    int64_t val;
-    const char *keywords[] = {"handle", "val", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LL", (char **) keywords, &handle, &val)) {
-        return NULL;
-    }
-    BMXGo_Query_ScoreTable_Set(handle, val);
-    Py_INCREF(Py_None);
-    py_retval = Py_None;
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Query_ScoreTable_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Query_NormalizedScoreTable_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t retval;
-    int64_t handle;
-    const char *keywords[] = {"handle", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
-        return NULL;
-    }
-    retval = BMXGo_Query_NormalizedScoreTable_Get(handle);
-    py_retval = Py_BuildValue((char *) "L", retval);
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Query_NormalizedScoreTable_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Query_NormalizedScoreTable_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t handle;
-    int64_t val;
-    const char *keywords[] = {"handle", "val", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LL", (char **) keywords, &handle, &val)) {
-        return NULL;
-    }
-    BMXGo_Query_NormalizedScoreTable_Set(handle, val);
-    Py_INCREF(Py_None);
-    py_retval = Py_None;
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Query_NormalizedScoreTable_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Query_AugmentedQueries_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t retval;
-    int64_t handle;
-    const char *keywords[] = {"handle", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
-        return NULL;
-    }
-    retval = BMXGo_Query_AugmentedQueries_Get(handle);
-    py_retval = Py_BuildValue((char *) "L", retval);
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Query_AugmentedQueries_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Query_AugmentedQueries_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t handle;
-    int64_t val;
-    const char *keywords[] = {"handle", "val", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LL", (char **) keywords, &handle, &val)) {
-        return NULL;
-    }
-    BMXGo_Query_AugmentedQueries_Set(handle, val);
-    Py_INCREF(Py_None);
-    py_retval = Py_None;
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Query_AugmentedQueries_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Query_AugmentedWeights_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t retval;
-    int64_t handle;
-    const char *keywords[] = {"handle", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
-        return NULL;
-    }
-    retval = BMXGo_Query_AugmentedWeights_Get(handle);
-    py_retval = Py_BuildValue((char *) "L", retval);
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Query_AugmentedWeights_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Query_AugmentedWeights_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t handle;
-    int64_t val;
-    const char *keywords[] = {"handle", "val", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LL", (char **) keywords, &handle, &val)) {
-        return NULL;
-    }
-    BMXGo_Query_AugmentedWeights_Set(handle, val);
-    Py_INCREF(Py_None);
-    py_retval = Py_None;
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Query_AugmentedWeights_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Query_SetEntropy(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t _handle;
-    int64_t bmx;
-    bool goRun;
-    PyObject *py_goRun;
-    const char *keywords[] = {"_handle", "bmx", "goRun", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LLO", (char **) keywords, &_handle, &bmx, &py_goRun)) {
-        return NULL;
-    }
-    goRun = (bool) PyObject_IsTrue(py_goRun);
-    BMXGo_Query_SetEntropy(_handle, bmx, goRun);
-    if (PyErr_Occurred()) {
-        return NULL;
-    }
-    Py_INCREF(Py_None);
-    py_retval = Py_None;
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Query_SetEntropy(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Query_S_table_fill(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t _handle;
-    int64_t bmx;
-    bool goRun;
-    PyObject *py_goRun;
-    const char *keywords[] = {"_handle", "bmx", "goRun", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LLO", (char **) keywords, &_handle, &bmx, &py_goRun)) {
-        return NULL;
-    }
-    goRun = (bool) PyObject_IsTrue(py_goRun);
-    BMXGo_Query_S_table_fill(_handle, bmx, goRun);
-    if (PyErr_Occurred()) {
-        return NULL;
-    }
-    Py_INCREF(Py_None);
-    py_retval = Py_None;
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Query_S_table_fill(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Query_Score_table_fill(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t _handle;
-    int64_t bmx;
-    bool goRun;
-    PyObject *py_goRun;
-    const char *keywords[] = {"_handle", "bmx", "goRun", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LLO", (char **) keywords, &_handle, &bmx, &py_goRun)) {
-        return NULL;
-    }
-    goRun = (bool) PyObject_IsTrue(py_goRun);
-    BMXGo_Query_Score_table_fill(_handle, bmx, goRun);
-    if (PyErr_Occurred()) {
-        return NULL;
-    }
-    Py_INCREF(Py_None);
-    py_retval = Py_None;
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Query_Score_table_fill(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Query_NormalizedScore_table_fill(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t _handle;
-    int64_t bmx;
-    bool goRun;
-    PyObject *py_goRun;
-    const char *keywords[] = {"_handle", "bmx", "goRun", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LLO", (char **) keywords, &_handle, &bmx, &py_goRun)) {
-        return NULL;
-    }
-    goRun = (bool) PyObject_IsTrue(py_goRun);
-    BMXGo_Query_NormalizedScore_table_fill(_handle, bmx, goRun);
-    if (PyErr_Occurred()) {
-        return NULL;
-    }
-    Py_INCREF(Py_None);
-    py_retval = Py_None;
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Query_NormalizedScore_table_fill(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Query_Initialize(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t _handle;
-    int64_t bmx;
-    bool goRun;
-    PyObject *py_goRun;
-    const char *keywords[] = {"_handle", "bmx", "goRun", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LLO", (char **) keywords, &_handle, &bmx, &py_goRun)) {
-        return NULL;
-    }
-    goRun = (bool) PyObject_IsTrue(py_goRun);
-    BMXGo_Query_Initialize(_handle, bmx, goRun);
-    if (PyErr_Occurred()) {
-        return NULL;
-    }
-    Py_INCREF(Py_None);
-    py_retval = Py_None;
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Query_Initialize(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Query_Rank(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t retval;
-    int64_t _handle;
-    int64_t topK;
-    const char *keywords[] = {"_handle", "topK", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LL", (char **) keywords, &_handle, &topK)) {
-        return NULL;
-    }
-    retval = BMXGo_Query_Rank(_handle, topK);
-    if (PyErr_Occurred()) {
-        return NULL;
-    }
-    py_retval = Py_BuildValue((char *) "L", retval);
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Query_Rank(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
 _wrap__BMXGo_BMXGo_BMX_CTor(PyObject *PYBINDGEN_UNUSED(_args), PyObject *PYBINDGEN_UNUSED(_kwargs))
 {
     PyObject *py_retval;
@@ -7066,32 +6325,6 @@ PyObject * _wrap__BMXGo_BMXGo_BMXAdapter_SearchAugmentedMany(PyObject * PYBINDGE
 
 
 PyObject *
-_wrap__BMXGo_BMXGo_BMXAdapter_SearchAugmentedMany2(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t retval;
-    int64_t _handle;
-    int64_t queries;
-    int64_t topK;
-    int64_t num_augmented_queries;
-    double weight;
-    int64_t maxConcurrent;
-    const char *keywords[] = {"_handle", "queries", "topK", "num_augmented_queries", "weight", "maxConcurrent", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LLLLdL", (char **) keywords, &_handle, &queries, &topK, &num_augmented_queries, &weight, &maxConcurrent)) {
-        return NULL;
-    }
-    retval = BMXGo_BMXAdapter_SearchAugmentedMany2(_handle, queries, topK, num_augmented_queries, weight, maxConcurrent);
-    if (PyErr_Occurred()) {
-        return NULL;
-    }
-    py_retval = Py_BuildValue((char *) "L", retval);
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_BMXAdapter_SearchAugmentedMany2(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
 _wrap__BMXGo_BMXGo_BMXAdapter_GetTokens(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
 {
     PyObject *py_retval;
@@ -7314,6 +6547,983 @@ _wrap__BMXGo_BMXGo_ChatCompletionRequest_MaxTokens_Set(PyObject * PYBINDGEN_UNUS
     return py_retval;
 }
 PyObject * _wrap__BMXGo_BMXGo_ChatCompletionRequest_MaxTokens_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Config_CTor(PyObject *PYBINDGEN_UNUSED(_args), PyObject *PYBINDGEN_UNUSED(_kwargs))
+{
+    PyObject *py_retval;
+    int64_t retval;
+
+    retval = BMXGo_Config_CTor();
+    py_retval = Py_BuildValue((char *) "L", retval);
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Config_CTor(PyObject *PYBINDGEN_UNUSED(_args), PyObject *PYBINDGEN_UNUSED(_kwargs));
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Config_DoLowercasing_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    bool retval;
+    int64_t handle;
+    const char *keywords[] = {"handle", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
+        return NULL;
+    }
+    retval = BMXGo_Config_DoLowercasing_Get(handle);
+    py_retval = Py_BuildValue((char *) "N", PyBool_FromLong(retval));
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Config_DoLowercasing_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Config_DoLowercasing_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t handle;
+    bool val;
+    PyObject *py_val;
+    const char *keywords[] = {"handle", "val", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LO", (char **) keywords, &handle, &py_val)) {
+        return NULL;
+    }
+    val = (bool) PyObject_IsTrue(py_val);
+    BMXGo_Config_DoLowercasing_Set(handle, val);
+    Py_INCREF(Py_None);
+    py_retval = Py_None;
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Config_DoLowercasing_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Config_DoAmpersandNormalization_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    bool retval;
+    int64_t handle;
+    const char *keywords[] = {"handle", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
+        return NULL;
+    }
+    retval = BMXGo_Config_DoAmpersandNormalization_Get(handle);
+    py_retval = Py_BuildValue((char *) "N", PyBool_FromLong(retval));
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Config_DoAmpersandNormalization_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Config_DoAmpersandNormalization_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t handle;
+    bool val;
+    PyObject *py_val;
+    const char *keywords[] = {"handle", "val", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LO", (char **) keywords, &handle, &py_val)) {
+        return NULL;
+    }
+    val = (bool) PyObject_IsTrue(py_val);
+    BMXGo_Config_DoAmpersandNormalization_Set(handle, val);
+    Py_INCREF(Py_None);
+    py_retval = Py_None;
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Config_DoAmpersandNormalization_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Config_DoSpecialCharsNormalization_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    bool retval;
+    int64_t handle;
+    const char *keywords[] = {"handle", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
+        return NULL;
+    }
+    retval = BMXGo_Config_DoSpecialCharsNormalization_Get(handle);
+    py_retval = Py_BuildValue((char *) "N", PyBool_FromLong(retval));
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Config_DoSpecialCharsNormalization_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Config_DoSpecialCharsNormalization_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t handle;
+    bool val;
+    PyObject *py_val;
+    const char *keywords[] = {"handle", "val", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LO", (char **) keywords, &handle, &py_val)) {
+        return NULL;
+    }
+    val = (bool) PyObject_IsTrue(py_val);
+    BMXGo_Config_DoSpecialCharsNormalization_Set(handle, val);
+    Py_INCREF(Py_None);
+    py_retval = Py_None;
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Config_DoSpecialCharsNormalization_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Config_DoAcronymsNormalization_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    bool retval;
+    int64_t handle;
+    const char *keywords[] = {"handle", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
+        return NULL;
+    }
+    retval = BMXGo_Config_DoAcronymsNormalization_Get(handle);
+    py_retval = Py_BuildValue((char *) "N", PyBool_FromLong(retval));
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Config_DoAcronymsNormalization_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Config_DoAcronymsNormalization_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t handle;
+    bool val;
+    PyObject *py_val;
+    const char *keywords[] = {"handle", "val", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LO", (char **) keywords, &handle, &py_val)) {
+        return NULL;
+    }
+    val = (bool) PyObject_IsTrue(py_val);
+    BMXGo_Config_DoAcronymsNormalization_Set(handle, val);
+    Py_INCREF(Py_None);
+    py_retval = Py_None;
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Config_DoAcronymsNormalization_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Config_DoPunctuationRemoval_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    bool retval;
+    int64_t handle;
+    const char *keywords[] = {"handle", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
+        return NULL;
+    }
+    retval = BMXGo_Config_DoPunctuationRemoval_Get(handle);
+    py_retval = Py_BuildValue((char *) "N", PyBool_FromLong(retval));
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Config_DoPunctuationRemoval_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Config_DoPunctuationRemoval_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t handle;
+    bool val;
+    PyObject *py_val;
+    const char *keywords[] = {"handle", "val", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LO", (char **) keywords, &handle, &py_val)) {
+        return NULL;
+    }
+    val = (bool) PyObject_IsTrue(py_val);
+    BMXGo_Config_DoPunctuationRemoval_Set(handle, val);
+    Py_INCREF(Py_None);
+    py_retval = Py_None;
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Config_DoPunctuationRemoval_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Document_CTor(PyObject *PYBINDGEN_UNUSED(_args), PyObject *PYBINDGEN_UNUSED(_kwargs))
+{
+    PyObject *py_retval;
+    int64_t retval;
+
+    retval = BMXGo_Document_CTor();
+    py_retval = Py_BuildValue((char *) "L", retval);
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Document_CTor(PyObject *PYBINDGEN_UNUSED(_args), PyObject *PYBINDGEN_UNUSED(_kwargs));
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Document_Text_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    char *retval;
+    int64_t handle;
+    const char *keywords[] = {"handle", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
+        return NULL;
+    }
+    retval = BMXGo_Document_Text_Get(handle);
+    py_retval = Py_BuildValue((char *) "s", retval);
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Document_Text_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Document_Text_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t handle;
+    char *val;
+    const char *keywords[] = {"handle", "val", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "Ls", (char **) keywords, &handle, &val)) {
+        return NULL;
+    }
+    BMXGo_Document_Text_Set(handle, val);
+    Py_INCREF(Py_None);
+    py_retval = Py_None;
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Document_Text_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Document_Tokens_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t retval;
+    int64_t handle;
+    const char *keywords[] = {"handle", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
+        return NULL;
+    }
+    retval = BMXGo_Document_Tokens_Get(handle);
+    py_retval = Py_BuildValue((char *) "L", retval);
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Document_Tokens_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Document_Tokens_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t handle;
+    int64_t val;
+    const char *keywords[] = {"handle", "val", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LL", (char **) keywords, &handle, &val)) {
+        return NULL;
+    }
+    BMXGo_Document_Tokens_Set(handle, val);
+    Py_INCREF(Py_None);
+    py_retval = Py_None;
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Document_Tokens_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Document_F_table_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t retval;
+    int64_t handle;
+    const char *keywords[] = {"handle", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
+        return NULL;
+    }
+    retval = BMXGo_Document_F_table_Get(handle);
+    py_retval = Py_BuildValue((char *) "L", retval);
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Document_F_table_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Document_F_table_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t handle;
+    int64_t val;
+    const char *keywords[] = {"handle", "val", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LL", (char **) keywords, &handle, &val)) {
+        return NULL;
+    }
+    BMXGo_Document_F_table_Set(handle, val);
+    Py_INCREF(Py_None);
+    py_retval = Py_None;
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Document_F_table_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_LinkedContent_CTor(PyObject *PYBINDGEN_UNUSED(_args), PyObject *PYBINDGEN_UNUSED(_kwargs))
+{
+    PyObject *py_retval;
+    int64_t retval;
+
+    retval = BMXGo_LinkedContent_CTor();
+    py_retval = Py_BuildValue((char *) "L", retval);
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_LinkedContent_CTor(PyObject *PYBINDGEN_UNUSED(_args), PyObject *PYBINDGEN_UNUSED(_kwargs));
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_LinkedContent_ID_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    char *retval;
+    int64_t handle;
+    const char *keywords[] = {"handle", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
+        return NULL;
+    }
+    retval = BMXGo_LinkedContent_ID_Get(handle);
+    py_retval = Py_BuildValue((char *) "s", retval);
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_LinkedContent_ID_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_LinkedContent_ID_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t handle;
+    char *val;
+    const char *keywords[] = {"handle", "val", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "Ls", (char **) keywords, &handle, &val)) {
+        return NULL;
+    }
+    BMXGo_LinkedContent_ID_Set(handle, val);
+    Py_INCREF(Py_None);
+    py_retval = Py_None;
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_LinkedContent_ID_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_LinkedContent_Type_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    char *retval;
+    int64_t handle;
+    const char *keywords[] = {"handle", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
+        return NULL;
+    }
+    retval = BMXGo_LinkedContent_Type_Get(handle);
+    py_retval = Py_BuildValue((char *) "s", retval);
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_LinkedContent_Type_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_LinkedContent_Type_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t handle;
+    char *val;
+    const char *keywords[] = {"handle", "val", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "Ls", (char **) keywords, &handle, &val)) {
+        return NULL;
+    }
+    BMXGo_LinkedContent_Type_Set(handle, val);
+    Py_INCREF(Py_None);
+    py_retval = Py_None;
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_LinkedContent_Type_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Query_CTor(PyObject *PYBINDGEN_UNUSED(_args), PyObject *PYBINDGEN_UNUSED(_kwargs))
+{
+    PyObject *py_retval;
+    int64_t retval;
+
+    retval = BMXGo_Query_CTor();
+    py_retval = Py_BuildValue((char *) "L", retval);
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Query_CTor(PyObject *PYBINDGEN_UNUSED(_args), PyObject *PYBINDGEN_UNUSED(_kwargs));
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Query_Text_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    char *retval;
+    int64_t handle;
+    const char *keywords[] = {"handle", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
+        return NULL;
+    }
+    retval = BMXGo_Query_Text_Get(handle);
+    py_retval = Py_BuildValue((char *) "s", retval);
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Query_Text_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Query_Text_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t handle;
+    char *val;
+    const char *keywords[] = {"handle", "val", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "Ls", (char **) keywords, &handle, &val)) {
+        return NULL;
+    }
+    BMXGo_Query_Text_Set(handle, val);
+    Py_INCREF(Py_None);
+    py_retval = Py_None;
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Query_Text_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Query_Tokens_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t retval;
+    int64_t handle;
+    const char *keywords[] = {"handle", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
+        return NULL;
+    }
+    retval = BMXGo_Query_Tokens_Get(handle);
+    py_retval = Py_BuildValue((char *) "L", retval);
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Query_Tokens_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Query_Tokens_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t handle;
+    int64_t val;
+    const char *keywords[] = {"handle", "val", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LL", (char **) keywords, &handle, &val)) {
+        return NULL;
+    }
+    BMXGo_Query_Tokens_Set(handle, val);
+    Py_INCREF(Py_None);
+    py_retval = Py_None;
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Query_Tokens_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Query_TotalWeight_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    double retval;
+    int64_t handle;
+    const char *keywords[] = {"handle", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
+        return NULL;
+    }
+    retval = BMXGo_Query_TotalWeight_Get(handle);
+    py_retval = Py_BuildValue((char *) "d", retval);
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Query_TotalWeight_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Query_TotalWeight_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t handle;
+    double val;
+    const char *keywords[] = {"handle", "val", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "Ld", (char **) keywords, &handle, &val)) {
+        return NULL;
+    }
+    BMXGo_Query_TotalWeight_Set(handle, val);
+    Py_INCREF(Py_None);
+    py_retval = Py_None;
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Query_TotalWeight_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Query_S_table_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t retval;
+    int64_t handle;
+    const char *keywords[] = {"handle", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
+        return NULL;
+    }
+    retval = BMXGo_Query_S_table_Get(handle);
+    py_retval = Py_BuildValue((char *) "L", retval);
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Query_S_table_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Query_S_table_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t handle;
+    int64_t val;
+    const char *keywords[] = {"handle", "val", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LL", (char **) keywords, &handle, &val)) {
+        return NULL;
+    }
+    BMXGo_Query_S_table_Set(handle, val);
+    Py_INCREF(Py_None);
+    py_retval = Py_None;
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Query_S_table_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Query_ScoreTable_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t retval;
+    int64_t handle;
+    const char *keywords[] = {"handle", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
+        return NULL;
+    }
+    retval = BMXGo_Query_ScoreTable_Get(handle);
+    py_retval = Py_BuildValue((char *) "L", retval);
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Query_ScoreTable_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Query_ScoreTable_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t handle;
+    int64_t val;
+    const char *keywords[] = {"handle", "val", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LL", (char **) keywords, &handle, &val)) {
+        return NULL;
+    }
+    BMXGo_Query_ScoreTable_Set(handle, val);
+    Py_INCREF(Py_None);
+    py_retval = Py_None;
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Query_ScoreTable_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Query_NormalizedScoreTable_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t retval;
+    int64_t handle;
+    const char *keywords[] = {"handle", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
+        return NULL;
+    }
+    retval = BMXGo_Query_NormalizedScoreTable_Get(handle);
+    py_retval = Py_BuildValue((char *) "L", retval);
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Query_NormalizedScoreTable_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Query_NormalizedScoreTable_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t handle;
+    int64_t val;
+    const char *keywords[] = {"handle", "val", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LL", (char **) keywords, &handle, &val)) {
+        return NULL;
+    }
+    BMXGo_Query_NormalizedScoreTable_Set(handle, val);
+    Py_INCREF(Py_None);
+    py_retval = Py_None;
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Query_NormalizedScoreTable_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Query_AugmentedQueries_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t retval;
+    int64_t handle;
+    const char *keywords[] = {"handle", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
+        return NULL;
+    }
+    retval = BMXGo_Query_AugmentedQueries_Get(handle);
+    py_retval = Py_BuildValue((char *) "L", retval);
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Query_AugmentedQueries_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Query_AugmentedQueries_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t handle;
+    int64_t val;
+    const char *keywords[] = {"handle", "val", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LL", (char **) keywords, &handle, &val)) {
+        return NULL;
+    }
+    BMXGo_Query_AugmentedQueries_Set(handle, val);
+    Py_INCREF(Py_None);
+    py_retval = Py_None;
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Query_AugmentedQueries_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Query_AugmentedWeights_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t retval;
+    int64_t handle;
+    const char *keywords[] = {"handle", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
+        return NULL;
+    }
+    retval = BMXGo_Query_AugmentedWeights_Get(handle);
+    py_retval = Py_BuildValue((char *) "L", retval);
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Query_AugmentedWeights_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Query_AugmentedWeights_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t handle;
+    int64_t val;
+    const char *keywords[] = {"handle", "val", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LL", (char **) keywords, &handle, &val)) {
+        return NULL;
+    }
+    BMXGo_Query_AugmentedWeights_Set(handle, val);
+    Py_INCREF(Py_None);
+    py_retval = Py_None;
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Query_AugmentedWeights_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Query_SetEntropy(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t _handle;
+    int64_t bmx;
+    bool goRun;
+    PyObject *py_goRun;
+    const char *keywords[] = {"_handle", "bmx", "goRun", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LLO", (char **) keywords, &_handle, &bmx, &py_goRun)) {
+        return NULL;
+    }
+    goRun = (bool) PyObject_IsTrue(py_goRun);
+    BMXGo_Query_SetEntropy(_handle, bmx, goRun);
+    if (PyErr_Occurred()) {
+        return NULL;
+    }
+    Py_INCREF(Py_None);
+    py_retval = Py_None;
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Query_SetEntropy(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Query_S_table_fill(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t _handle;
+    int64_t bmx;
+    bool goRun;
+    PyObject *py_goRun;
+    const char *keywords[] = {"_handle", "bmx", "goRun", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LLO", (char **) keywords, &_handle, &bmx, &py_goRun)) {
+        return NULL;
+    }
+    goRun = (bool) PyObject_IsTrue(py_goRun);
+    BMXGo_Query_S_table_fill(_handle, bmx, goRun);
+    if (PyErr_Occurred()) {
+        return NULL;
+    }
+    Py_INCREF(Py_None);
+    py_retval = Py_None;
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Query_S_table_fill(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Query_Score_table_fill(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t _handle;
+    int64_t bmx;
+    bool goRun;
+    PyObject *py_goRun;
+    const char *keywords[] = {"_handle", "bmx", "goRun", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LLO", (char **) keywords, &_handle, &bmx, &py_goRun)) {
+        return NULL;
+    }
+    goRun = (bool) PyObject_IsTrue(py_goRun);
+    BMXGo_Query_Score_table_fill(_handle, bmx, goRun);
+    if (PyErr_Occurred()) {
+        return NULL;
+    }
+    Py_INCREF(Py_None);
+    py_retval = Py_None;
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Query_Score_table_fill(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Query_NormalizedScore_table_fill(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t _handle;
+    int64_t bmx;
+    bool goRun;
+    PyObject *py_goRun;
+    const char *keywords[] = {"_handle", "bmx", "goRun", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LLO", (char **) keywords, &_handle, &bmx, &py_goRun)) {
+        return NULL;
+    }
+    goRun = (bool) PyObject_IsTrue(py_goRun);
+    BMXGo_Query_NormalizedScore_table_fill(_handle, bmx, goRun);
+    if (PyErr_Occurred()) {
+        return NULL;
+    }
+    Py_INCREF(Py_None);
+    py_retval = Py_None;
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Query_NormalizedScore_table_fill(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Query_Initialize(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t _handle;
+    int64_t bmx;
+    bool goRun;
+    PyObject *py_goRun;
+    const char *keywords[] = {"_handle", "bmx", "goRun", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LLO", (char **) keywords, &_handle, &bmx, &py_goRun)) {
+        return NULL;
+    }
+    goRun = (bool) PyObject_IsTrue(py_goRun);
+    BMXGo_Query_Initialize(_handle, bmx, goRun);
+    if (PyErr_Occurred()) {
+        return NULL;
+    }
+    Py_INCREF(Py_None);
+    py_retval = Py_None;
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Query_Initialize(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Query_Rank(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t retval;
+    int64_t _handle;
+    int64_t topK;
+    const char *keywords[] = {"_handle", "topK", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LL", (char **) keywords, &_handle, &topK)) {
+        return NULL;
+    }
+    retval = BMXGo_Query_Rank(_handle, topK);
+    if (PyErr_Occurred()) {
+        return NULL;
+    }
+    py_retval = Py_BuildValue((char *) "L", retval);
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Query_Rank(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_TextPreprocessor_CTor(PyObject *PYBINDGEN_UNUSED(_args), PyObject *PYBINDGEN_UNUSED(_kwargs))
+{
+    PyObject *py_retval;
+    int64_t retval;
+
+    retval = BMXGo_TextPreprocessor_CTor();
+    py_retval = Py_BuildValue((char *) "L", retval);
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_TextPreprocessor_CTor(PyObject *PYBINDGEN_UNUSED(_args), PyObject *PYBINDGEN_UNUSED(_kwargs));
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_TextPreprocessor_Process(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t retval;
+    int64_t _handle;
+    char *item;
+    const char *keywords[] = {"_handle", "item", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "Ls", (char **) keywords, &_handle, &item)) {
+        return NULL;
+    }
+    retval = BMXGo_TextPreprocessor_Process(_handle, item);
+    if (PyErr_Occurred()) {
+        return NULL;
+    }
+    py_retval = Py_BuildValue((char *) "L", retval);
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_TextPreprocessor_Process(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_TextPreprocessor_ProcessMany(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t retval;
+    int64_t _handle;
+    int64_t items;
+    int64_t nWorkers;
+    const char *keywords[] = {"_handle", "items", "nWorkers", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LLL", (char **) keywords, &_handle, &items, &nWorkers)) {
+        return NULL;
+    }
+    retval = BMXGo_TextPreprocessor_ProcessMany(_handle, items, nWorkers);
+    if (PyErr_Occurred()) {
+        return NULL;
+    }
+    py_retval = Py_BuildValue((char *) "L", retval);
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_TextPreprocessor_ProcessMany(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_TextPreprocessor_SetStemmer(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    char *retval;
+    int64_t _handle;
+    char *stemmerName;
+    const char *keywords[] = {"_handle", "stemmerName", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "Ls", (char **) keywords, &_handle, &stemmerName)) {
+        return NULL;
+    }
+    retval = BMXGo_TextPreprocessor_SetStemmer(_handle, stemmerName);
+    if (PyErr_Occurred()) {
+        return NULL;
+    }
+    py_retval = Py_BuildValue((char *) "s", retval);
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_TextPreprocessor_SetStemmer(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_TextPreprocessor_SetStopwords(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    char *retval;
+    int64_t _handle;
+    char *stopwords;
+    const char *keywords[] = {"_handle", "stopwords", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "Ls", (char **) keywords, &_handle, &stopwords)) {
+        return NULL;
+    }
+    retval = BMXGo_TextPreprocessor_SetStopwords(_handle, stopwords);
+    if (PyErr_Occurred()) {
+        return NULL;
+    }
+    py_retval = Py_BuildValue((char *) "s", retval);
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_TextPreprocessor_SetStopwords(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
 
 
 PyObject *
@@ -7626,403 +7836,6 @@ PyObject * _wrap__BMXGo_BMXGo_ClientConfig_DeploymentName_Set(PyObject * PYBINDG
 
 
 PyObject *
-_wrap__BMXGo_BMXGo_SearchResults_CTor(PyObject *PYBINDGEN_UNUSED(_args), PyObject *PYBINDGEN_UNUSED(_kwargs))
-{
-    PyObject *py_retval;
-    int64_t retval;
-
-    retval = BMXGo_SearchResults_CTor();
-    py_retval = Py_BuildValue((char *) "L", retval);
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_SearchResults_CTor(PyObject *PYBINDGEN_UNUSED(_args), PyObject *PYBINDGEN_UNUSED(_kwargs));
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_SearchResults_Keys_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t retval;
-    int64_t handle;
-    const char *keywords[] = {"handle", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
-        return NULL;
-    }
-    retval = BMXGo_SearchResults_Keys_Get(handle);
-    py_retval = Py_BuildValue((char *) "L", retval);
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_SearchResults_Keys_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_SearchResults_Keys_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t handle;
-    int64_t val;
-    const char *keywords[] = {"handle", "val", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LL", (char **) keywords, &handle, &val)) {
-        return NULL;
-    }
-    BMXGo_SearchResults_Keys_Set(handle, val);
-    Py_INCREF(Py_None);
-    py_retval = Py_None;
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_SearchResults_Keys_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_SearchResults_Scores_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t retval;
-    int64_t handle;
-    const char *keywords[] = {"handle", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
-        return NULL;
-    }
-    retval = BMXGo_SearchResults_Scores_Get(handle);
-    py_retval = Py_BuildValue((char *) "L", retval);
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_SearchResults_Scores_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_SearchResults_Scores_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t handle;
-    int64_t val;
-    const char *keywords[] = {"handle", "val", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LL", (char **) keywords, &handle, &val)) {
-        return NULL;
-    }
-    BMXGo_SearchResults_Scores_Set(handle, val);
-    Py_INCREF(Py_None);
-    py_retval = Py_None;
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_SearchResults_Scores_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_TextPreprocessor_CTor(PyObject *PYBINDGEN_UNUSED(_args), PyObject *PYBINDGEN_UNUSED(_kwargs))
-{
-    PyObject *py_retval;
-    int64_t retval;
-
-    retval = BMXGo_TextPreprocessor_CTor();
-    py_retval = Py_BuildValue((char *) "L", retval);
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_TextPreprocessor_CTor(PyObject *PYBINDGEN_UNUSED(_args), PyObject *PYBINDGEN_UNUSED(_kwargs));
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_TextPreprocessor_Process(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t retval;
-    int64_t _handle;
-    char *item;
-    const char *keywords[] = {"_handle", "item", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "Ls", (char **) keywords, &_handle, &item)) {
-        return NULL;
-    }
-    retval = BMXGo_TextPreprocessor_Process(_handle, item);
-    if (PyErr_Occurred()) {
-        return NULL;
-    }
-    py_retval = Py_BuildValue((char *) "L", retval);
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_TextPreprocessor_Process(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_TextPreprocessor_ProcessMany(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t retval;
-    int64_t _handle;
-    int64_t items;
-    int64_t nWorkers;
-    const char *keywords[] = {"_handle", "items", "nWorkers", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LLL", (char **) keywords, &_handle, &items, &nWorkers)) {
-        return NULL;
-    }
-    retval = BMXGo_TextPreprocessor_ProcessMany(_handle, items, nWorkers);
-    if (PyErr_Occurred()) {
-        return NULL;
-    }
-    py_retval = Py_BuildValue((char *) "L", retval);
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_TextPreprocessor_ProcessMany(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_TextPreprocessor_SetStemmer(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    char *retval;
-    int64_t _handle;
-    char *stemmerName;
-    const char *keywords[] = {"_handle", "stemmerName", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "Ls", (char **) keywords, &_handle, &stemmerName)) {
-        return NULL;
-    }
-    retval = BMXGo_TextPreprocessor_SetStemmer(_handle, stemmerName);
-    if (PyErr_Occurred()) {
-        return NULL;
-    }
-    py_retval = Py_BuildValue((char *) "s", retval);
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_TextPreprocessor_SetStemmer(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_TextPreprocessor_SetStopwords(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    char *retval;
-    int64_t _handle;
-    char *stopwords;
-    const char *keywords[] = {"_handle", "stopwords", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "Ls", (char **) keywords, &_handle, &stopwords)) {
-        return NULL;
-    }
-    retval = BMXGo_TextPreprocessor_SetStopwords(_handle, stopwords);
-    if (PyErr_Occurred()) {
-        return NULL;
-    }
-    py_retval = Py_BuildValue((char *) "s", retval);
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_TextPreprocessor_SetStopwords(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Config_CTor(PyObject *PYBINDGEN_UNUSED(_args), PyObject *PYBINDGEN_UNUSED(_kwargs))
-{
-    PyObject *py_retval;
-    int64_t retval;
-
-    retval = BMXGo_Config_CTor();
-    py_retval = Py_BuildValue((char *) "L", retval);
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Config_CTor(PyObject *PYBINDGEN_UNUSED(_args), PyObject *PYBINDGEN_UNUSED(_kwargs));
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Config_DoLowercasing_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    bool retval;
-    int64_t handle;
-    const char *keywords[] = {"handle", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
-        return NULL;
-    }
-    retval = BMXGo_Config_DoLowercasing_Get(handle);
-    py_retval = Py_BuildValue((char *) "N", PyBool_FromLong(retval));
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Config_DoLowercasing_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Config_DoLowercasing_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t handle;
-    bool val;
-    PyObject *py_val;
-    const char *keywords[] = {"handle", "val", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LO", (char **) keywords, &handle, &py_val)) {
-        return NULL;
-    }
-    val = (bool) PyObject_IsTrue(py_val);
-    BMXGo_Config_DoLowercasing_Set(handle, val);
-    Py_INCREF(Py_None);
-    py_retval = Py_None;
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Config_DoLowercasing_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Config_DoAmpersandNormalization_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    bool retval;
-    int64_t handle;
-    const char *keywords[] = {"handle", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
-        return NULL;
-    }
-    retval = BMXGo_Config_DoAmpersandNormalization_Get(handle);
-    py_retval = Py_BuildValue((char *) "N", PyBool_FromLong(retval));
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Config_DoAmpersandNormalization_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Config_DoAmpersandNormalization_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t handle;
-    bool val;
-    PyObject *py_val;
-    const char *keywords[] = {"handle", "val", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LO", (char **) keywords, &handle, &py_val)) {
-        return NULL;
-    }
-    val = (bool) PyObject_IsTrue(py_val);
-    BMXGo_Config_DoAmpersandNormalization_Set(handle, val);
-    Py_INCREF(Py_None);
-    py_retval = Py_None;
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Config_DoAmpersandNormalization_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Config_DoSpecialCharsNormalization_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    bool retval;
-    int64_t handle;
-    const char *keywords[] = {"handle", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
-        return NULL;
-    }
-    retval = BMXGo_Config_DoSpecialCharsNormalization_Get(handle);
-    py_retval = Py_BuildValue((char *) "N", PyBool_FromLong(retval));
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Config_DoSpecialCharsNormalization_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Config_DoSpecialCharsNormalization_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t handle;
-    bool val;
-    PyObject *py_val;
-    const char *keywords[] = {"handle", "val", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LO", (char **) keywords, &handle, &py_val)) {
-        return NULL;
-    }
-    val = (bool) PyObject_IsTrue(py_val);
-    BMXGo_Config_DoSpecialCharsNormalization_Set(handle, val);
-    Py_INCREF(Py_None);
-    py_retval = Py_None;
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Config_DoSpecialCharsNormalization_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Config_DoAcronymsNormalization_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    bool retval;
-    int64_t handle;
-    const char *keywords[] = {"handle", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
-        return NULL;
-    }
-    retval = BMXGo_Config_DoAcronymsNormalization_Get(handle);
-    py_retval = Py_BuildValue((char *) "N", PyBool_FromLong(retval));
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Config_DoAcronymsNormalization_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Config_DoAcronymsNormalization_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t handle;
-    bool val;
-    PyObject *py_val;
-    const char *keywords[] = {"handle", "val", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LO", (char **) keywords, &handle, &py_val)) {
-        return NULL;
-    }
-    val = (bool) PyObject_IsTrue(py_val);
-    BMXGo_Config_DoAcronymsNormalization_Set(handle, val);
-    Py_INCREF(Py_None);
-    py_retval = Py_None;
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Config_DoAcronymsNormalization_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Config_DoPunctuationRemoval_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    bool retval;
-    int64_t handle;
-    const char *keywords[] = {"handle", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
-        return NULL;
-    }
-    retval = BMXGo_Config_DoPunctuationRemoval_Get(handle);
-    py_retval = Py_BuildValue((char *) "N", PyBool_FromLong(retval));
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Config_DoPunctuationRemoval_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_Config_DoPunctuationRemoval_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t handle;
-    bool val;
-    PyObject *py_val;
-    const char *keywords[] = {"handle", "val", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LO", (char **) keywords, &handle, &py_val)) {
-        return NULL;
-    }
-    val = (bool) PyObject_IsTrue(py_val);
-    BMXGo_Config_DoPunctuationRemoval_Set(handle, val);
-    Py_INCREF(Py_None);
-    py_retval = Py_None;
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_Config_DoPunctuationRemoval_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
 _wrap__BMXGo_BMXGo_ConvMessage_CTor(PyObject *PYBINDGEN_UNUSED(_args), PyObject *PYBINDGEN_UNUSED(_kwargs))
 {
     PyObject *py_retval;
@@ -8234,90 +8047,251 @@ PyObject * _wrap__BMXGo_BMXGo_LLMClient_CTor(PyObject *PYBINDGEN_UNUSED(_args), 
 
 
 PyObject *
-_wrap__BMXGo_BMXGo_LinkedContent_CTor(PyObject *PYBINDGEN_UNUSED(_args), PyObject *PYBINDGEN_UNUSED(_kwargs))
+_wrap__BMXGo_BMXGo_Parameters_CTor(PyObject *PYBINDGEN_UNUSED(_args), PyObject *PYBINDGEN_UNUSED(_kwargs))
 {
     PyObject *py_retval;
     int64_t retval;
 
-    retval = BMXGo_LinkedContent_CTor();
+    retval = BMXGo_Parameters_CTor();
     py_retval = Py_BuildValue((char *) "L", retval);
     return py_retval;
 }
-PyObject * _wrap__BMXGo_BMXGo_LinkedContent_CTor(PyObject *PYBINDGEN_UNUSED(_args), PyObject *PYBINDGEN_UNUSED(_kwargs));
+PyObject * _wrap__BMXGo_BMXGo_Parameters_CTor(PyObject *PYBINDGEN_UNUSED(_args), PyObject *PYBINDGEN_UNUSED(_kwargs));
 
 
 PyObject *
-_wrap__BMXGo_BMXGo_LinkedContent_ID_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+_wrap__BMXGo_BMXGo_Parameters_Alpha_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
 {
     PyObject *py_retval;
-    char *retval;
+    double retval;
     int64_t handle;
     const char *keywords[] = {"handle", NULL};
 
     if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
         return NULL;
     }
-    retval = BMXGo_LinkedContent_ID_Get(handle);
-    py_retval = Py_BuildValue((char *) "s", retval);
+    retval = BMXGo_Parameters_Alpha_Get(handle);
+    py_retval = Py_BuildValue((char *) "d", retval);
     return py_retval;
 }
-PyObject * _wrap__BMXGo_BMXGo_LinkedContent_ID_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+PyObject * _wrap__BMXGo_BMXGo_Parameters_Alpha_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
 
 
 PyObject *
-_wrap__BMXGo_BMXGo_LinkedContent_ID_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+_wrap__BMXGo_BMXGo_Parameters_Alpha_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
 {
     PyObject *py_retval;
     int64_t handle;
-    char *val;
+    double val;
     const char *keywords[] = {"handle", "val", NULL};
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "Ls", (char **) keywords, &handle, &val)) {
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "Ld", (char **) keywords, &handle, &val)) {
         return NULL;
     }
-    BMXGo_LinkedContent_ID_Set(handle, val);
+    BMXGo_Parameters_Alpha_Set(handle, val);
     Py_INCREF(Py_None);
     py_retval = Py_None;
     return py_retval;
 }
-PyObject * _wrap__BMXGo_BMXGo_LinkedContent_ID_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+PyObject * _wrap__BMXGo_BMXGo_Parameters_Alpha_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
 
 
 PyObject *
-_wrap__BMXGo_BMXGo_LinkedContent_Type_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+_wrap__BMXGo_BMXGo_Parameters_Beta_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
 {
     PyObject *py_retval;
-    char *retval;
+    double retval;
     int64_t handle;
     const char *keywords[] = {"handle", NULL};
 
     if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
         return NULL;
     }
-    retval = BMXGo_LinkedContent_Type_Get(handle);
-    py_retval = Py_BuildValue((char *) "s", retval);
+    retval = BMXGo_Parameters_Beta_Get(handle);
+    py_retval = Py_BuildValue((char *) "d", retval);
     return py_retval;
 }
-PyObject * _wrap__BMXGo_BMXGo_LinkedContent_Type_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+PyObject * _wrap__BMXGo_BMXGo_Parameters_Beta_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
 
 
 PyObject *
-_wrap__BMXGo_BMXGo_LinkedContent_Type_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+_wrap__BMXGo_BMXGo_Parameters_Beta_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
 {
     PyObject *py_retval;
     int64_t handle;
-    char *val;
+    double val;
     const char *keywords[] = {"handle", "val", NULL};
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "Ls", (char **) keywords, &handle, &val)) {
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "Ld", (char **) keywords, &handle, &val)) {
         return NULL;
     }
-    BMXGo_LinkedContent_Type_Set(handle, val);
+    BMXGo_Parameters_Beta_Set(handle, val);
     Py_INCREF(Py_None);
     py_retval = Py_None;
     return py_retval;
 }
-PyObject * _wrap__BMXGo_BMXGo_LinkedContent_Type_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+PyObject * _wrap__BMXGo_BMXGo_Parameters_Beta_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Parameters_Avgdl_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    double retval;
+    int64_t handle;
+    const char *keywords[] = {"handle", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
+        return NULL;
+    }
+    retval = BMXGo_Parameters_Avgdl_Get(handle);
+    py_retval = Py_BuildValue((char *) "d", retval);
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Parameters_Avgdl_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Parameters_Avgdl_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t handle;
+    double val;
+    const char *keywords[] = {"handle", "val", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "Ld", (char **) keywords, &handle, &val)) {
+        return NULL;
+    }
+    BMXGo_Parameters_Avgdl_Set(handle, val);
+    Py_INCREF(Py_None);
+    py_retval = Py_None;
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Parameters_Avgdl_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Parameters_N_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t retval;
+    int64_t handle;
+    const char *keywords[] = {"handle", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
+        return NULL;
+    }
+    retval = BMXGo_Parameters_N_Get(handle);
+    py_retval = Py_BuildValue((char *) "L", retval);
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Parameters_N_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_Parameters_N_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t handle;
+    int64_t val;
+    const char *keywords[] = {"handle", "val", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LL", (char **) keywords, &handle, &val)) {
+        return NULL;
+    }
+    BMXGo_Parameters_N_Set(handle, val);
+    Py_INCREF(Py_None);
+    py_retval = Py_None;
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_Parameters_N_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_SearchResults_CTor(PyObject *PYBINDGEN_UNUSED(_args), PyObject *PYBINDGEN_UNUSED(_kwargs))
+{
+    PyObject *py_retval;
+    int64_t retval;
+
+    retval = BMXGo_SearchResults_CTor();
+    py_retval = Py_BuildValue((char *) "L", retval);
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_SearchResults_CTor(PyObject *PYBINDGEN_UNUSED(_args), PyObject *PYBINDGEN_UNUSED(_kwargs));
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_SearchResults_Keys_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t retval;
+    int64_t handle;
+    const char *keywords[] = {"handle", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
+        return NULL;
+    }
+    retval = BMXGo_SearchResults_Keys_Get(handle);
+    py_retval = Py_BuildValue((char *) "L", retval);
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_SearchResults_Keys_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_SearchResults_Keys_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t handle;
+    int64_t val;
+    const char *keywords[] = {"handle", "val", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LL", (char **) keywords, &handle, &val)) {
+        return NULL;
+    }
+    BMXGo_SearchResults_Keys_Set(handle, val);
+    Py_INCREF(Py_None);
+    py_retval = Py_None;
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_SearchResults_Keys_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_SearchResults_Scores_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t retval;
+    int64_t handle;
+    const char *keywords[] = {"handle", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &handle)) {
+        return NULL;
+    }
+    retval = BMXGo_SearchResults_Scores_Get(handle);
+    py_retval = Py_BuildValue((char *) "L", retval);
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_SearchResults_Scores_Get(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_SearchResults_Scores_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t handle;
+    int64_t val;
+    const char *keywords[] = {"handle", "val", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LL", (char **) keywords, &handle, &val)) {
+        return NULL;
+    }
+    BMXGo_SearchResults_Scores_Set(handle, val);
+    Py_INCREF(Py_None);
+    py_retval = Py_None;
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_SearchResults_Scores_Set(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
 
 
 PyObject *
@@ -8343,27 +8317,6 @@ PyObject * _wrap__BMXGo_BMXGo_Build(PyObject * PYBINDGEN_UNUSED(dummy), PyObject
 
 
 PyObject *
-_wrap__BMXGo_BMXGo_NewTextPreprocessor(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t retval;
-    int64_t config;
-    const char *keywords[] = {"config", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &config)) {
-        return NULL;
-    }
-    retval = BMXGo_NewTextPreprocessor(config);
-    if (PyErr_Occurred()) {
-        return NULL;
-    }
-    py_retval = Py_BuildValue((char *) "L", retval);
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_NewTextPreprocessor(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
 _wrap__BMXGo_BMXGo_NewConfig(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
 {
     PyObject *py_retval;
@@ -8384,6 +8337,27 @@ _wrap__BMXGo_BMXGo_NewConfig(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args,
     return py_retval;
 }
 PyObject * _wrap__BMXGo_BMXGo_NewConfig(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_NewTextPreprocessor(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t retval;
+    int64_t config;
+    const char *keywords[] = {"config", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &config)) {
+        return NULL;
+    }
+    retval = BMXGo_NewTextPreprocessor(config);
+    if (PyErr_Occurred()) {
+        return NULL;
+    }
+    py_retval = Py_BuildValue((char *) "L", retval);
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_NewTextPreprocessor(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
 
 
 PyObject *
@@ -8431,28 +8405,7 @@ PyObject * _wrap__BMXGo_BMXGo_NormalizeAcronyms(PyObject * PYBINDGEN_UNUSED(dumm
 
 
 PyObject *
-_wrap__BMXGo_BMXGo_RemoveEmptyTokens(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
-{
-    PyObject *py_retval;
-    int64_t retval;
-    int64_t tokens;
-    const char *keywords[] = {"tokens", NULL};
-
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &tokens)) {
-        return NULL;
-    }
-    retval = BMXGo_RemoveEmptyTokens(tokens);
-    if (PyErr_Occurred()) {
-        return NULL;
-    }
-    py_retval = Py_BuildValue((char *) "L", retval);
-    return py_retval;
-}
-PyObject * _wrap__BMXGo_BMXGo_RemoveEmptyTokens(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
-
-
-PyObject *
-_wrap__BMXGo_BMXGo_RemovePunctuation(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+_wrap__BMXGo_BMXGo_NormalizeAmpersand(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
 {
     PyObject *py_retval;
     char *retval;
@@ -8462,7 +8415,7 @@ _wrap__BMXGo_BMXGo_RemovePunctuation(PyObject * PYBINDGEN_UNUSED(dummy), PyObjec
     if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "s", (char **) keywords, &text)) {
         return NULL;
     }
-    retval = BMXGo_RemovePunctuation(text);
+    retval = BMXGo_NormalizeAmpersand(text);
     if (PyErr_Occurred()) {
         if (retval != NULL) free(retval);
         return NULL;
@@ -8471,29 +8424,30 @@ _wrap__BMXGo_BMXGo_RemovePunctuation(PyObject * PYBINDGEN_UNUSED(dummy), PyObjec
     free(retval);
     return py_retval;
 }
-PyObject * _wrap__BMXGo_BMXGo_RemovePunctuation(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+PyObject * _wrap__BMXGo_BMXGo_NormalizeAmpersand(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
 
 
 PyObject *
-_wrap__BMXGo_BMXGo_ApplyStemmer(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+_wrap__BMXGo_BMXGo_NormalizeSpecialChars(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
 {
     PyObject *py_retval;
-    int64_t retval;
-    int64_t tokens;
-    PyObject *stemmer;
-    const char *keywords[] = {"tokens", "stemmer", NULL};
+    char *retval;
+    char *text;
+    const char *keywords[] = {"text", NULL};
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LO", (char **) keywords, &tokens, &stemmer)) {
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "s", (char **) keywords, &text)) {
         return NULL;
     }
-    retval = BMXGo_ApplyStemmer(tokens, stemmer);
+    retval = BMXGo_NormalizeSpecialChars(text);
     if (PyErr_Occurred()) {
+        if (retval != NULL) free(retval);
         return NULL;
     }
-    py_retval = Py_BuildValue((char *) "L", retval);
+    py_retval = Py_BuildValue((char *) "s", retval);
+    free(retval);
     return py_retval;
 }
-PyObject * _wrap__BMXGo_BMXGo_ApplyStemmer(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+PyObject * _wrap__BMXGo_BMXGo_NormalizeSpecialChars(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
 
 
 PyObject *
@@ -8545,26 +8499,25 @@ PyObject * _wrap__BMXGo_BMXGo_HtmlToMarkdown(PyObject * PYBINDGEN_UNUSED(dummy),
 
 
 PyObject *
-_wrap__BMXGo_BMXGo_NormalizeDiacritics(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+_wrap__BMXGo_BMXGo_ApplyStemmer(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
 {
     PyObject *py_retval;
-    char *retval;
-    char *text;
-    const char *keywords[] = {"text", NULL};
+    int64_t retval;
+    int64_t tokens;
+    PyObject *stemmer;
+    const char *keywords[] = {"tokens", "stemmer", NULL};
 
-    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "s", (char **) keywords, &text)) {
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "LO", (char **) keywords, &tokens, &stemmer)) {
         return NULL;
     }
-    retval = BMXGo_NormalizeDiacritics(text);
+    retval = BMXGo_ApplyStemmer(tokens, stemmer);
     if (PyErr_Occurred()) {
-        if (retval != NULL) free(retval);
         return NULL;
     }
-    py_retval = Py_BuildValue((char *) "s", retval);
-    free(retval);
+    py_retval = Py_BuildValue((char *) "L", retval);
     return py_retval;
 }
-PyObject * _wrap__BMXGo_BMXGo_NormalizeDiacritics(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+PyObject * _wrap__BMXGo_BMXGo_ApplyStemmer(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
 
 
 PyObject *
@@ -8635,7 +8588,7 @@ PyObject * _wrap__BMXGo_BMXGo_Lowercasing(PyObject * PYBINDGEN_UNUSED(dummy), Py
 
 
 PyObject *
-_wrap__BMXGo_BMXGo_NormalizeAmpersand(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+_wrap__BMXGo_BMXGo_NormalizeDiacritics(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
 {
     PyObject *py_retval;
     char *retval;
@@ -8645,7 +8598,7 @@ _wrap__BMXGo_BMXGo_NormalizeAmpersand(PyObject * PYBINDGEN_UNUSED(dummy), PyObje
     if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "s", (char **) keywords, &text)) {
         return NULL;
     }
-    retval = BMXGo_NormalizeAmpersand(text);
+    retval = BMXGo_NormalizeDiacritics(text);
     if (PyErr_Occurred()) {
         if (retval != NULL) free(retval);
         return NULL;
@@ -8654,11 +8607,32 @@ _wrap__BMXGo_BMXGo_NormalizeAmpersand(PyObject * PYBINDGEN_UNUSED(dummy), PyObje
     free(retval);
     return py_retval;
 }
-PyObject * _wrap__BMXGo_BMXGo_NormalizeAmpersand(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+PyObject * _wrap__BMXGo_BMXGo_NormalizeDiacritics(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
 
 
 PyObject *
-_wrap__BMXGo_BMXGo_NormalizeSpecialChars(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+_wrap__BMXGo_BMXGo_RemoveEmptyTokens(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
+{
+    PyObject *py_retval;
+    int64_t retval;
+    int64_t tokens;
+    const char *keywords[] = {"tokens", NULL};
+
+    if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "L", (char **) keywords, &tokens)) {
+        return NULL;
+    }
+    retval = BMXGo_RemoveEmptyTokens(tokens);
+    if (PyErr_Occurred()) {
+        return NULL;
+    }
+    py_retval = Py_BuildValue((char *) "L", retval);
+    return py_retval;
+}
+PyObject * _wrap__BMXGo_BMXGo_RemoveEmptyTokens(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+
+
+PyObject *
+_wrap__BMXGo_BMXGo_RemovePunctuation(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs)
 {
     PyObject *py_retval;
     char *retval;
@@ -8668,7 +8642,7 @@ _wrap__BMXGo_BMXGo_NormalizeSpecialChars(PyObject * PYBINDGEN_UNUSED(dummy), PyO
     if (!PyArg_ParseTupleAndKeywords(args, kwargs, (char *) "s", (char **) keywords, &text)) {
         return NULL;
     }
-    retval = BMXGo_NormalizeSpecialChars(text);
+    retval = BMXGo_RemovePunctuation(text);
     if (PyErr_Occurred()) {
         if (retval != NULL) free(retval);
         return NULL;
@@ -8677,7 +8651,7 @@ _wrap__BMXGo_BMXGo_NormalizeSpecialChars(PyObject * PYBINDGEN_UNUSED(dummy), PyO
     free(retval);
     return py_retval;
 }
-PyObject * _wrap__BMXGo_BMXGo_NormalizeSpecialChars(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
+PyObject * _wrap__BMXGo_BMXGo_RemovePunctuation(PyObject * PYBINDGEN_UNUSED(dummy), PyObject *args, PyObject *kwargs);
 
 static PyMethodDef _BMXGo_functions[] = {
     {(char *) "GoPyInit", (PyCFunction) _wrap__BMXGo_GoPyInit, METH_NOARGS, "GoPyInit()\n\n" },
@@ -8995,45 +8969,6 @@ static PyMethodDef _BMXGo_functions[] = {
     {(char *) "Map_string_int_set", (PyCFunction) _wrap__BMXGo_Map_string_int_set, METH_KEYWORDS|METH_VARARGS, "Map_string_int_set(handle, key, value)\n\ntype: handle: int64_t\ntype: key: char *\ntype: value: int64_t" },
     {(char *) "Map_string_int_delete", (PyCFunction) _wrap__BMXGo_Map_string_int_delete, METH_KEYWORDS|METH_VARARGS, "Map_string_int_delete(handle, _ky)\n\ntype: handle: int64_t\ntype: _ky: char *" },
     {(char *) "Map_string_int_keys", (PyCFunction) _wrap__BMXGo_Map_string_int_keys, METH_KEYWORDS|METH_VARARGS, "Map_string_int_keys(handle)\n\ntype: handle: int64_t" },
-    {(char *) "BMXGo_Document_CTor", (PyCFunction) _wrap__BMXGo_BMXGo_Document_CTor, METH_NOARGS, "BMXGo_Document_CTor()\n\n" },
-    {(char *) "BMXGo_Document_Text_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Document_Text_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Document_Text_Get(handle)\n\ntype: handle: int64_t" },
-    {(char *) "BMXGo_Document_Text_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Document_Text_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Document_Text_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: char *" },
-    {(char *) "BMXGo_Document_Tokens_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Document_Tokens_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Document_Tokens_Get(handle)\n\ntype: handle: int64_t" },
-    {(char *) "BMXGo_Document_Tokens_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Document_Tokens_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Document_Tokens_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: int64_t" },
-    {(char *) "BMXGo_Document_F_table_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Document_F_table_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Document_F_table_Get(handle)\n\ntype: handle: int64_t" },
-    {(char *) "BMXGo_Document_F_table_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Document_F_table_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Document_F_table_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: int64_t" },
-    {(char *) "BMXGo_Parameters_CTor", (PyCFunction) _wrap__BMXGo_BMXGo_Parameters_CTor, METH_NOARGS, "BMXGo_Parameters_CTor()\n\n" },
-    {(char *) "BMXGo_Parameters_Alpha_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Parameters_Alpha_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Parameters_Alpha_Get(handle)\n\ntype: handle: int64_t" },
-    {(char *) "BMXGo_Parameters_Alpha_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Parameters_Alpha_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Parameters_Alpha_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: double" },
-    {(char *) "BMXGo_Parameters_Beta_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Parameters_Beta_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Parameters_Beta_Get(handle)\n\ntype: handle: int64_t" },
-    {(char *) "BMXGo_Parameters_Beta_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Parameters_Beta_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Parameters_Beta_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: double" },
-    {(char *) "BMXGo_Parameters_Avgdl_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Parameters_Avgdl_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Parameters_Avgdl_Get(handle)\n\ntype: handle: int64_t" },
-    {(char *) "BMXGo_Parameters_Avgdl_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Parameters_Avgdl_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Parameters_Avgdl_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: double" },
-    {(char *) "BMXGo_Parameters_N_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Parameters_N_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Parameters_N_Get(handle)\n\ntype: handle: int64_t" },
-    {(char *) "BMXGo_Parameters_N_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Parameters_N_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Parameters_N_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: int64_t" },
-    {(char *) "BMXGo_Query_CTor", (PyCFunction) _wrap__BMXGo_BMXGo_Query_CTor, METH_NOARGS, "BMXGo_Query_CTor()\n\n" },
-    {(char *) "BMXGo_Query_Text_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Query_Text_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_Text_Get(handle)\n\ntype: handle: int64_t" },
-    {(char *) "BMXGo_Query_Text_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Query_Text_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_Text_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: char *" },
-    {(char *) "BMXGo_Query_Tokens_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Query_Tokens_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_Tokens_Get(handle)\n\ntype: handle: int64_t" },
-    {(char *) "BMXGo_Query_Tokens_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Query_Tokens_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_Tokens_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: int64_t" },
-    {(char *) "BMXGo_Query_TotalWeight_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Query_TotalWeight_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_TotalWeight_Get(handle)\n\ntype: handle: int64_t" },
-    {(char *) "BMXGo_Query_TotalWeight_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Query_TotalWeight_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_TotalWeight_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: double" },
-    {(char *) "BMXGo_Query_S_table_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Query_S_table_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_S_table_Get(handle)\n\ntype: handle: int64_t" },
-    {(char *) "BMXGo_Query_S_table_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Query_S_table_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_S_table_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: int64_t" },
-    {(char *) "BMXGo_Query_ScoreTable_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Query_ScoreTable_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_ScoreTable_Get(handle)\n\ntype: handle: int64_t" },
-    {(char *) "BMXGo_Query_ScoreTable_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Query_ScoreTable_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_ScoreTable_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: int64_t" },
-    {(char *) "BMXGo_Query_NormalizedScoreTable_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Query_NormalizedScoreTable_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_NormalizedScoreTable_Get(handle)\n\ntype: handle: int64_t" },
-    {(char *) "BMXGo_Query_NormalizedScoreTable_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Query_NormalizedScoreTable_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_NormalizedScoreTable_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: int64_t" },
-    {(char *) "BMXGo_Query_AugmentedQueries_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Query_AugmentedQueries_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_AugmentedQueries_Get(handle)\n\ntype: handle: int64_t" },
-    {(char *) "BMXGo_Query_AugmentedQueries_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Query_AugmentedQueries_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_AugmentedQueries_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: int64_t" },
-    {(char *) "BMXGo_Query_AugmentedWeights_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Query_AugmentedWeights_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_AugmentedWeights_Get(handle)\n\ntype: handle: int64_t" },
-    {(char *) "BMXGo_Query_AugmentedWeights_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Query_AugmentedWeights_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_AugmentedWeights_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: int64_t" },
-    {(char *) "BMXGo_Query_SetEntropy", (PyCFunction) _wrap__BMXGo_BMXGo_Query_SetEntropy, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_SetEntropy(_handle, bmx, goRun)\n\ntype: _handle: int64_t\ntype: bmx: int64_t\ntype: goRun: bool" },
-    {(char *) "BMXGo_Query_S_table_fill", (PyCFunction) _wrap__BMXGo_BMXGo_Query_S_table_fill, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_S_table_fill(_handle, bmx, goRun)\n\ntype: _handle: int64_t\ntype: bmx: int64_t\ntype: goRun: bool" },
-    {(char *) "BMXGo_Query_Score_table_fill", (PyCFunction) _wrap__BMXGo_BMXGo_Query_Score_table_fill, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_Score_table_fill(_handle, bmx, goRun)\n\ntype: _handle: int64_t\ntype: bmx: int64_t\ntype: goRun: bool" },
-    {(char *) "BMXGo_Query_NormalizedScore_table_fill", (PyCFunction) _wrap__BMXGo_BMXGo_Query_NormalizedScore_table_fill, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_NormalizedScore_table_fill(_handle, bmx, goRun)\n\ntype: _handle: int64_t\ntype: bmx: int64_t\ntype: goRun: bool" },
-    {(char *) "BMXGo_Query_Initialize", (PyCFunction) _wrap__BMXGo_BMXGo_Query_Initialize, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_Initialize(_handle, bmx, goRun)\n\ntype: _handle: int64_t\ntype: bmx: int64_t\ntype: goRun: bool" },
-    {(char *) "BMXGo_Query_Rank", (PyCFunction) _wrap__BMXGo_BMXGo_Query_Rank, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_Rank(_handle, topK)\n\ntype: _handle: int64_t\ntype: topK: int64_t" },
     {(char *) "BMXGo_BMX_CTor", (PyCFunction) _wrap__BMXGo_BMXGo_BMX_CTor, METH_NOARGS, "BMXGo_BMX_CTor()\n\n" },
     {(char *) "BMXGo_BMX_Docs_Get", (PyCFunction) _wrap__BMXGo_BMXGo_BMX_Docs_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_BMX_Docs_Get(handle)\n\ntype: handle: int64_t" },
     {(char *) "BMXGo_BMX_Docs_Set", (PyCFunction) _wrap__BMXGo_BMXGo_BMX_Docs_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_BMX_Docs_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: int64_t" },
@@ -9059,7 +8994,6 @@ static PyMethodDef _BMXGo_functions[] = {
     {(char *) "BMXGo_BMXAdapter_SearchMany", (PyCFunction) _wrap__BMXGo_BMXGo_BMXAdapter_SearchMany, METH_KEYWORDS|METH_VARARGS, "BMXGo_BMXAdapter_SearchMany(_handle, queries, topK, maxConcurrent)\n\ntype: _handle: int64_t\ntype: queries: int64_t\ntype: topK: int64_t\ntype: maxConcurrent: int64_t" },
     {(char *) "BMXGo_BMXAdapter_SearchAugmented", (PyCFunction) _wrap__BMXGo_BMXGo_BMXAdapter_SearchAugmented, METH_KEYWORDS|METH_VARARGS, "BMXGo_BMXAdapter_SearchAugmented(_handle, query, topK, num_augmented_queries, weight)\n\ntype: _handle: int64_t\ntype: query: char *\ntype: topK: int64_t\ntype: num_augmented_queries: int64_t\ntype: weight: double" },
     {(char *) "BMXGo_BMXAdapter_SearchAugmentedMany", (PyCFunction) _wrap__BMXGo_BMXGo_BMXAdapter_SearchAugmentedMany, METH_KEYWORDS|METH_VARARGS, "BMXGo_BMXAdapter_SearchAugmentedMany(_handle, queries, topK, num_augmented_queries, weight, maxConcurrent)\n\ntype: _handle: int64_t\ntype: queries: int64_t\ntype: topK: int64_t\ntype: num_augmented_queries: int64_t\ntype: weight: double\ntype: maxConcurrent: int64_t" },
-    {(char *) "BMXGo_BMXAdapter_SearchAugmentedMany2", (PyCFunction) _wrap__BMXGo_BMXGo_BMXAdapter_SearchAugmentedMany2, METH_KEYWORDS|METH_VARARGS, "BMXGo_BMXAdapter_SearchAugmentedMany2(_handle, queries, topK, num_augmented_queries, weight, maxConcurrent)\n\ntype: _handle: int64_t\ntype: queries: int64_t\ntype: topK: int64_t\ntype: num_augmented_queries: int64_t\ntype: weight: double\ntype: maxConcurrent: int64_t" },
     {(char *) "BMXGo_BMXAdapter_GetTokens", (PyCFunction) _wrap__BMXGo_BMXGo_BMXAdapter_GetTokens, METH_KEYWORDS|METH_VARARGS, "BMXGo_BMXAdapter_GetTokens(_handle, text, goRun)\n\ntype: _handle: int64_t\ntype: text: char *\ntype: goRun: bool" },
     {(char *) "BMXGo_ChatCompletionRequest_CTor", (PyCFunction) _wrap__BMXGo_BMXGo_ChatCompletionRequest_CTor, METH_NOARGS, "BMXGo_ChatCompletionRequest_CTor()\n\n" },
     {(char *) "BMXGo_ChatCompletionRequest_Models_Get", (PyCFunction) _wrap__BMXGo_BMXGo_ChatCompletionRequest_Models_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_ChatCompletionRequest_Models_Get(handle)\n\ntype: handle: int64_t" },
@@ -9072,6 +9006,57 @@ static PyMethodDef _BMXGo_functions[] = {
     {(char *) "BMXGo_ChatCompletionRequest_Temperature_Set", (PyCFunction) _wrap__BMXGo_BMXGo_ChatCompletionRequest_Temperature_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_ChatCompletionRequest_Temperature_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: float" },
     {(char *) "BMXGo_ChatCompletionRequest_MaxTokens_Get", (PyCFunction) _wrap__BMXGo_BMXGo_ChatCompletionRequest_MaxTokens_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_ChatCompletionRequest_MaxTokens_Get(handle)\n\ntype: handle: int64_t" },
     {(char *) "BMXGo_ChatCompletionRequest_MaxTokens_Set", (PyCFunction) _wrap__BMXGo_BMXGo_ChatCompletionRequest_MaxTokens_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_ChatCompletionRequest_MaxTokens_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: int64_t" },
+    {(char *) "BMXGo_Config_CTor", (PyCFunction) _wrap__BMXGo_BMXGo_Config_CTor, METH_NOARGS, "BMXGo_Config_CTor()\n\n" },
+    {(char *) "BMXGo_Config_DoLowercasing_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Config_DoLowercasing_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Config_DoLowercasing_Get(handle)\n\ntype: handle: int64_t" },
+    {(char *) "BMXGo_Config_DoLowercasing_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Config_DoLowercasing_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Config_DoLowercasing_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: bool" },
+    {(char *) "BMXGo_Config_DoAmpersandNormalization_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Config_DoAmpersandNormalization_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Config_DoAmpersandNormalization_Get(handle)\n\ntype: handle: int64_t" },
+    {(char *) "BMXGo_Config_DoAmpersandNormalization_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Config_DoAmpersandNormalization_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Config_DoAmpersandNormalization_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: bool" },
+    {(char *) "BMXGo_Config_DoSpecialCharsNormalization_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Config_DoSpecialCharsNormalization_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Config_DoSpecialCharsNormalization_Get(handle)\n\ntype: handle: int64_t" },
+    {(char *) "BMXGo_Config_DoSpecialCharsNormalization_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Config_DoSpecialCharsNormalization_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Config_DoSpecialCharsNormalization_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: bool" },
+    {(char *) "BMXGo_Config_DoAcronymsNormalization_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Config_DoAcronymsNormalization_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Config_DoAcronymsNormalization_Get(handle)\n\ntype: handle: int64_t" },
+    {(char *) "BMXGo_Config_DoAcronymsNormalization_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Config_DoAcronymsNormalization_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Config_DoAcronymsNormalization_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: bool" },
+    {(char *) "BMXGo_Config_DoPunctuationRemoval_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Config_DoPunctuationRemoval_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Config_DoPunctuationRemoval_Get(handle)\n\ntype: handle: int64_t" },
+    {(char *) "BMXGo_Config_DoPunctuationRemoval_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Config_DoPunctuationRemoval_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Config_DoPunctuationRemoval_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: bool" },
+    {(char *) "BMXGo_Document_CTor", (PyCFunction) _wrap__BMXGo_BMXGo_Document_CTor, METH_NOARGS, "BMXGo_Document_CTor()\n\n" },
+    {(char *) "BMXGo_Document_Text_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Document_Text_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Document_Text_Get(handle)\n\ntype: handle: int64_t" },
+    {(char *) "BMXGo_Document_Text_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Document_Text_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Document_Text_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: char *" },
+    {(char *) "BMXGo_Document_Tokens_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Document_Tokens_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Document_Tokens_Get(handle)\n\ntype: handle: int64_t" },
+    {(char *) "BMXGo_Document_Tokens_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Document_Tokens_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Document_Tokens_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: int64_t" },
+    {(char *) "BMXGo_Document_F_table_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Document_F_table_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Document_F_table_Get(handle)\n\ntype: handle: int64_t" },
+    {(char *) "BMXGo_Document_F_table_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Document_F_table_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Document_F_table_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: int64_t" },
+    {(char *) "BMXGo_LinkedContent_CTor", (PyCFunction) _wrap__BMXGo_BMXGo_LinkedContent_CTor, METH_NOARGS, "BMXGo_LinkedContent_CTor()\n\n" },
+    {(char *) "BMXGo_LinkedContent_ID_Get", (PyCFunction) _wrap__BMXGo_BMXGo_LinkedContent_ID_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_LinkedContent_ID_Get(handle)\n\ntype: handle: int64_t" },
+    {(char *) "BMXGo_LinkedContent_ID_Set", (PyCFunction) _wrap__BMXGo_BMXGo_LinkedContent_ID_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_LinkedContent_ID_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: char *" },
+    {(char *) "BMXGo_LinkedContent_Type_Get", (PyCFunction) _wrap__BMXGo_BMXGo_LinkedContent_Type_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_LinkedContent_Type_Get(handle)\n\ntype: handle: int64_t" },
+    {(char *) "BMXGo_LinkedContent_Type_Set", (PyCFunction) _wrap__BMXGo_BMXGo_LinkedContent_Type_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_LinkedContent_Type_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: char *" },
+    {(char *) "BMXGo_Query_CTor", (PyCFunction) _wrap__BMXGo_BMXGo_Query_CTor, METH_NOARGS, "BMXGo_Query_CTor()\n\n" },
+    {(char *) "BMXGo_Query_Text_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Query_Text_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_Text_Get(handle)\n\ntype: handle: int64_t" },
+    {(char *) "BMXGo_Query_Text_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Query_Text_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_Text_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: char *" },
+    {(char *) "BMXGo_Query_Tokens_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Query_Tokens_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_Tokens_Get(handle)\n\ntype: handle: int64_t" },
+    {(char *) "BMXGo_Query_Tokens_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Query_Tokens_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_Tokens_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: int64_t" },
+    {(char *) "BMXGo_Query_TotalWeight_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Query_TotalWeight_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_TotalWeight_Get(handle)\n\ntype: handle: int64_t" },
+    {(char *) "BMXGo_Query_TotalWeight_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Query_TotalWeight_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_TotalWeight_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: double" },
+    {(char *) "BMXGo_Query_S_table_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Query_S_table_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_S_table_Get(handle)\n\ntype: handle: int64_t" },
+    {(char *) "BMXGo_Query_S_table_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Query_S_table_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_S_table_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: int64_t" },
+    {(char *) "BMXGo_Query_ScoreTable_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Query_ScoreTable_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_ScoreTable_Get(handle)\n\ntype: handle: int64_t" },
+    {(char *) "BMXGo_Query_ScoreTable_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Query_ScoreTable_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_ScoreTable_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: int64_t" },
+    {(char *) "BMXGo_Query_NormalizedScoreTable_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Query_NormalizedScoreTable_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_NormalizedScoreTable_Get(handle)\n\ntype: handle: int64_t" },
+    {(char *) "BMXGo_Query_NormalizedScoreTable_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Query_NormalizedScoreTable_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_NormalizedScoreTable_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: int64_t" },
+    {(char *) "BMXGo_Query_AugmentedQueries_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Query_AugmentedQueries_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_AugmentedQueries_Get(handle)\n\ntype: handle: int64_t" },
+    {(char *) "BMXGo_Query_AugmentedQueries_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Query_AugmentedQueries_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_AugmentedQueries_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: int64_t" },
+    {(char *) "BMXGo_Query_AugmentedWeights_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Query_AugmentedWeights_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_AugmentedWeights_Get(handle)\n\ntype: handle: int64_t" },
+    {(char *) "BMXGo_Query_AugmentedWeights_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Query_AugmentedWeights_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_AugmentedWeights_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: int64_t" },
+    {(char *) "BMXGo_Query_SetEntropy", (PyCFunction) _wrap__BMXGo_BMXGo_Query_SetEntropy, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_SetEntropy(_handle, bmx, goRun)\n\ntype: _handle: int64_t\ntype: bmx: int64_t\ntype: goRun: bool" },
+    {(char *) "BMXGo_Query_S_table_fill", (PyCFunction) _wrap__BMXGo_BMXGo_Query_S_table_fill, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_S_table_fill(_handle, bmx, goRun)\n\ntype: _handle: int64_t\ntype: bmx: int64_t\ntype: goRun: bool" },
+    {(char *) "BMXGo_Query_Score_table_fill", (PyCFunction) _wrap__BMXGo_BMXGo_Query_Score_table_fill, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_Score_table_fill(_handle, bmx, goRun)\n\ntype: _handle: int64_t\ntype: bmx: int64_t\ntype: goRun: bool" },
+    {(char *) "BMXGo_Query_NormalizedScore_table_fill", (PyCFunction) _wrap__BMXGo_BMXGo_Query_NormalizedScore_table_fill, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_NormalizedScore_table_fill(_handle, bmx, goRun)\n\ntype: _handle: int64_t\ntype: bmx: int64_t\ntype: goRun: bool" },
+    {(char *) "BMXGo_Query_Initialize", (PyCFunction) _wrap__BMXGo_BMXGo_Query_Initialize, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_Initialize(_handle, bmx, goRun)\n\ntype: _handle: int64_t\ntype: bmx: int64_t\ntype: goRun: bool" },
+    {(char *) "BMXGo_Query_Rank", (PyCFunction) _wrap__BMXGo_BMXGo_Query_Rank, METH_KEYWORDS|METH_VARARGS, "BMXGo_Query_Rank(_handle, topK)\n\ntype: _handle: int64_t\ntype: topK: int64_t" },
+    {(char *) "BMXGo_TextPreprocessor_CTor", (PyCFunction) _wrap__BMXGo_BMXGo_TextPreprocessor_CTor, METH_NOARGS, "BMXGo_TextPreprocessor_CTor()\n\n" },
+    {(char *) "BMXGo_TextPreprocessor_Process", (PyCFunction) _wrap__BMXGo_BMXGo_TextPreprocessor_Process, METH_KEYWORDS|METH_VARARGS, "BMXGo_TextPreprocessor_Process(_handle, item)\n\ntype: _handle: int64_t\ntype: item: char *" },
+    {(char *) "BMXGo_TextPreprocessor_ProcessMany", (PyCFunction) _wrap__BMXGo_BMXGo_TextPreprocessor_ProcessMany, METH_KEYWORDS|METH_VARARGS, "BMXGo_TextPreprocessor_ProcessMany(_handle, items, nWorkers)\n\ntype: _handle: int64_t\ntype: items: int64_t\ntype: nWorkers: int64_t" },
+    {(char *) "BMXGo_TextPreprocessor_SetStemmer", (PyCFunction) _wrap__BMXGo_BMXGo_TextPreprocessor_SetStemmer, METH_KEYWORDS|METH_VARARGS, "BMXGo_TextPreprocessor_SetStemmer(_handle, stemmerName)\n\ntype: _handle: int64_t\ntype: stemmerName: char *" },
+    {(char *) "BMXGo_TextPreprocessor_SetStopwords", (PyCFunction) _wrap__BMXGo_BMXGo_TextPreprocessor_SetStopwords, METH_KEYWORDS|METH_VARARGS, "BMXGo_TextPreprocessor_SetStopwords(_handle, stopwords)\n\ntype: _handle: int64_t\ntype: stopwords: char *" },
     {(char *) "BMXGo_ClientConfig_CTor", (PyCFunction) _wrap__BMXGo_BMXGo_ClientConfig_CTor, METH_NOARGS, "BMXGo_ClientConfig_CTor()\n\n" },
     {(char *) "BMXGo_ClientConfig_APIKey_Get", (PyCFunction) _wrap__BMXGo_BMXGo_ClientConfig_APIKey_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_ClientConfig_APIKey_Get(handle)\n\ntype: handle: int64_t" },
     {(char *) "BMXGo_ClientConfig_APIKey_Set", (PyCFunction) _wrap__BMXGo_BMXGo_ClientConfig_APIKey_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_ClientConfig_APIKey_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: char *" },
@@ -9089,27 +9074,6 @@ static PyMethodDef _BMXGo_functions[] = {
     {(char *) "BMXGo_ClientConfig_ResourceName_Set", (PyCFunction) _wrap__BMXGo_BMXGo_ClientConfig_ResourceName_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_ClientConfig_ResourceName_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: char *" },
     {(char *) "BMXGo_ClientConfig_DeploymentName_Get", (PyCFunction) _wrap__BMXGo_BMXGo_ClientConfig_DeploymentName_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_ClientConfig_DeploymentName_Get(handle)\n\ntype: handle: int64_t" },
     {(char *) "BMXGo_ClientConfig_DeploymentName_Set", (PyCFunction) _wrap__BMXGo_BMXGo_ClientConfig_DeploymentName_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_ClientConfig_DeploymentName_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: char *" },
-    {(char *) "BMXGo_SearchResults_CTor", (PyCFunction) _wrap__BMXGo_BMXGo_SearchResults_CTor, METH_NOARGS, "BMXGo_SearchResults_CTor()\n\n" },
-    {(char *) "BMXGo_SearchResults_Keys_Get", (PyCFunction) _wrap__BMXGo_BMXGo_SearchResults_Keys_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_SearchResults_Keys_Get(handle)\n\ntype: handle: int64_t" },
-    {(char *) "BMXGo_SearchResults_Keys_Set", (PyCFunction) _wrap__BMXGo_BMXGo_SearchResults_Keys_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_SearchResults_Keys_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: int64_t" },
-    {(char *) "BMXGo_SearchResults_Scores_Get", (PyCFunction) _wrap__BMXGo_BMXGo_SearchResults_Scores_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_SearchResults_Scores_Get(handle)\n\ntype: handle: int64_t" },
-    {(char *) "BMXGo_SearchResults_Scores_Set", (PyCFunction) _wrap__BMXGo_BMXGo_SearchResults_Scores_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_SearchResults_Scores_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: int64_t" },
-    {(char *) "BMXGo_TextPreprocessor_CTor", (PyCFunction) _wrap__BMXGo_BMXGo_TextPreprocessor_CTor, METH_NOARGS, "BMXGo_TextPreprocessor_CTor()\n\n" },
-    {(char *) "BMXGo_TextPreprocessor_Process", (PyCFunction) _wrap__BMXGo_BMXGo_TextPreprocessor_Process, METH_KEYWORDS|METH_VARARGS, "BMXGo_TextPreprocessor_Process(_handle, item)\n\ntype: _handle: int64_t\ntype: item: char *" },
-    {(char *) "BMXGo_TextPreprocessor_ProcessMany", (PyCFunction) _wrap__BMXGo_BMXGo_TextPreprocessor_ProcessMany, METH_KEYWORDS|METH_VARARGS, "BMXGo_TextPreprocessor_ProcessMany(_handle, items, nWorkers)\n\ntype: _handle: int64_t\ntype: items: int64_t\ntype: nWorkers: int64_t" },
-    {(char *) "BMXGo_TextPreprocessor_SetStemmer", (PyCFunction) _wrap__BMXGo_BMXGo_TextPreprocessor_SetStemmer, METH_KEYWORDS|METH_VARARGS, "BMXGo_TextPreprocessor_SetStemmer(_handle, stemmerName)\n\ntype: _handle: int64_t\ntype: stemmerName: char *" },
-    {(char *) "BMXGo_TextPreprocessor_SetStopwords", (PyCFunction) _wrap__BMXGo_BMXGo_TextPreprocessor_SetStopwords, METH_KEYWORDS|METH_VARARGS, "BMXGo_TextPreprocessor_SetStopwords(_handle, stopwords)\n\ntype: _handle: int64_t\ntype: stopwords: char *" },
-    {(char *) "BMXGo_Config_CTor", (PyCFunction) _wrap__BMXGo_BMXGo_Config_CTor, METH_NOARGS, "BMXGo_Config_CTor()\n\n" },
-    {(char *) "BMXGo_Config_DoLowercasing_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Config_DoLowercasing_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Config_DoLowercasing_Get(handle)\n\ntype: handle: int64_t" },
-    {(char *) "BMXGo_Config_DoLowercasing_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Config_DoLowercasing_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Config_DoLowercasing_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: bool" },
-    {(char *) "BMXGo_Config_DoAmpersandNormalization_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Config_DoAmpersandNormalization_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Config_DoAmpersandNormalization_Get(handle)\n\ntype: handle: int64_t" },
-    {(char *) "BMXGo_Config_DoAmpersandNormalization_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Config_DoAmpersandNormalization_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Config_DoAmpersandNormalization_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: bool" },
-    {(char *) "BMXGo_Config_DoSpecialCharsNormalization_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Config_DoSpecialCharsNormalization_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Config_DoSpecialCharsNormalization_Get(handle)\n\ntype: handle: int64_t" },
-    {(char *) "BMXGo_Config_DoSpecialCharsNormalization_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Config_DoSpecialCharsNormalization_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Config_DoSpecialCharsNormalization_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: bool" },
-    {(char *) "BMXGo_Config_DoAcronymsNormalization_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Config_DoAcronymsNormalization_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Config_DoAcronymsNormalization_Get(handle)\n\ntype: handle: int64_t" },
-    {(char *) "BMXGo_Config_DoAcronymsNormalization_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Config_DoAcronymsNormalization_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Config_DoAcronymsNormalization_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: bool" },
-    {(char *) "BMXGo_Config_DoPunctuationRemoval_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Config_DoPunctuationRemoval_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Config_DoPunctuationRemoval_Get(handle)\n\ntype: handle: int64_t" },
-    {(char *) "BMXGo_Config_DoPunctuationRemoval_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Config_DoPunctuationRemoval_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Config_DoPunctuationRemoval_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: bool" },
     {(char *) "BMXGo_ConvMessage_CTor", (PyCFunction) _wrap__BMXGo_BMXGo_ConvMessage_CTor, METH_NOARGS, "BMXGo_ConvMessage_CTor()\n\n" },
     {(char *) "BMXGo_ConvMessage_Role_Get", (PyCFunction) _wrap__BMXGo_BMXGo_ConvMessage_Role_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_ConvMessage_Role_Get(handle)\n\ntype: handle: int64_t" },
     {(char *) "BMXGo_ConvMessage_Role_Set", (PyCFunction) _wrap__BMXGo_BMXGo_ConvMessage_Role_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_ConvMessage_Role_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: char *" },
@@ -9122,27 +9086,36 @@ static PyMethodDef _BMXGo_functions[] = {
     {(char *) "BMXGo_ConvMessage_LinkedContent_Get", (PyCFunction) _wrap__BMXGo_BMXGo_ConvMessage_LinkedContent_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_ConvMessage_LinkedContent_Get(handle)\n\ntype: handle: int64_t" },
     {(char *) "BMXGo_ConvMessage_LinkedContent_Set", (PyCFunction) _wrap__BMXGo_BMXGo_ConvMessage_LinkedContent_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_ConvMessage_LinkedContent_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: int64_t" },
     {(char *) "BMXGo_LLMClient_CTor", (PyCFunction) _wrap__BMXGo_BMXGo_LLMClient_CTor, METH_NOARGS, "BMXGo_LLMClient_CTor()\n\n" },
-    {(char *) "BMXGo_LinkedContent_CTor", (PyCFunction) _wrap__BMXGo_BMXGo_LinkedContent_CTor, METH_NOARGS, "BMXGo_LinkedContent_CTor()\n\n" },
-    {(char *) "BMXGo_LinkedContent_ID_Get", (PyCFunction) _wrap__BMXGo_BMXGo_LinkedContent_ID_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_LinkedContent_ID_Get(handle)\n\ntype: handle: int64_t" },
-    {(char *) "BMXGo_LinkedContent_ID_Set", (PyCFunction) _wrap__BMXGo_BMXGo_LinkedContent_ID_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_LinkedContent_ID_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: char *" },
-    {(char *) "BMXGo_LinkedContent_Type_Get", (PyCFunction) _wrap__BMXGo_BMXGo_LinkedContent_Type_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_LinkedContent_Type_Get(handle)\n\ntype: handle: int64_t" },
-    {(char *) "BMXGo_LinkedContent_Type_Set", (PyCFunction) _wrap__BMXGo_BMXGo_LinkedContent_Type_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_LinkedContent_Type_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: char *" },
+    {(char *) "BMXGo_Parameters_CTor", (PyCFunction) _wrap__BMXGo_BMXGo_Parameters_CTor, METH_NOARGS, "BMXGo_Parameters_CTor()\n\n" },
+    {(char *) "BMXGo_Parameters_Alpha_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Parameters_Alpha_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Parameters_Alpha_Get(handle)\n\ntype: handle: int64_t" },
+    {(char *) "BMXGo_Parameters_Alpha_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Parameters_Alpha_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Parameters_Alpha_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: double" },
+    {(char *) "BMXGo_Parameters_Beta_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Parameters_Beta_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Parameters_Beta_Get(handle)\n\ntype: handle: int64_t" },
+    {(char *) "BMXGo_Parameters_Beta_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Parameters_Beta_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Parameters_Beta_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: double" },
+    {(char *) "BMXGo_Parameters_Avgdl_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Parameters_Avgdl_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Parameters_Avgdl_Get(handle)\n\ntype: handle: int64_t" },
+    {(char *) "BMXGo_Parameters_Avgdl_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Parameters_Avgdl_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Parameters_Avgdl_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: double" },
+    {(char *) "BMXGo_Parameters_N_Get", (PyCFunction) _wrap__BMXGo_BMXGo_Parameters_N_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_Parameters_N_Get(handle)\n\ntype: handle: int64_t" },
+    {(char *) "BMXGo_Parameters_N_Set", (PyCFunction) _wrap__BMXGo_BMXGo_Parameters_N_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_Parameters_N_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: int64_t" },
+    {(char *) "BMXGo_SearchResults_CTor", (PyCFunction) _wrap__BMXGo_BMXGo_SearchResults_CTor, METH_NOARGS, "BMXGo_SearchResults_CTor()\n\n" },
+    {(char *) "BMXGo_SearchResults_Keys_Get", (PyCFunction) _wrap__BMXGo_BMXGo_SearchResults_Keys_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_SearchResults_Keys_Get(handle)\n\ntype: handle: int64_t" },
+    {(char *) "BMXGo_SearchResults_Keys_Set", (PyCFunction) _wrap__BMXGo_BMXGo_SearchResults_Keys_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_SearchResults_Keys_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: int64_t" },
+    {(char *) "BMXGo_SearchResults_Scores_Get", (PyCFunction) _wrap__BMXGo_BMXGo_SearchResults_Scores_Get, METH_KEYWORDS|METH_VARARGS, "BMXGo_SearchResults_Scores_Get(handle)\n\ntype: handle: int64_t" },
+    {(char *) "BMXGo_SearchResults_Scores_Set", (PyCFunction) _wrap__BMXGo_BMXGo_SearchResults_Scores_Set, METH_KEYWORDS|METH_VARARGS, "BMXGo_SearchResults_Scores_Set(handle, val)\n\ntype: handle: int64_t\ntype: val: int64_t" },
     {(char *) "BMXGo_Build", (PyCFunction) _wrap__BMXGo_BMXGo_Build, METH_KEYWORDS|METH_VARARGS, "BMXGo_Build(indexName, config)\n\ntype: indexName: char *\ntype: config: int64_t" },
-    {(char *) "BMXGo_NewTextPreprocessor", (PyCFunction) _wrap__BMXGo_BMXGo_NewTextPreprocessor, METH_KEYWORDS|METH_VARARGS, "BMXGo_NewTextPreprocessor(config)\n\ntype: config: int64_t" },
     {(char *) "BMXGo_NewConfig", (PyCFunction) _wrap__BMXGo_BMXGo_NewConfig, METH_KEYWORDS|METH_VARARGS, "BMXGo_NewConfig(tokenizer, stemmer, lang)\n\ntype: tokenizer: char *\ntype: stemmer: char *\ntype: lang: char *" },
+    {(char *) "BMXGo_NewTextPreprocessor", (PyCFunction) _wrap__BMXGo_BMXGo_NewTextPreprocessor, METH_KEYWORDS|METH_VARARGS, "BMXGo_NewTextPreprocessor(config)\n\ntype: config: int64_t" },
     {(char *) "BMXGo_NewLLMClient", (PyCFunction) _wrap__BMXGo_BMXGo_NewLLMClient, METH_KEYWORDS|METH_VARARGS, "BMXGo_NewLLMClient(config)\n\ntype: config: int64_t" },
     {(char *) "BMXGo_NormalizeAcronyms", (PyCFunction) _wrap__BMXGo_BMXGo_NormalizeAcronyms, METH_KEYWORDS|METH_VARARGS, "BMXGo_NormalizeAcronyms(text)\n\ntype: text: char *" },
-    {(char *) "BMXGo_RemoveEmptyTokens", (PyCFunction) _wrap__BMXGo_BMXGo_RemoveEmptyTokens, METH_KEYWORDS|METH_VARARGS, "BMXGo_RemoveEmptyTokens(tokens)\n\ntype: tokens: int64_t" },
-    {(char *) "BMXGo_RemovePunctuation", (PyCFunction) _wrap__BMXGo_BMXGo_RemovePunctuation, METH_KEYWORDS|METH_VARARGS, "BMXGo_RemovePunctuation(text)\n\ntype: text: char *" },
-    {(char *) "BMXGo_ApplyStemmer", (PyCFunction) _wrap__BMXGo_BMXGo_ApplyStemmer, METH_KEYWORDS|METH_VARARGS, "BMXGo_ApplyStemmer(tokens, stemmer)\n\ntype: tokens: int64_t\ntype: stemmer: PyObject *" },
+    {(char *) "BMXGo_NormalizeAmpersand", (PyCFunction) _wrap__BMXGo_BMXGo_NormalizeAmpersand, METH_KEYWORDS|METH_VARARGS, "BMXGo_NormalizeAmpersand(text)\n\ntype: text: char *" },
+    {(char *) "BMXGo_NormalizeSpecialChars", (PyCFunction) _wrap__BMXGo_BMXGo_NormalizeSpecialChars, METH_KEYWORDS|METH_VARARGS, "BMXGo_NormalizeSpecialChars(text)\n\ntype: text: char *" },
     {(char *) "BMXGo_GenerateAugmentedQueries", (PyCFunction) _wrap__BMXGo_BMXGo_GenerateAugmentedQueries, METH_KEYWORDS|METH_VARARGS, "BMXGo_GenerateAugmentedQueries(query, num_augmented_queries)\n\ntype: query: char *\ntype: num_augmented_queries: int64_t" },
     {(char *) "BMXGo_HtmlToMarkdown", (PyCFunction) _wrap__BMXGo_BMXGo_HtmlToMarkdown, METH_KEYWORDS|METH_VARARGS, "BMXGo_HtmlToMarkdown(htmlContent, addIDs)\n\ntype: htmlContent: char *\ntype: addIDs: bool" },
-    {(char *) "BMXGo_NormalizeDiacritics", (PyCFunction) _wrap__BMXGo_BMXGo_NormalizeDiacritics, METH_KEYWORDS|METH_VARARGS, "BMXGo_NormalizeDiacritics(text)\n\ntype: text: char *" },
+    {(char *) "BMXGo_ApplyStemmer", (PyCFunction) _wrap__BMXGo_BMXGo_ApplyStemmer, METH_KEYWORDS|METH_VARARGS, "BMXGo_ApplyStemmer(tokens, stemmer)\n\ntype: tokens: int64_t\ntype: stemmer: PyObject *" },
     {(char *) "BMXGo_StripWhitespaces", (PyCFunction) _wrap__BMXGo_BMXGo_StripWhitespaces, METH_KEYWORDS|METH_VARARGS, "BMXGo_StripWhitespaces(text)\n\ntype: text: char *" },
     {(char *) "BMXGo_GetStopwords", (PyCFunction) _wrap__BMXGo_BMXGo_GetStopwords, METH_KEYWORDS|METH_VARARGS, "BMXGo_GetStopwords(swList)\n\ntype: swList: char *" },
     {(char *) "BMXGo_Lowercasing", (PyCFunction) _wrap__BMXGo_BMXGo_Lowercasing, METH_KEYWORDS|METH_VARARGS, "BMXGo_Lowercasing(text)\n\ntype: text: char *" },
-    {(char *) "BMXGo_NormalizeAmpersand", (PyCFunction) _wrap__BMXGo_BMXGo_NormalizeAmpersand, METH_KEYWORDS|METH_VARARGS, "BMXGo_NormalizeAmpersand(text)\n\ntype: text: char *" },
-    {(char *) "BMXGo_NormalizeSpecialChars", (PyCFunction) _wrap__BMXGo_BMXGo_NormalizeSpecialChars, METH_KEYWORDS|METH_VARARGS, "BMXGo_NormalizeSpecialChars(text)\n\ntype: text: char *" },
+    {(char *) "BMXGo_NormalizeDiacritics", (PyCFunction) _wrap__BMXGo_BMXGo_NormalizeDiacritics, METH_KEYWORDS|METH_VARARGS, "BMXGo_NormalizeDiacritics(text)\n\ntype: text: char *" },
+    {(char *) "BMXGo_RemoveEmptyTokens", (PyCFunction) _wrap__BMXGo_BMXGo_RemoveEmptyTokens, METH_KEYWORDS|METH_VARARGS, "BMXGo_RemoveEmptyTokens(tokens)\n\ntype: tokens: int64_t" },
+    {(char *) "BMXGo_RemovePunctuation", (PyCFunction) _wrap__BMXGo_BMXGo_RemovePunctuation, METH_KEYWORDS|METH_VARARGS, "BMXGo_RemovePunctuation(text)\n\ntype: text: char *" },
     {NULL, NULL, 0, NULL}
 };
 #if PY_VERSION_HEX >= 0x03000000

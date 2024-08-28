@@ -74,6 +74,8 @@ for q_id in qrels.keys():
     # tokens = searcher.GetTokens(query)
     # print(f"Query {query_id}: {tokens[:20]}...")  # Print first 20 tokens
 
+print("query size:", len(queries))
+
 print("searching...")
 s_time = time.time()
 pred_results = {}
