@@ -1999,8 +1999,8 @@ class Map_string_int(go.GoClass):
 
 # ---- Structs ---
 
-# Python type for struct BMXGo.BMX
-class BMX(go.GoClass):
+# Python type for struct BMXGo.Parameters
+class Parameters(go.GoClass):
 	""""""
 	def __init__(self, *args, **kwargs):
 		"""
@@ -2015,37 +2015,29 @@ class BMX(go.GoClass):
 			self.handle = args[0].handle
 			_BMXGo.IncRef(self.handle)
 		else:
-			self.handle = _BMXGo.BMXGo_BMX_CTor()
+			self.handle = _BMXGo.BMXGo_Parameters_CTor()
 			_BMXGo.IncRef(self.handle)
 			if  0 < len(args):
-				self.Docs = args[0]
-			if "Docs" in kwargs:
-				self.Docs = kwargs["Docs"]
+				self.Alpha = args[0]
+			if "Alpha" in kwargs:
+				self.Alpha = kwargs["Alpha"]
 			if  1 < len(args):
-				self.Params = args[1]
-			if "Params" in kwargs:
-				self.Params = kwargs["Params"]
+				self.Beta = args[1]
+			if "Beta" in kwargs:
+				self.Beta = kwargs["Beta"]
 			if  2 < len(args):
-				self.TextPreprocessor = args[2]
-			if "TextPreprocessor" in kwargs:
-				self.TextPreprocessor = kwargs["TextPreprocessor"]
+				self.Avgdl = args[2]
+			if "Avgdl" in kwargs:
+				self.Avgdl = kwargs["Avgdl"]
 			if  3 < len(args):
-				self.NumAppearances = args[3]
-			if "NumAppearances" in kwargs:
-				self.NumAppearances = kwargs["NumAppearances"]
-			if  4 < len(args):
-				self.IDF_table = args[4]
-			if "IDF_table" in kwargs:
-				self.IDF_table = kwargs["IDF_table"]
-			if  5 < len(args):
-				self.E_tilde_table = args[5]
-			if "E_tilde_table" in kwargs:
-				self.E_tilde_table = kwargs["E_tilde_table"]
+				self.N = args[3]
+			if "N" in kwargs:
+				self.N = kwargs["N"]
 	def __del__(self):
 		_BMXGo.DecRef(self.handle)
 	def __str__(self):
 		pr = [(p, getattr(self, p)) for p in dir(self) if not p.startswith('__')]
-		sv = 'BMXGo.BMX{'
+		sv = 'BMXGo.Parameters{'
 		first = True
 		for v in pr:
 			if callable(v[1]):
@@ -2058,83 +2050,296 @@ class BMX(go.GoClass):
 		return sv + '}'
 	def __repr__(self):
 		pr = [(p, getattr(self, p)) for p in dir(self) if not p.startswith('__')]
-		sv = 'BMXGo.BMX ( '
+		sv = 'BMXGo.Parameters ( '
 		for v in pr:
 			if not callable(v[1]):
 				sv += v[0] + '=' + str(v[1]) + ', '
 		return sv + ')'
 	@property
-	def Docs(self):
-		return Map_string_BMXGo_Document(handle=_BMXGo.BMXGo_BMX_Docs_Get(self.handle))
-	@Docs.setter
-	def Docs(self, value):
+	def Alpha(self):
+		return _BMXGo.BMXGo_Parameters_Alpha_Get(self.handle)
+	@Alpha.setter
+	def Alpha(self, value):
 		if isinstance(value, go.GoClass):
-			_BMXGo.BMXGo_BMX_Docs_Set(self.handle, value.handle)
+			_BMXGo.BMXGo_Parameters_Alpha_Set(self.handle, value.handle)
+		else:
+			_BMXGo.BMXGo_Parameters_Alpha_Set(self.handle, value)
+	@property
+	def Beta(self):
+		return _BMXGo.BMXGo_Parameters_Beta_Get(self.handle)
+	@Beta.setter
+	def Beta(self, value):
+		if isinstance(value, go.GoClass):
+			_BMXGo.BMXGo_Parameters_Beta_Set(self.handle, value.handle)
+		else:
+			_BMXGo.BMXGo_Parameters_Beta_Set(self.handle, value)
+	@property
+	def Avgdl(self):
+		return _BMXGo.BMXGo_Parameters_Avgdl_Get(self.handle)
+	@Avgdl.setter
+	def Avgdl(self, value):
+		if isinstance(value, go.GoClass):
+			_BMXGo.BMXGo_Parameters_Avgdl_Set(self.handle, value.handle)
+		else:
+			_BMXGo.BMXGo_Parameters_Avgdl_Set(self.handle, value)
+	@property
+	def N(self):
+		return _BMXGo.BMXGo_Parameters_N_Get(self.handle)
+	@N.setter
+	def N(self, value):
+		if isinstance(value, go.GoClass):
+			_BMXGo.BMXGo_Parameters_N_Set(self.handle, value.handle)
+		else:
+			_BMXGo.BMXGo_Parameters_N_Set(self.handle, value)
+
+# Python type for struct BMXGo.Query
+class Query(go.GoClass):
+	""""""
+	def __init__(self, *args, **kwargs):
+		"""
+		handle=A Go-side object is always initialized with an explicit handle=arg
+		otherwise parameters can be unnamed in order of field names or named fields
+		in which case a new Go object is constructed first
+		"""
+		if len(kwargs) == 1 and 'handle' in kwargs:
+			self.handle = kwargs['handle']
+			_BMXGo.IncRef(self.handle)
+		elif len(args) == 1 and isinstance(args[0], go.GoClass):
+			self.handle = args[0].handle
+			_BMXGo.IncRef(self.handle)
+		else:
+			self.handle = _BMXGo.BMXGo_Query_CTor()
+			_BMXGo.IncRef(self.handle)
+			if  0 < len(args):
+				self.Text = args[0]
+			if "Text" in kwargs:
+				self.Text = kwargs["Text"]
+			if  1 < len(args):
+				self.Tokens = args[1]
+			if "Tokens" in kwargs:
+				self.Tokens = kwargs["Tokens"]
+			if  2 < len(args):
+				self.TotalWeight = args[2]
+			if "TotalWeight" in kwargs:
+				self.TotalWeight = kwargs["TotalWeight"]
+			if  4 < len(args):
+				self.AvgEntropy = args[4]
+			if "AvgEntropy" in kwargs:
+				self.AvgEntropy = kwargs["AvgEntropy"]
+			if  5 < len(args):
+				self.S_table = args[5]
+			if "S_table" in kwargs:
+				self.S_table = kwargs["S_table"]
+			if  6 < len(args):
+				self.ScoreTable = args[6]
+			if "ScoreTable" in kwargs:
+				self.ScoreTable = kwargs["ScoreTable"]
+			if  7 < len(args):
+				self.NormalizedScoreTable = args[7]
+			if "NormalizedScoreTable" in kwargs:
+				self.NormalizedScoreTable = kwargs["NormalizedScoreTable"]
+			if  8 < len(args):
+				self.AugmentedQueries = args[8]
+			if "AugmentedQueries" in kwargs:
+				self.AugmentedQueries = kwargs["AugmentedQueries"]
+			if  9 < len(args):
+				self.AugmentedWeights = args[9]
+			if "AugmentedWeights" in kwargs:
+				self.AugmentedWeights = kwargs["AugmentedWeights"]
+	def __del__(self):
+		_BMXGo.DecRef(self.handle)
+	def __str__(self):
+		pr = [(p, getattr(self, p)) for p in dir(self) if not p.startswith('__')]
+		sv = 'BMXGo.Query{'
+		first = True
+		for v in pr:
+			if callable(v[1]):
+				continue
+			if first:
+				first = False
+			else:
+				sv += ', '
+			sv += v[0] + '=' + str(v[1])
+		return sv + '}'
+	def __repr__(self):
+		pr = [(p, getattr(self, p)) for p in dir(self) if not p.startswith('__')]
+		sv = 'BMXGo.Query ( '
+		for v in pr:
+			if not callable(v[1]):
+				sv += v[0] + '=' + str(v[1]) + ', '
+		return sv + ')'
+	@property
+	def Text(self):
+		return _BMXGo.BMXGo_Query_Text_Get(self.handle)
+	@Text.setter
+	def Text(self, value):
+		if isinstance(value, go.GoClass):
+			_BMXGo.BMXGo_Query_Text_Set(self.handle, value.handle)
+		else:
+			_BMXGo.BMXGo_Query_Text_Set(self.handle, value)
+	@property
+	def Tokens(self):
+		return Map_string_float64(handle=_BMXGo.BMXGo_Query_Tokens_Get(self.handle))
+	@Tokens.setter
+	def Tokens(self, value):
+		if isinstance(value, go.GoClass):
+			_BMXGo.BMXGo_Query_Tokens_Set(self.handle, value.handle)
 		else:
 			raise TypeError("supplied argument type {t} is not a go.GoClass".format(t=type(value)))
 	@property
-	def Params(self):
-		return Parameters(handle=_BMXGo.BMXGo_BMX_Params_Get(self.handle))
-	@Params.setter
-	def Params(self, value):
+	def TotalWeight(self):
+		return _BMXGo.BMXGo_Query_TotalWeight_Get(self.handle)
+	@TotalWeight.setter
+	def TotalWeight(self, value):
 		if isinstance(value, go.GoClass):
-			_BMXGo.BMXGo_BMX_Params_Set(self.handle, value.handle)
+			_BMXGo.BMXGo_Query_TotalWeight_Set(self.handle, value.handle)
+		else:
+			_BMXGo.BMXGo_Query_TotalWeight_Set(self.handle, value)
+	@property
+	def AvgEntropy(self):
+		return _BMXGo.BMXGo_Query_AvgEntropy_Get(self.handle)
+	@AvgEntropy.setter
+	def AvgEntropy(self, value):
+		if isinstance(value, go.GoClass):
+			_BMXGo.BMXGo_Query_AvgEntropy_Set(self.handle, value.handle)
+		else:
+			_BMXGo.BMXGo_Query_AvgEntropy_Set(self.handle, value)
+	@property
+	def S_table(self):
+		return Map_string_float64(handle=_BMXGo.BMXGo_Query_S_table_Get(self.handle))
+	@S_table.setter
+	def S_table(self, value):
+		if isinstance(value, go.GoClass):
+			_BMXGo.BMXGo_Query_S_table_Set(self.handle, value.handle)
 		else:
 			raise TypeError("supplied argument type {t} is not a go.GoClass".format(t=type(value)))
 	@property
-	def TextPreprocessor(self):
-		return TextPreprocessor(handle=_BMXGo.BMXGo_BMX_TextPreprocessor_Get(self.handle))
-	@TextPreprocessor.setter
-	def TextPreprocessor(self, value):
+	def ScoreTable(self):
+		return Map_string_float64(handle=_BMXGo.BMXGo_Query_ScoreTable_Get(self.handle))
+	@ScoreTable.setter
+	def ScoreTable(self, value):
 		if isinstance(value, go.GoClass):
-			_BMXGo.BMXGo_BMX_TextPreprocessor_Set(self.handle, value.handle)
+			_BMXGo.BMXGo_Query_ScoreTable_Set(self.handle, value.handle)
 		else:
 			raise TypeError("supplied argument type {t} is not a go.GoClass".format(t=type(value)))
 	@property
-	def NumAppearances(self):
-		return Map_string_Slice_string(handle=_BMXGo.BMXGo_BMX_NumAppearances_Get(self.handle))
-	@NumAppearances.setter
-	def NumAppearances(self, value):
+	def NormalizedScoreTable(self):
+		return Map_string_float64(handle=_BMXGo.BMXGo_Query_NormalizedScoreTable_Get(self.handle))
+	@NormalizedScoreTable.setter
+	def NormalizedScoreTable(self, value):
 		if isinstance(value, go.GoClass):
-			_BMXGo.BMXGo_BMX_NumAppearances_Set(self.handle, value.handle)
+			_BMXGo.BMXGo_Query_NormalizedScoreTable_Set(self.handle, value.handle)
 		else:
 			raise TypeError("supplied argument type {t} is not a go.GoClass".format(t=type(value)))
 	@property
-	def IDF_table(self):
-		return Map_string_float64(handle=_BMXGo.BMXGo_BMX_IDF_table_Get(self.handle))
-	@IDF_table.setter
-	def IDF_table(self, value):
+	def AugmentedQueries(self):
+		return go.Slice_string(handle=_BMXGo.BMXGo_Query_AugmentedQueries_Get(self.handle))
+	@AugmentedQueries.setter
+	def AugmentedQueries(self, value):
 		if isinstance(value, go.GoClass):
-			_BMXGo.BMXGo_BMX_IDF_table_Set(self.handle, value.handle)
+			_BMXGo.BMXGo_Query_AugmentedQueries_Set(self.handle, value.handle)
 		else:
 			raise TypeError("supplied argument type {t} is not a go.GoClass".format(t=type(value)))
 	@property
-	def E_tilde_table(self):
-		return Map_string_float64(handle=_BMXGo.BMXGo_BMX_E_tilde_table_Get(self.handle))
-	@E_tilde_table.setter
-	def E_tilde_table(self, value):
+	def AugmentedWeights(self):
+		return go.Slice_float64(handle=_BMXGo.BMXGo_Query_AugmentedWeights_Get(self.handle))
+	@AugmentedWeights.setter
+	def AugmentedWeights(self, value):
 		if isinstance(value, go.GoClass):
-			_BMXGo.BMXGo_BMX_E_tilde_table_Set(self.handle, value.handle)
+			_BMXGo.BMXGo_Query_AugmentedWeights_Set(self.handle, value.handle)
 		else:
 			raise TypeError("supplied argument type {t} is not a go.GoClass".format(t=type(value)))
-	def InitializeTextPreprocessor(self, config):
-		"""InitializeTextPreprocessor(object config) str"""
-		return _BMXGo.BMXGo_BMX_InitializeTextPreprocessor(self.handle, config.handle)
-	def SetParams(self, goRun=False):
-		"""SetParams() """
-		_BMXGo.BMXGo_BMX_SetParams(self.handle, goRun)
-	def F_table_fill(self, goRun=False):
-		"""F_table_fill() """
-		_BMXGo.BMXGo_BMX_F_table_fill(self.handle, goRun)
-	def NumAppearancesCalc(self, goRun=False):
-		"""NumAppearancesCalc() """
-		_BMXGo.BMXGo_BMX_NumAppearancesCalc(self.handle, goRun)
-	def IDF_table_fill(self, goRun=False):
-		"""IDF_table_fill() """
-		_BMXGo.BMXGo_BMX_IDF_table_fill(self.handle, goRun)
-	def E_tilde_table_fill(self, goRun=False):
-		"""E_tilde_table_fill() """
-		_BMXGo.BMXGo_BMX_E_tilde_table_fill(self.handle, goRun)
+	def SetEntropy(self, bmx, goRun=False):
+		"""SetEntropy(object bmx) """
+		_BMXGo.BMXGo_Query_SetEntropy(self.handle, bmx.handle, goRun)
+	def S_table_fill(self, bmx, goRun=False):
+		"""S_table_fill(object bmx) 
+		
+		Function to calculate S(Q, D)
+		"""
+		_BMXGo.BMXGo_Query_S_table_fill(self.handle, bmx.handle, goRun)
+	def Score_table_fill(self, bmx, goRun=False):
+		"""Score_table_fill(object bmx) 
+		
+		Function to calculate the score
+		"""
+		_BMXGo.BMXGo_Query_Score_table_fill(self.handle, bmx.handle, goRun)
+	def NormalizedScore_table_fill(self, bmx, goRun=False):
+		"""NormalizedScore_table_fill(object bmx) """
+		_BMXGo.BMXGo_Query_NormalizedScore_table_fill(self.handle, bmx.handle, goRun)
+	def Initialize(self, bmx, goRun=False):
+		"""Initialize(object bmx) """
+		_BMXGo.BMXGo_Query_Initialize(self.handle, bmx.handle, goRun)
+	def Rank(self, topK):
+		"""Rank(int topK) []str"""
+		return go.Slice_string(handle=_BMXGo.BMXGo_Query_Rank(self.handle, topK))
+
+# Python type for struct BMXGo.SearchResults
+class SearchResults(go.GoClass):
+	""""""
+	def __init__(self, *args, **kwargs):
+		"""
+		handle=A Go-side object is always initialized with an explicit handle=arg
+		otherwise parameters can be unnamed in order of field names or named fields
+		in which case a new Go object is constructed first
+		"""
+		if len(kwargs) == 1 and 'handle' in kwargs:
+			self.handle = kwargs['handle']
+			_BMXGo.IncRef(self.handle)
+		elif len(args) == 1 and isinstance(args[0], go.GoClass):
+			self.handle = args[0].handle
+			_BMXGo.IncRef(self.handle)
+		else:
+			self.handle = _BMXGo.BMXGo_SearchResults_CTor()
+			_BMXGo.IncRef(self.handle)
+			if  0 < len(args):
+				self.Keys = args[0]
+			if "Keys" in kwargs:
+				self.Keys = kwargs["Keys"]
+			if  1 < len(args):
+				self.Scores = args[1]
+			if "Scores" in kwargs:
+				self.Scores = kwargs["Scores"]
+	def __del__(self):
+		_BMXGo.DecRef(self.handle)
+	def __str__(self):
+		pr = [(p, getattr(self, p)) for p in dir(self) if not p.startswith('__')]
+		sv = 'BMXGo.SearchResults{'
+		first = True
+		for v in pr:
+			if callable(v[1]):
+				continue
+			if first:
+				first = False
+			else:
+				sv += ', '
+			sv += v[0] + '=' + str(v[1])
+		return sv + '}'
+	def __repr__(self):
+		pr = [(p, getattr(self, p)) for p in dir(self) if not p.startswith('__')]
+		sv = 'BMXGo.SearchResults ( '
+		for v in pr:
+			if not callable(v[1]):
+				sv += v[0] + '=' + str(v[1]) + ', '
+		return sv + ')'
+	@property
+	def Keys(self):
+		return go.Slice_string(handle=_BMXGo.BMXGo_SearchResults_Keys_Get(self.handle))
+	@Keys.setter
+	def Keys(self, value):
+		if isinstance(value, go.GoClass):
+			_BMXGo.BMXGo_SearchResults_Keys_Set(self.handle, value.handle)
+		else:
+			raise TypeError("supplied argument type {t} is not a go.GoClass".format(t=type(value)))
+	@property
+	def Scores(self):
+		return go.Slice_float64(handle=_BMXGo.BMXGo_SearchResults_Scores_Get(self.handle))
+	@Scores.setter
+	def Scores(self, value):
+		if isinstance(value, go.GoClass):
+			_BMXGo.BMXGo_SearchResults_Scores_Set(self.handle, value.handle)
+		else:
+			raise TypeError("supplied argument type {t} is not a go.GoClass".format(t=type(value)))
 
 # Python type for struct BMXGo.BMXAdapter
 class BMXAdapter(go.GoClass):
@@ -2407,9 +2612,9 @@ class Config(go.GoClass):
 		else:
 			_BMXGo.BMXGo_Config_DoPunctuationRemoval_Set(self.handle, value)
 
-# Python type for struct BMXGo.Document
-class Document(go.GoClass):
-	"""Define the parameters and types\n"""
+# Python type for struct BMXGo.LLMClient
+class LLMClient(go.GoClass):
+	""""""
 	def __init__(self, *args, **kwargs):
 		"""
 		handle=A Go-side object is always initialized with an explicit handle=arg
@@ -2423,25 +2628,13 @@ class Document(go.GoClass):
 			self.handle = args[0].handle
 			_BMXGo.IncRef(self.handle)
 		else:
-			self.handle = _BMXGo.BMXGo_Document_CTor()
+			self.handle = _BMXGo.BMXGo_LLMClient_CTor()
 			_BMXGo.IncRef(self.handle)
-			if  0 < len(args):
-				self.Text = args[0]
-			if "Text" in kwargs:
-				self.Text = kwargs["Text"]
-			if  1 < len(args):
-				self.Tokens = args[1]
-			if "Tokens" in kwargs:
-				self.Tokens = kwargs["Tokens"]
-			if  2 < len(args):
-				self.F_table = args[2]
-			if "F_table" in kwargs:
-				self.F_table = kwargs["F_table"]
 	def __del__(self):
 		_BMXGo.DecRef(self.handle)
 	def __str__(self):
 		pr = [(p, getattr(self, p)) for p in dir(self) if not p.startswith('__')]
-		sv = 'BMXGo.Document{'
+		sv = 'BMXGo.LLMClient{'
 		first = True
 		for v in pr:
 			if callable(v[1]):
@@ -2454,38 +2647,11 @@ class Document(go.GoClass):
 		return sv + '}'
 	def __repr__(self):
 		pr = [(p, getattr(self, p)) for p in dir(self) if not p.startswith('__')]
-		sv = 'BMXGo.Document ( '
+		sv = 'BMXGo.LLMClient ( '
 		for v in pr:
 			if not callable(v[1]):
 				sv += v[0] + '=' + str(v[1]) + ', '
 		return sv + ')'
-	@property
-	def Text(self):
-		return _BMXGo.BMXGo_Document_Text_Get(self.handle)
-	@Text.setter
-	def Text(self, value):
-		if isinstance(value, go.GoClass):
-			_BMXGo.BMXGo_Document_Text_Set(self.handle, value.handle)
-		else:
-			_BMXGo.BMXGo_Document_Text_Set(self.handle, value)
-	@property
-	def Tokens(self):
-		return go.Slice_string(handle=_BMXGo.BMXGo_Document_Tokens_Get(self.handle))
-	@Tokens.setter
-	def Tokens(self, value):
-		if isinstance(value, go.GoClass):
-			_BMXGo.BMXGo_Document_Tokens_Set(self.handle, value.handle)
-		else:
-			raise TypeError("supplied argument type {t} is not a go.GoClass".format(t=type(value)))
-	@property
-	def F_table(self):
-		return Map_string_int(handle=_BMXGo.BMXGo_Document_F_table_Get(self.handle))
-	@F_table.setter
-	def F_table(self, value):
-		if isinstance(value, go.GoClass):
-			_BMXGo.BMXGo_Document_F_table_Set(self.handle, value.handle)
-		else:
-			raise TypeError("supplied argument type {t} is not a go.GoClass".format(t=type(value)))
 
 # Python type for struct BMXGo.LinkedContent
 class LinkedContent(go.GoClass):
@@ -2554,8 +2720,8 @@ class LinkedContent(go.GoClass):
 		else:
 			_BMXGo.BMXGo_LinkedContent_Type_Set(self.handle, value)
 
-# Python type for struct BMXGo.Query
-class Query(go.GoClass):
+# Python type for struct BMXGo.BMX
+class BMX(go.GoClass):
 	""""""
 	def __init__(self, *args, **kwargs):
 		"""
@@ -2570,45 +2736,37 @@ class Query(go.GoClass):
 			self.handle = args[0].handle
 			_BMXGo.IncRef(self.handle)
 		else:
-			self.handle = _BMXGo.BMXGo_Query_CTor()
+			self.handle = _BMXGo.BMXGo_BMX_CTor()
 			_BMXGo.IncRef(self.handle)
 			if  0 < len(args):
-				self.Text = args[0]
-			if "Text" in kwargs:
-				self.Text = kwargs["Text"]
+				self.Docs = args[0]
+			if "Docs" in kwargs:
+				self.Docs = kwargs["Docs"]
 			if  1 < len(args):
-				self.Tokens = args[1]
-			if "Tokens" in kwargs:
-				self.Tokens = kwargs["Tokens"]
+				self.Params = args[1]
+			if "Params" in kwargs:
+				self.Params = kwargs["Params"]
 			if  2 < len(args):
-				self.TotalWeight = args[2]
-			if "TotalWeight" in kwargs:
-				self.TotalWeight = kwargs["TotalWeight"]
+				self.TextPreprocessor = args[2]
+			if "TextPreprocessor" in kwargs:
+				self.TextPreprocessor = kwargs["TextPreprocessor"]
+			if  3 < len(args):
+				self.NumAppearances = args[3]
+			if "NumAppearances" in kwargs:
+				self.NumAppearances = kwargs["NumAppearances"]
+			if  4 < len(args):
+				self.IDF_table = args[4]
+			if "IDF_table" in kwargs:
+				self.IDF_table = kwargs["IDF_table"]
 			if  5 < len(args):
-				self.S_table = args[5]
-			if "S_table" in kwargs:
-				self.S_table = kwargs["S_table"]
-			if  6 < len(args):
-				self.ScoreTable = args[6]
-			if "ScoreTable" in kwargs:
-				self.ScoreTable = kwargs["ScoreTable"]
-			if  7 < len(args):
-				self.NormalizedScoreTable = args[7]
-			if "NormalizedScoreTable" in kwargs:
-				self.NormalizedScoreTable = kwargs["NormalizedScoreTable"]
-			if  8 < len(args):
-				self.AugmentedQueries = args[8]
-			if "AugmentedQueries" in kwargs:
-				self.AugmentedQueries = kwargs["AugmentedQueries"]
-			if  9 < len(args):
-				self.AugmentedWeights = args[9]
-			if "AugmentedWeights" in kwargs:
-				self.AugmentedWeights = kwargs["AugmentedWeights"]
+				self.E_tilde_table = args[5]
+			if "E_tilde_table" in kwargs:
+				self.E_tilde_table = kwargs["E_tilde_table"]
 	def __del__(self):
 		_BMXGo.DecRef(self.handle)
 	def __str__(self):
 		pr = [(p, getattr(self, p)) for p in dir(self) if not p.startswith('__')]
-		sv = 'BMXGo.Query{'
+		sv = 'BMXGo.BMX{'
 		first = True
 		for v in pr:
 			if callable(v[1]):
@@ -2621,172 +2779,83 @@ class Query(go.GoClass):
 		return sv + '}'
 	def __repr__(self):
 		pr = [(p, getattr(self, p)) for p in dir(self) if not p.startswith('__')]
-		sv = 'BMXGo.Query ( '
+		sv = 'BMXGo.BMX ( '
 		for v in pr:
 			if not callable(v[1]):
 				sv += v[0] + '=' + str(v[1]) + ', '
 		return sv + ')'
 	@property
-	def Text(self):
-		return _BMXGo.BMXGo_Query_Text_Get(self.handle)
-	@Text.setter
-	def Text(self, value):
+	def Docs(self):
+		return Map_string_BMXGo_Document(handle=_BMXGo.BMXGo_BMX_Docs_Get(self.handle))
+	@Docs.setter
+	def Docs(self, value):
 		if isinstance(value, go.GoClass):
-			_BMXGo.BMXGo_Query_Text_Set(self.handle, value.handle)
-		else:
-			_BMXGo.BMXGo_Query_Text_Set(self.handle, value)
-	@property
-	def Tokens(self):
-		return Map_string_float64(handle=_BMXGo.BMXGo_Query_Tokens_Get(self.handle))
-	@Tokens.setter
-	def Tokens(self, value):
-		if isinstance(value, go.GoClass):
-			_BMXGo.BMXGo_Query_Tokens_Set(self.handle, value.handle)
+			_BMXGo.BMXGo_BMX_Docs_Set(self.handle, value.handle)
 		else:
 			raise TypeError("supplied argument type {t} is not a go.GoClass".format(t=type(value)))
 	@property
-	def TotalWeight(self):
-		return _BMXGo.BMXGo_Query_TotalWeight_Get(self.handle)
-	@TotalWeight.setter
-	def TotalWeight(self, value):
+	def Params(self):
+		return Parameters(handle=_BMXGo.BMXGo_BMX_Params_Get(self.handle))
+	@Params.setter
+	def Params(self, value):
 		if isinstance(value, go.GoClass):
-			_BMXGo.BMXGo_Query_TotalWeight_Set(self.handle, value.handle)
-		else:
-			_BMXGo.BMXGo_Query_TotalWeight_Set(self.handle, value)
-	@property
-	def S_table(self):
-		return Map_string_float64(handle=_BMXGo.BMXGo_Query_S_table_Get(self.handle))
-	@S_table.setter
-	def S_table(self, value):
-		if isinstance(value, go.GoClass):
-			_BMXGo.BMXGo_Query_S_table_Set(self.handle, value.handle)
+			_BMXGo.BMXGo_BMX_Params_Set(self.handle, value.handle)
 		else:
 			raise TypeError("supplied argument type {t} is not a go.GoClass".format(t=type(value)))
 	@property
-	def ScoreTable(self):
-		return Map_string_float64(handle=_BMXGo.BMXGo_Query_ScoreTable_Get(self.handle))
-	@ScoreTable.setter
-	def ScoreTable(self, value):
+	def TextPreprocessor(self):
+		return TextPreprocessor(handle=_BMXGo.BMXGo_BMX_TextPreprocessor_Get(self.handle))
+	@TextPreprocessor.setter
+	def TextPreprocessor(self, value):
 		if isinstance(value, go.GoClass):
-			_BMXGo.BMXGo_Query_ScoreTable_Set(self.handle, value.handle)
+			_BMXGo.BMXGo_BMX_TextPreprocessor_Set(self.handle, value.handle)
 		else:
 			raise TypeError("supplied argument type {t} is not a go.GoClass".format(t=type(value)))
 	@property
-	def NormalizedScoreTable(self):
-		return Map_string_float64(handle=_BMXGo.BMXGo_Query_NormalizedScoreTable_Get(self.handle))
-	@NormalizedScoreTable.setter
-	def NormalizedScoreTable(self, value):
+	def NumAppearances(self):
+		return Map_string_Slice_string(handle=_BMXGo.BMXGo_BMX_NumAppearances_Get(self.handle))
+	@NumAppearances.setter
+	def NumAppearances(self, value):
 		if isinstance(value, go.GoClass):
-			_BMXGo.BMXGo_Query_NormalizedScoreTable_Set(self.handle, value.handle)
+			_BMXGo.BMXGo_BMX_NumAppearances_Set(self.handle, value.handle)
 		else:
 			raise TypeError("supplied argument type {t} is not a go.GoClass".format(t=type(value)))
 	@property
-	def AugmentedQueries(self):
-		return go.Slice_string(handle=_BMXGo.BMXGo_Query_AugmentedQueries_Get(self.handle))
-	@AugmentedQueries.setter
-	def AugmentedQueries(self, value):
+	def IDF_table(self):
+		return Map_string_float64(handle=_BMXGo.BMXGo_BMX_IDF_table_Get(self.handle))
+	@IDF_table.setter
+	def IDF_table(self, value):
 		if isinstance(value, go.GoClass):
-			_BMXGo.BMXGo_Query_AugmentedQueries_Set(self.handle, value.handle)
+			_BMXGo.BMXGo_BMX_IDF_table_Set(self.handle, value.handle)
 		else:
 			raise TypeError("supplied argument type {t} is not a go.GoClass".format(t=type(value)))
 	@property
-	def AugmentedWeights(self):
-		return go.Slice_float64(handle=_BMXGo.BMXGo_Query_AugmentedWeights_Get(self.handle))
-	@AugmentedWeights.setter
-	def AugmentedWeights(self, value):
+	def E_tilde_table(self):
+		return Map_string_float64(handle=_BMXGo.BMXGo_BMX_E_tilde_table_Get(self.handle))
+	@E_tilde_table.setter
+	def E_tilde_table(self, value):
 		if isinstance(value, go.GoClass):
-			_BMXGo.BMXGo_Query_AugmentedWeights_Set(self.handle, value.handle)
+			_BMXGo.BMXGo_BMX_E_tilde_table_Set(self.handle, value.handle)
 		else:
 			raise TypeError("supplied argument type {t} is not a go.GoClass".format(t=type(value)))
-	def SetEntropy(self, bmx, goRun=False):
-		"""SetEntropy(object bmx) """
-		_BMXGo.BMXGo_Query_SetEntropy(self.handle, bmx.handle, goRun)
-	def S_table_fill(self, bmx, goRun=False):
-		"""S_table_fill(object bmx) 
-		
-		Function to calculate S(Q, D)
-		"""
-		_BMXGo.BMXGo_Query_S_table_fill(self.handle, bmx.handle, goRun)
-	def Score_table_fill(self, bmx, goRun=False):
-		"""Score_table_fill(object bmx) 
-		
-		Function to calculate the score
-		"""
-		_BMXGo.BMXGo_Query_Score_table_fill(self.handle, bmx.handle, goRun)
-	def NormalizedScore_table_fill(self, bmx, goRun=False):
-		"""NormalizedScore_table_fill(object bmx) """
-		_BMXGo.BMXGo_Query_NormalizedScore_table_fill(self.handle, bmx.handle, goRun)
-	def Initialize(self, bmx, goRun=False):
-		"""Initialize(object bmx) """
-		_BMXGo.BMXGo_Query_Initialize(self.handle, bmx.handle, goRun)
-	def Rank(self, topK):
-		"""Rank(int topK) []str"""
-		return go.Slice_string(handle=_BMXGo.BMXGo_Query_Rank(self.handle, topK))
-
-# Python type for struct BMXGo.TextPreprocessor
-class TextPreprocessor(go.GoClass):
-	"""TextPreprocessor holds the preprocessing steps and configuration.\n"""
-	def __init__(self, *args, **kwargs):
-		"""
-		handle=A Go-side object is always initialized with an explicit handle=arg
-		otherwise parameters can be unnamed in order of field names or named fields
-		in which case a new Go object is constructed first
-		"""
-		if len(kwargs) == 1 and 'handle' in kwargs:
-			self.handle = kwargs['handle']
-			_BMXGo.IncRef(self.handle)
-		elif len(args) == 1 and isinstance(args[0], go.GoClass):
-			self.handle = args[0].handle
-			_BMXGo.IncRef(self.handle)
-		else:
-			self.handle = _BMXGo.BMXGo_TextPreprocessor_CTor()
-			_BMXGo.IncRef(self.handle)
-	def __del__(self):
-		_BMXGo.DecRef(self.handle)
-	def __str__(self):
-		pr = [(p, getattr(self, p)) for p in dir(self) if not p.startswith('__')]
-		sv = 'BMXGo.TextPreprocessor{'
-		first = True
-		for v in pr:
-			if callable(v[1]):
-				continue
-			if first:
-				first = False
-			else:
-				sv += ', '
-			sv += v[0] + '=' + str(v[1])
-		return sv + '}'
-	def __repr__(self):
-		pr = [(p, getattr(self, p)) for p in dir(self) if not p.startswith('__')]
-		sv = 'BMXGo.TextPreprocessor ( '
-		for v in pr:
-			if not callable(v[1]):
-				sv += v[0] + '=' + str(v[1]) + ', '
-		return sv + ')'
-	def Process(self, item):
-		"""Process(str item) []str
-		
-		Process processes a single text item through all preprocessing steps.
-		"""
-		return go.Slice_string(handle=_BMXGo.BMXGo_TextPreprocessor_Process(self.handle, item))
-	def ProcessMany(self, items, nWorkers):
-		"""ProcessMany([]str items, int nWorkers) [][]str
-		
-		ProcessMany processes multiple text items concurrently.
-		"""
-		return Slice_Slice_string(handle=_BMXGo.BMXGo_TextPreprocessor_ProcessMany(self.handle, items.handle, nWorkers))
-	def SetStemmer(self, stemmerName):
-		"""SetStemmer(str stemmerName) str
-		
-		Add a method to set the stemmer
-		"""
-		return _BMXGo.BMXGo_TextPreprocessor_SetStemmer(self.handle, stemmerName)
-	def SetStopwords(self, stopwords):
-		"""SetStopwords(str stopwords) str
-		
-		Add a method to set stopwords
-		"""
-		return _BMXGo.BMXGo_TextPreprocessor_SetStopwords(self.handle, stopwords)
+	def InitializeTextPreprocessor(self, config):
+		"""InitializeTextPreprocessor(object config) str"""
+		return _BMXGo.BMXGo_BMX_InitializeTextPreprocessor(self.handle, config.handle)
+	def SetParams(self, goRun=False):
+		"""SetParams() """
+		_BMXGo.BMXGo_BMX_SetParams(self.handle, goRun)
+	def F_table_fill(self, goRun=False):
+		"""F_table_fill() """
+		_BMXGo.BMXGo_BMX_F_table_fill(self.handle, goRun)
+	def NumAppearancesCalc(self, goRun=False):
+		"""NumAppearancesCalc() """
+		_BMXGo.BMXGo_BMX_NumAppearancesCalc(self.handle, goRun)
+	def IDF_table_fill(self, goRun=False):
+		"""IDF_table_fill() """
+		_BMXGo.BMXGo_BMX_IDF_table_fill(self.handle, goRun)
+	def E_tilde_table_fill(self, goRun=False):
+		"""E_tilde_table_fill() """
+		_BMXGo.BMXGo_BMX_E_tilde_table_fill(self.handle, goRun)
 
 # Python type for struct BMXGo.ClientConfig
 class ClientConfig(go.GoClass):
@@ -3039,9 +3108,9 @@ class ConvMessage(go.GoClass):
 		else:
 			raise TypeError("supplied argument type {t} is not a go.GoClass".format(t=type(value)))
 
-# Python type for struct BMXGo.LLMClient
-class LLMClient(go.GoClass):
-	""""""
+# Python type for struct BMXGo.Document
+class Document(go.GoClass):
+	"""Define the parameters and types\n"""
 	def __init__(self, *args, **kwargs):
 		"""
 		handle=A Go-side object is always initialized with an explicit handle=arg
@@ -3055,70 +3124,25 @@ class LLMClient(go.GoClass):
 			self.handle = args[0].handle
 			_BMXGo.IncRef(self.handle)
 		else:
-			self.handle = _BMXGo.BMXGo_LLMClient_CTor()
-			_BMXGo.IncRef(self.handle)
-	def __del__(self):
-		_BMXGo.DecRef(self.handle)
-	def __str__(self):
-		pr = [(p, getattr(self, p)) for p in dir(self) if not p.startswith('__')]
-		sv = 'BMXGo.LLMClient{'
-		first = True
-		for v in pr:
-			if callable(v[1]):
-				continue
-			if first:
-				first = False
-			else:
-				sv += ', '
-			sv += v[0] + '=' + str(v[1])
-		return sv + '}'
-	def __repr__(self):
-		pr = [(p, getattr(self, p)) for p in dir(self) if not p.startswith('__')]
-		sv = 'BMXGo.LLMClient ( '
-		for v in pr:
-			if not callable(v[1]):
-				sv += v[0] + '=' + str(v[1]) + ', '
-		return sv + ')'
-
-# Python type for struct BMXGo.Parameters
-class Parameters(go.GoClass):
-	""""""
-	def __init__(self, *args, **kwargs):
-		"""
-		handle=A Go-side object is always initialized with an explicit handle=arg
-		otherwise parameters can be unnamed in order of field names or named fields
-		in which case a new Go object is constructed first
-		"""
-		if len(kwargs) == 1 and 'handle' in kwargs:
-			self.handle = kwargs['handle']
-			_BMXGo.IncRef(self.handle)
-		elif len(args) == 1 and isinstance(args[0], go.GoClass):
-			self.handle = args[0].handle
-			_BMXGo.IncRef(self.handle)
-		else:
-			self.handle = _BMXGo.BMXGo_Parameters_CTor()
+			self.handle = _BMXGo.BMXGo_Document_CTor()
 			_BMXGo.IncRef(self.handle)
 			if  0 < len(args):
-				self.Alpha = args[0]
-			if "Alpha" in kwargs:
-				self.Alpha = kwargs["Alpha"]
+				self.Text = args[0]
+			if "Text" in kwargs:
+				self.Text = kwargs["Text"]
 			if  1 < len(args):
-				self.Beta = args[1]
-			if "Beta" in kwargs:
-				self.Beta = kwargs["Beta"]
+				self.Tokens = args[1]
+			if "Tokens" in kwargs:
+				self.Tokens = kwargs["Tokens"]
 			if  2 < len(args):
-				self.Avgdl = args[2]
-			if "Avgdl" in kwargs:
-				self.Avgdl = kwargs["Avgdl"]
-			if  3 < len(args):
-				self.N = args[3]
-			if "N" in kwargs:
-				self.N = kwargs["N"]
+				self.F_table = args[2]
+			if "F_table" in kwargs:
+				self.F_table = kwargs["F_table"]
 	def __del__(self):
 		_BMXGo.DecRef(self.handle)
 	def __str__(self):
 		pr = [(p, getattr(self, p)) for p in dir(self) if not p.startswith('__')]
-		sv = 'BMXGo.Parameters{'
+		sv = 'BMXGo.Document{'
 		first = True
 		for v in pr:
 			if callable(v[1]):
@@ -3131,51 +3155,42 @@ class Parameters(go.GoClass):
 		return sv + '}'
 	def __repr__(self):
 		pr = [(p, getattr(self, p)) for p in dir(self) if not p.startswith('__')]
-		sv = 'BMXGo.Parameters ( '
+		sv = 'BMXGo.Document ( '
 		for v in pr:
 			if not callable(v[1]):
 				sv += v[0] + '=' + str(v[1]) + ', '
 		return sv + ')'
 	@property
-	def Alpha(self):
-		return _BMXGo.BMXGo_Parameters_Alpha_Get(self.handle)
-	@Alpha.setter
-	def Alpha(self, value):
+	def Text(self):
+		return _BMXGo.BMXGo_Document_Text_Get(self.handle)
+	@Text.setter
+	def Text(self, value):
 		if isinstance(value, go.GoClass):
-			_BMXGo.BMXGo_Parameters_Alpha_Set(self.handle, value.handle)
+			_BMXGo.BMXGo_Document_Text_Set(self.handle, value.handle)
 		else:
-			_BMXGo.BMXGo_Parameters_Alpha_Set(self.handle, value)
+			_BMXGo.BMXGo_Document_Text_Set(self.handle, value)
 	@property
-	def Beta(self):
-		return _BMXGo.BMXGo_Parameters_Beta_Get(self.handle)
-	@Beta.setter
-	def Beta(self, value):
+	def Tokens(self):
+		return go.Slice_string(handle=_BMXGo.BMXGo_Document_Tokens_Get(self.handle))
+	@Tokens.setter
+	def Tokens(self, value):
 		if isinstance(value, go.GoClass):
-			_BMXGo.BMXGo_Parameters_Beta_Set(self.handle, value.handle)
+			_BMXGo.BMXGo_Document_Tokens_Set(self.handle, value.handle)
 		else:
-			_BMXGo.BMXGo_Parameters_Beta_Set(self.handle, value)
+			raise TypeError("supplied argument type {t} is not a go.GoClass".format(t=type(value)))
 	@property
-	def Avgdl(self):
-		return _BMXGo.BMXGo_Parameters_Avgdl_Get(self.handle)
-	@Avgdl.setter
-	def Avgdl(self, value):
+	def F_table(self):
+		return Map_string_int(handle=_BMXGo.BMXGo_Document_F_table_Get(self.handle))
+	@F_table.setter
+	def F_table(self, value):
 		if isinstance(value, go.GoClass):
-			_BMXGo.BMXGo_Parameters_Avgdl_Set(self.handle, value.handle)
+			_BMXGo.BMXGo_Document_F_table_Set(self.handle, value.handle)
 		else:
-			_BMXGo.BMXGo_Parameters_Avgdl_Set(self.handle, value)
-	@property
-	def N(self):
-		return _BMXGo.BMXGo_Parameters_N_Get(self.handle)
-	@N.setter
-	def N(self, value):
-		if isinstance(value, go.GoClass):
-			_BMXGo.BMXGo_Parameters_N_Set(self.handle, value.handle)
-		else:
-			_BMXGo.BMXGo_Parameters_N_Set(self.handle, value)
+			raise TypeError("supplied argument type {t} is not a go.GoClass".format(t=type(value)))
 
-# Python type for struct BMXGo.SearchResults
-class SearchResults(go.GoClass):
-	""""""
+# Python type for struct BMXGo.TextPreprocessor
+class TextPreprocessor(go.GoClass):
+	"""TextPreprocessor holds the preprocessing steps and configuration.\n"""
 	def __init__(self, *args, **kwargs):
 		"""
 		handle=A Go-side object is always initialized with an explicit handle=arg
@@ -3189,21 +3204,13 @@ class SearchResults(go.GoClass):
 			self.handle = args[0].handle
 			_BMXGo.IncRef(self.handle)
 		else:
-			self.handle = _BMXGo.BMXGo_SearchResults_CTor()
+			self.handle = _BMXGo.BMXGo_TextPreprocessor_CTor()
 			_BMXGo.IncRef(self.handle)
-			if  0 < len(args):
-				self.Keys = args[0]
-			if "Keys" in kwargs:
-				self.Keys = kwargs["Keys"]
-			if  1 < len(args):
-				self.Scores = args[1]
-			if "Scores" in kwargs:
-				self.Scores = kwargs["Scores"]
 	def __del__(self):
 		_BMXGo.DecRef(self.handle)
 	def __str__(self):
 		pr = [(p, getattr(self, p)) for p in dir(self) if not p.startswith('__')]
-		sv = 'BMXGo.SearchResults{'
+		sv = 'BMXGo.TextPreprocessor{'
 		first = True
 		for v in pr:
 			if callable(v[1]):
@@ -3216,29 +3223,35 @@ class SearchResults(go.GoClass):
 		return sv + '}'
 	def __repr__(self):
 		pr = [(p, getattr(self, p)) for p in dir(self) if not p.startswith('__')]
-		sv = 'BMXGo.SearchResults ( '
+		sv = 'BMXGo.TextPreprocessor ( '
 		for v in pr:
 			if not callable(v[1]):
 				sv += v[0] + '=' + str(v[1]) + ', '
 		return sv + ')'
-	@property
-	def Keys(self):
-		return go.Slice_string(handle=_BMXGo.BMXGo_SearchResults_Keys_Get(self.handle))
-	@Keys.setter
-	def Keys(self, value):
-		if isinstance(value, go.GoClass):
-			_BMXGo.BMXGo_SearchResults_Keys_Set(self.handle, value.handle)
-		else:
-			raise TypeError("supplied argument type {t} is not a go.GoClass".format(t=type(value)))
-	@property
-	def Scores(self):
-		return go.Slice_float64(handle=_BMXGo.BMXGo_SearchResults_Scores_Get(self.handle))
-	@Scores.setter
-	def Scores(self, value):
-		if isinstance(value, go.GoClass):
-			_BMXGo.BMXGo_SearchResults_Scores_Set(self.handle, value.handle)
-		else:
-			raise TypeError("supplied argument type {t} is not a go.GoClass".format(t=type(value)))
+	def Process(self, item):
+		"""Process(str item) []str
+		
+		Process processes a single text item through all preprocessing steps.
+		"""
+		return go.Slice_string(handle=_BMXGo.BMXGo_TextPreprocessor_Process(self.handle, item))
+	def ProcessMany(self, items, nWorkers):
+		"""ProcessMany([]str items, int nWorkers) [][]str
+		
+		ProcessMany processes multiple text items concurrently.
+		"""
+		return Slice_Slice_string(handle=_BMXGo.BMXGo_TextPreprocessor_ProcessMany(self.handle, items.handle, nWorkers))
+	def SetStemmer(self, stemmerName):
+		"""SetStemmer(str stemmerName) str
+		
+		Add a method to set the stemmer
+		"""
+		return _BMXGo.BMXGo_TextPreprocessor_SetStemmer(self.handle, stemmerName)
+	def SetStopwords(self, stopwords):
+		"""SetStopwords(str stopwords) str
+		
+		Add a method to set stopwords
+		"""
+		return _BMXGo.BMXGo_TextPreprocessor_SetStopwords(self.handle, stopwords)
 
 
 # ---- Slices ---
@@ -3257,53 +3270,53 @@ def NewConfig(tokenizer, stemmer, lang):
 	NewConfig creates a new Config with the specified tokenizer, stemmer, and stopwords.
 	"""
 	return Config(handle=_BMXGo.BMXGo_NewConfig(tokenizer, stemmer, lang))
+def NewLLMClient(config):
+	"""NewLLMClient(object config) object"""
+	return LLMClient(handle=_BMXGo.BMXGo_NewLLMClient(config.handle))
 def NewTextPreprocessor(config):
 	"""NewTextPreprocessor(object config) object
 	
 	NewTextPreprocessor creates a new TextPreprocessor with the given configuration.
 	"""
 	return TextPreprocessor(handle=_BMXGo.BMXGo_NewTextPreprocessor(config.handle))
-def NewLLMClient(config):
-	"""NewLLMClient(object config) object"""
-	return LLMClient(handle=_BMXGo.BMXGo_NewLLMClient(config.handle))
 
 
 # ---- Functions ---
 def NormalizeAcronyms(text):
 	"""NormalizeAcronyms(str text) str"""
 	return _BMXGo.BMXGo_NormalizeAcronyms(text)
-def NormalizeAmpersand(text):
-	"""NormalizeAmpersand(str text) str"""
-	return _BMXGo.BMXGo_NormalizeAmpersand(text)
-def NormalizeSpecialChars(text):
-	"""NormalizeSpecialChars(str text) str"""
-	return _BMXGo.BMXGo_NormalizeSpecialChars(text)
+def RemovePunctuation(text):
+	"""RemovePunctuation(str text) str"""
+	return _BMXGo.BMXGo_RemovePunctuation(text)
 def GenerateAugmentedQueries(query, num_augmented_queries):
 	"""GenerateAugmentedQueries(str query, int num_augmented_queries) []str, str"""
 	return go.Slice_string(handle=_BMXGo.BMXGo_GenerateAugmentedQueries(query, num_augmented_queries))
 def HtmlToMarkdown(htmlContent, addIDs):
 	"""HtmlToMarkdown(str htmlContent, bool addIDs) str"""
 	return _BMXGo.BMXGo_HtmlToMarkdown(htmlContent, addIDs)
-def ApplyStemmer(tokens, stemmer):
-	"""ApplyStemmer([]str tokens, callable stemmer) []str"""
-	return go.Slice_string(handle=_BMXGo.BMXGo_ApplyStemmer(tokens.handle, stemmer))
-def StripWhitespaces(text):
-	"""StripWhitespaces(str text) str"""
-	return _BMXGo.BMXGo_StripWhitespaces(text)
-def GetStopwords(swList):
-	"""GetStopwords(str swList) []str, str"""
-	return go.Slice_string(handle=_BMXGo.BMXGo_GetStopwords(swList))
 def Lowercasing(text):
 	"""Lowercasing(str text) str"""
 	return _BMXGo.BMXGo_Lowercasing(text)
+def NormalizeAmpersand(text):
+	"""NormalizeAmpersand(str text) str"""
+	return _BMXGo.BMXGo_NormalizeAmpersand(text)
+def NormalizeSpecialChars(text):
+	"""NormalizeSpecialChars(str text) str"""
+	return _BMXGo.BMXGo_NormalizeSpecialChars(text)
 def NormalizeDiacritics(text):
 	"""NormalizeDiacritics(str text) str"""
 	return _BMXGo.BMXGo_NormalizeDiacritics(text)
+def StripWhitespaces(text):
+	"""StripWhitespaces(str text) str"""
+	return _BMXGo.BMXGo_StripWhitespaces(text)
+def ApplyStemmer(tokens, stemmer):
+	"""ApplyStemmer([]str tokens, callable stemmer) []str"""
+	return go.Slice_string(handle=_BMXGo.BMXGo_ApplyStemmer(tokens.handle, stemmer))
+def GetStopwords(swList):
+	"""GetStopwords(str swList) []str, str"""
+	return go.Slice_string(handle=_BMXGo.BMXGo_GetStopwords(swList))
 def RemoveEmptyTokens(tokens):
 	"""RemoveEmptyTokens([]str tokens) []str"""
 	return go.Slice_string(handle=_BMXGo.BMXGo_RemoveEmptyTokens(tokens.handle))
-def RemovePunctuation(text):
-	"""RemovePunctuation(str text) str"""
-	return _BMXGo.BMXGo_RemovePunctuation(text)
 
 

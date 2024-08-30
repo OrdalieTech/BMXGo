@@ -105,7 +105,6 @@ func (adapter *BMXAdapter) AddMany(ids []string, docs []string) error {
 	defer func() {
 		if r := recover(); r != nil {
 			fmt.Println("Recovered in AddMany", r)
-			// You might want to log the ids and docs that caused the panic
 			fmt.Println("Problematic document id:", ids[len(ids)-1])
 		}
 	}()
@@ -115,6 +114,7 @@ func (adapter *BMXAdapter) AddMany(ids []string, docs []string) error {
 	for i, doc := range docs {
 		adapter.bmx.Docs[ids[i]] = Document{Text: doc, Tokens: tokenize(doc)}
 	}
+
 	// fmt.Println("Setting params")
 	// start := time.Now()
 	adapter.bmx.SetParams()
@@ -142,29 +142,28 @@ func (adapter *BMXAdapter) Search(query string, topK int) SearchResults {
 	q := Query{Text: query}
 	q.Initialize(adapter.bmx)
 
-	Keys := []string{}
+	Keys := make([]string, 0, len(q.ScoreTable))
 	for key := range q.ScoreTable {
 		Keys = append(Keys, key)
 	}
 
-	// Sort the indices based on the normalizedScoreTable in descending order
 	sort.Slice(Keys, func(i, j int) bool {
 		return q.ScoreTable[Keys[i]] > q.ScoreTable[Keys[j]]
 	})
 
 	topKeys := Keys[:topK]
 
-	topScores := []float64{}
-	for _, key := range topKeys {
-		topScores = append(topScores, q.NormalizedScoreTable[key])
-	}
+	var wg sync.WaitGroup
+	topScores := make([]float64, len(topKeys))
 
-	// fmt.Println("IDF:", q.IDF_table)
-	// fmt.Println("TF:", q.F_table)
-	// fmt.Println("E:", q.E_table)
-	// fmt.Println("E_tilde:", q.E_tilde_table)
-	// fmt.Println("S_table:", q.S_table)
-	// fmt.Println("Scores:", q.ScoreTable)
+	for i, key := range topKeys {
+		wg.Add(1)
+		go func(i int, key string) {
+			defer wg.Done()
+			topScores[i] = q.NormalizedScoreTable[key]
+		}(i, key)
+	}
+	wg.Wait()
 
 	return SearchResults{Keys: topKeys, Scores: topScores}
 }
@@ -219,21 +218,28 @@ func (adapter *BMXAdapter) SearchAugmented(query string, topK int, num_augmented
 		Keys = append(Keys, key)
 	}
 
-	// Sort the indices based on the normalizedScoreTable in descending order
 	sort.Slice(Keys, func(i, j int) bool {
 		return q.ScoreTable[Keys[i]] > q.ScoreTable[Keys[j]]
 	})
+
 	// fmt.Println("Keys sorted, total time:", time.Since(start))
 
 	// fmt.Println("Selecting top keys")
 	// start = time.Now()
 	topKeys := Keys[:topK]
 
-	topScores := []float64{}
-	for _, key := range topKeys {
-		topScores = append(topScores, q.NormalizedScoreTable[key])
+	var wg sync.WaitGroup
+	topScores := make([]float64, len(topKeys))
+
+	for i, key := range topKeys {
+		wg.Add(1)
+		go func(i int, key string) {
+			defer wg.Done()
+			topScores[i] = q.NormalizedScoreTable[key]
+		}(i, key)
 	}
-	// fmt.Println("Top keys selected, total time:", time.Since(start))
+	wg.Wait()
+
 	return SearchResults{Keys: topKeys, Scores: topScores}
 }
 

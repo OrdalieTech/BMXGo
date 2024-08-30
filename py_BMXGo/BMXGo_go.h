@@ -594,27 +594,53 @@ extern void Map_string_int_set(long long handle, char* _ky, long long _vl);
 extern void Map_string_int_delete(long long handle, char* _ky);
 extern long long Map_string_int_keys(long long handle);
 
-// --- wrapping struct: BMXGo.BMX ---
+// --- wrapping struct: BMXGo.Parameters ---
 //
-extern long long BMXGo_BMX_CTor();
-extern long long BMXGo_BMX_Docs_Get(long long handle);
-extern void BMXGo_BMX_Docs_Set(long long handle, long long val);
-extern long long BMXGo_BMX_Params_Get(long long handle);
-extern void BMXGo_BMX_Params_Set(long long handle, long long val);
-extern long long BMXGo_BMX_TextPreprocessor_Get(long long handle);
-extern void BMXGo_BMX_TextPreprocessor_Set(long long handle, long long val);
-extern long long BMXGo_BMX_NumAppearances_Get(long long handle);
-extern void BMXGo_BMX_NumAppearances_Set(long long handle, long long val);
-extern long long BMXGo_BMX_IDF_table_Get(long long handle);
-extern void BMXGo_BMX_IDF_table_Set(long long handle, long long val);
-extern long long BMXGo_BMX_E_tilde_table_Get(long long handle);
-extern void BMXGo_BMX_E_tilde_table_Set(long long handle, long long val);
-extern char* BMXGo_BMX_InitializeTextPreprocessor(long long _handle, long long config);
-extern void BMXGo_BMX_SetParams(long long _handle, char goRun);
-extern void BMXGo_BMX_F_table_fill(long long _handle, char goRun);
-extern void BMXGo_BMX_NumAppearancesCalc(long long _handle, char goRun);
-extern void BMXGo_BMX_IDF_table_fill(long long _handle, char goRun);
-extern void BMXGo_BMX_E_tilde_table_fill(long long _handle, char goRun);
+extern long long BMXGo_Parameters_CTor();
+extern double BMXGo_Parameters_Alpha_Get(long long handle);
+extern void BMXGo_Parameters_Alpha_Set(long long handle, double val);
+extern double BMXGo_Parameters_Beta_Get(long long handle);
+extern void BMXGo_Parameters_Beta_Set(long long handle, double val);
+extern double BMXGo_Parameters_Avgdl_Get(long long handle);
+extern void BMXGo_Parameters_Avgdl_Set(long long handle, double val);
+extern long long BMXGo_Parameters_N_Get(long long handle);
+extern void BMXGo_Parameters_N_Set(long long handle, long long val);
+
+// --- wrapping struct: BMXGo.Query ---
+//
+extern long long BMXGo_Query_CTor();
+extern char* BMXGo_Query_Text_Get(long long handle);
+extern void BMXGo_Query_Text_Set(long long handle, char* val);
+extern long long BMXGo_Query_Tokens_Get(long long handle);
+extern void BMXGo_Query_Tokens_Set(long long handle, long long val);
+extern double BMXGo_Query_TotalWeight_Get(long long handle);
+extern void BMXGo_Query_TotalWeight_Set(long long handle, double val);
+extern double BMXGo_Query_AvgEntropy_Get(long long handle);
+extern void BMXGo_Query_AvgEntropy_Set(long long handle, double val);
+extern long long BMXGo_Query_S_table_Get(long long handle);
+extern void BMXGo_Query_S_table_Set(long long handle, long long val);
+extern long long BMXGo_Query_ScoreTable_Get(long long handle);
+extern void BMXGo_Query_ScoreTable_Set(long long handle, long long val);
+extern long long BMXGo_Query_NormalizedScoreTable_Get(long long handle);
+extern void BMXGo_Query_NormalizedScoreTable_Set(long long handle, long long val);
+extern long long BMXGo_Query_AugmentedQueries_Get(long long handle);
+extern void BMXGo_Query_AugmentedQueries_Set(long long handle, long long val);
+extern long long BMXGo_Query_AugmentedWeights_Get(long long handle);
+extern void BMXGo_Query_AugmentedWeights_Set(long long handle, long long val);
+extern void BMXGo_Query_SetEntropy(long long _handle, long long bmx, char goRun);
+extern void BMXGo_Query_S_table_fill(long long _handle, long long bmx, char goRun);
+extern void BMXGo_Query_Score_table_fill(long long _handle, long long bmx, char goRun);
+extern void BMXGo_Query_NormalizedScore_table_fill(long long _handle, long long bmx, char goRun);
+extern void BMXGo_Query_Initialize(long long _handle, long long bmx, char goRun);
+extern long long BMXGo_Query_Rank(long long _handle, long long topK);
+
+// --- wrapping struct: BMXGo.SearchResults ---
+//
+extern long long BMXGo_SearchResults_CTor();
+extern long long BMXGo_SearchResults_Keys_Get(long long handle);
+extern void BMXGo_SearchResults_Keys_Set(long long handle, long long val);
+extern long long BMXGo_SearchResults_Scores_Get(long long handle);
+extern void BMXGo_SearchResults_Scores_Set(long long handle, long long val);
 
 // --- wrapping struct: BMXGo.BMXAdapter ---
 //
@@ -654,15 +680,9 @@ extern void BMXGo_Config_DoAcronymsNormalization_Set(long long handle, char val)
 extern char BMXGo_Config_DoPunctuationRemoval_Get(long long handle);
 extern void BMXGo_Config_DoPunctuationRemoval_Set(long long handle, char val);
 
-// --- wrapping struct: BMXGo.Document ---
+// --- wrapping struct: BMXGo.LLMClient ---
 //
-extern long long BMXGo_Document_CTor();
-extern char* BMXGo_Document_Text_Get(long long handle);
-extern void BMXGo_Document_Text_Set(long long handle, char* val);
-extern long long BMXGo_Document_Tokens_Get(long long handle);
-extern void BMXGo_Document_Tokens_Set(long long handle, long long val);
-extern long long BMXGo_Document_F_table_Get(long long handle);
-extern void BMXGo_Document_F_table_Set(long long handle, long long val);
+extern long long BMXGo_LLMClient_CTor();
 
 // --- wrapping struct: BMXGo.LinkedContent ---
 //
@@ -672,39 +692,27 @@ extern void BMXGo_LinkedContent_ID_Set(long long handle, char* val);
 extern char* BMXGo_LinkedContent_Type_Get(long long handle);
 extern void BMXGo_LinkedContent_Type_Set(long long handle, char* val);
 
-// --- wrapping struct: BMXGo.Query ---
+// --- wrapping struct: BMXGo.BMX ---
 //
-extern long long BMXGo_Query_CTor();
-extern char* BMXGo_Query_Text_Get(long long handle);
-extern void BMXGo_Query_Text_Set(long long handle, char* val);
-extern long long BMXGo_Query_Tokens_Get(long long handle);
-extern void BMXGo_Query_Tokens_Set(long long handle, long long val);
-extern double BMXGo_Query_TotalWeight_Get(long long handle);
-extern void BMXGo_Query_TotalWeight_Set(long long handle, double val);
-extern long long BMXGo_Query_S_table_Get(long long handle);
-extern void BMXGo_Query_S_table_Set(long long handle, long long val);
-extern long long BMXGo_Query_ScoreTable_Get(long long handle);
-extern void BMXGo_Query_ScoreTable_Set(long long handle, long long val);
-extern long long BMXGo_Query_NormalizedScoreTable_Get(long long handle);
-extern void BMXGo_Query_NormalizedScoreTable_Set(long long handle, long long val);
-extern long long BMXGo_Query_AugmentedQueries_Get(long long handle);
-extern void BMXGo_Query_AugmentedQueries_Set(long long handle, long long val);
-extern long long BMXGo_Query_AugmentedWeights_Get(long long handle);
-extern void BMXGo_Query_AugmentedWeights_Set(long long handle, long long val);
-extern void BMXGo_Query_SetEntropy(long long _handle, long long bmx, char goRun);
-extern void BMXGo_Query_S_table_fill(long long _handle, long long bmx, char goRun);
-extern void BMXGo_Query_Score_table_fill(long long _handle, long long bmx, char goRun);
-extern void BMXGo_Query_NormalizedScore_table_fill(long long _handle, long long bmx, char goRun);
-extern void BMXGo_Query_Initialize(long long _handle, long long bmx, char goRun);
-extern long long BMXGo_Query_Rank(long long _handle, long long topK);
-
-// --- wrapping struct: BMXGo.TextPreprocessor ---
-//
-extern long long BMXGo_TextPreprocessor_CTor();
-extern long long BMXGo_TextPreprocessor_Process(long long _handle, char* item);
-extern long long BMXGo_TextPreprocessor_ProcessMany(long long _handle, long long items, long long nWorkers);
-extern char* BMXGo_TextPreprocessor_SetStemmer(long long _handle, char* stemmerName);
-extern char* BMXGo_TextPreprocessor_SetStopwords(long long _handle, char* stopwords);
+extern long long BMXGo_BMX_CTor();
+extern long long BMXGo_BMX_Docs_Get(long long handle);
+extern void BMXGo_BMX_Docs_Set(long long handle, long long val);
+extern long long BMXGo_BMX_Params_Get(long long handle);
+extern void BMXGo_BMX_Params_Set(long long handle, long long val);
+extern long long BMXGo_BMX_TextPreprocessor_Get(long long handle);
+extern void BMXGo_BMX_TextPreprocessor_Set(long long handle, long long val);
+extern long long BMXGo_BMX_NumAppearances_Get(long long handle);
+extern void BMXGo_BMX_NumAppearances_Set(long long handle, long long val);
+extern long long BMXGo_BMX_IDF_table_Get(long long handle);
+extern void BMXGo_BMX_IDF_table_Set(long long handle, long long val);
+extern long long BMXGo_BMX_E_tilde_table_Get(long long handle);
+extern void BMXGo_BMX_E_tilde_table_Set(long long handle, long long val);
+extern char* BMXGo_BMX_InitializeTextPreprocessor(long long _handle, long long config);
+extern void BMXGo_BMX_SetParams(long long _handle, char goRun);
+extern void BMXGo_BMX_F_table_fill(long long _handle, char goRun);
+extern void BMXGo_BMX_NumAppearancesCalc(long long _handle, char goRun);
+extern void BMXGo_BMX_IDF_table_fill(long long _handle, char goRun);
+extern void BMXGo_BMX_E_tilde_table_fill(long long _handle, char goRun);
 
 // --- wrapping struct: BMXGo.ClientConfig ---
 //
@@ -740,45 +748,39 @@ extern void BMXGo_ConvMessage_Intent_Set(long long handle, char* val);
 extern long long BMXGo_ConvMessage_LinkedContent_Get(long long handle);
 extern void BMXGo_ConvMessage_LinkedContent_Set(long long handle, long long val);
 
-// --- wrapping struct: BMXGo.LLMClient ---
+// --- wrapping struct: BMXGo.Document ---
 //
-extern long long BMXGo_LLMClient_CTor();
+extern long long BMXGo_Document_CTor();
+extern char* BMXGo_Document_Text_Get(long long handle);
+extern void BMXGo_Document_Text_Set(long long handle, char* val);
+extern long long BMXGo_Document_Tokens_Get(long long handle);
+extern void BMXGo_Document_Tokens_Set(long long handle, long long val);
+extern long long BMXGo_Document_F_table_Get(long long handle);
+extern void BMXGo_Document_F_table_Set(long long handle, long long val);
 
-// --- wrapping struct: BMXGo.Parameters ---
+// --- wrapping struct: BMXGo.TextPreprocessor ---
 //
-extern long long BMXGo_Parameters_CTor();
-extern double BMXGo_Parameters_Alpha_Get(long long handle);
-extern void BMXGo_Parameters_Alpha_Set(long long handle, double val);
-extern double BMXGo_Parameters_Beta_Get(long long handle);
-extern void BMXGo_Parameters_Beta_Set(long long handle, double val);
-extern double BMXGo_Parameters_Avgdl_Get(long long handle);
-extern void BMXGo_Parameters_Avgdl_Set(long long handle, double val);
-extern long long BMXGo_Parameters_N_Get(long long handle);
-extern void BMXGo_Parameters_N_Set(long long handle, long long val);
-
-// --- wrapping struct: BMXGo.SearchResults ---
-//
-extern long long BMXGo_SearchResults_CTor();
-extern long long BMXGo_SearchResults_Keys_Get(long long handle);
-extern void BMXGo_SearchResults_Keys_Set(long long handle, long long val);
-extern long long BMXGo_SearchResults_Scores_Get(long long handle);
-extern void BMXGo_SearchResults_Scores_Set(long long handle, long long val);
+extern long long BMXGo_TextPreprocessor_CTor();
+extern long long BMXGo_TextPreprocessor_Process(long long _handle, char* item);
+extern long long BMXGo_TextPreprocessor_ProcessMany(long long _handle, long long items, long long nWorkers);
+extern char* BMXGo_TextPreprocessor_SetStemmer(long long _handle, char* stemmerName);
+extern char* BMXGo_TextPreprocessor_SetStopwords(long long _handle, char* stopwords);
 extern long long BMXGo_Build(char* indexName, long long config);
 extern long long BMXGo_NewConfig(char* tokenizer, char* stemmer, char* lang);
-extern long long BMXGo_NewTextPreprocessor(long long config);
 extern long long BMXGo_NewLLMClient(long long config);
+extern long long BMXGo_NewTextPreprocessor(long long config);
 extern char* BMXGo_NormalizeAcronyms(char* text);
-extern char* BMXGo_NormalizeAmpersand(char* text);
-extern char* BMXGo_NormalizeSpecialChars(char* text);
+extern char* BMXGo_RemovePunctuation(char* text);
 extern long long BMXGo_GenerateAugmentedQueries(char* query, long long num_augmented_queries);
 extern char* BMXGo_HtmlToMarkdown(char* htmlContent, char addIDs);
-extern long long BMXGo_ApplyStemmer(long long tokens, PyObject* stemmer);
-extern char* BMXGo_StripWhitespaces(char* text);
-extern long long BMXGo_GetStopwords(char* swList);
 extern char* BMXGo_Lowercasing(char* text);
+extern char* BMXGo_NormalizeAmpersand(char* text);
+extern char* BMXGo_NormalizeSpecialChars(char* text);
 extern char* BMXGo_NormalizeDiacritics(char* text);
+extern char* BMXGo_StripWhitespaces(char* text);
+extern long long BMXGo_ApplyStemmer(long long tokens, PyObject* stemmer);
+extern long long BMXGo_GetStopwords(char* swList);
 extern long long BMXGo_RemoveEmptyTokens(long long tokens);
-extern char* BMXGo_RemovePunctuation(char* text);
 
 #ifdef __cplusplus
 }
