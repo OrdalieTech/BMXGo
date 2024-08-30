@@ -1,6 +1,7 @@
 package model
 
 import (
+	"BMXGo/search/text_preprocessor"
 	"context"
 	"encoding/json"
 	"fmt"
@@ -8,8 +9,6 @@ import (
 	"sort"
 	"strings"
 	"sync"
-
-	"BMXGo/search/text_preprocessor"
 )
 
 func GenerateAugmentedQueries(query string, num_augmented_queries int) ([]string, error) {
