@@ -2,6 +2,8 @@
 
 BMXGo is a Go implementation of the BMX (Best Matching X) algorithm for information retrieval and search. This project provides a flexible and efficient search engine that can be easily integrated into various applications.
 
+BMX is an innovative extension of the BM25 algorithm, developed by researchers from Mixedbread and the Hong Kong Polytechnic University. It incorporates entropy-weighted similarity and semantic enhancement techniques, significantly outperforming traditional BM25 in various benchmarks. We extend our gratitude to the Mixedbread team for their groundbreaking work in advancing search algorithms.
+
 ## Features
 
 - Efficient text preprocessing and tokenization
